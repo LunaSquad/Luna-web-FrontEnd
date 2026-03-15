@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navTitulo{
+  position: fixed;
+  justify-content: space-between;
+  top: 0;
+  background-color: transparent;
+  width: 100vw;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px 20px;
+}
+
+.navTitulo p{
+  font-family: "MuseoModerno", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 30px;
+}
+
+.navTitulo img{
+  width: 42px;
+  height: 42px;
+}
+
+.container{
+  height: 100vh;
+  width: 100vw;
+  background-color: #FDFDF8;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.circle{
+  position: absolute;
+}
+
+.circle:nth-child(1){
+  background-color: rgba(0,90,99,0.1);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  left: -69px;
+  bottom: 80px;
+}
+
+.circle:nth-child(2){
+  background-color: rgba(0,90,99,0.1);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  left: -69px;
+  bottom: -85px;
+}
+
+.circle:nth-child(3){
+  background-color: rgba(0,90,99,0.1);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  right: -49px;
+  top: -50px;
+}
+
+.circle:nth-child(4){
+  background-color: rgba(0,90,99,0.1);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  top: 10px;
+  left: 450px;
+}
+
+.circle:nth-child(5){
+  background-color: rgba(0,90,99,0.1);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  right: -45px;
+  bottom: -45px;
+}
+
+.circle:nth-child(6){
+  background-color: rgba(0,90,99,0.1);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  top: 300px;
+  left: 950px;
+}
+
+.formLogin{
+  position: relative;
+  background-color: aqua;
+  width: 50px;
+  height: 100px;
+}
