@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import NavTitulo from "../components/navbarTitulo"
+import NavTitulo from "../components/NavbarTitulo"
 
 function Login(){
     const [email,setEmail] = useState("")
@@ -31,9 +31,34 @@ function Login(){
                 <div className="circle"></div>
             </div>
 
-            <form className="formLogin" action="">
+            <div className="logins">
+                <div className="opc">
+                    <button>Entrar</button>
+                    <button>Criar Conta</button>
+                </div>
 
-            </form>
+                <form action="" className="formLogin">
+                    <div className="conjEmail">
+                        <label htmlFor="email">E-mail</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                    
+                        />
+                    </div>
+                    <div className="conjSenha">
+                        <label htmlFor="">Senha</label>
+                        <input 
+                            id="senha"
+                            type="password"
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
+                        />
+                    </div>
+                </form>
+            </div>
 
         </div>
 

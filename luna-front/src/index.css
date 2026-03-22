@@ -82,8 +82,8 @@
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  top: 10px;
-  left: 450px;
+  top: 60px;
+  left: 400px;
 }
 
 .circle:nth-child(5){
@@ -104,9 +104,82 @@
   left: 950px;
 }
 
-.formLogin{
+.logins{
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column  ;
+  padding: 20px 20px;
+  align-items: center; 
+  background-color: #ffffff;
+  width: 600px;
+  height: 550px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px -8px #000000;
+  gap: 50px;
+}
+
+.opc{
+  background-color: transparent;
+  width: 250px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  gap: 6px;
+
+  
+}
+
+.opc button{
+  position: relative;
+  background-color: transparent;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  color: #585858;
+  cursor: pointer;
+}
+
+
+.opc button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* distância da linha */
+  width: 0%;
+  height: 2px;
+  background-color: #005A63;
+  transition: width 0.3s ease;
+}
+
+.opc button:hover::after {
+  width: 100%;
+}
+
+.formLogin{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
   background-color: aqua;
-  width: 50px;
-  height: 100px;
+  width: 300px;
+  gap: 40px;
+}
+
+.conjEmail{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.conjSenha{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
