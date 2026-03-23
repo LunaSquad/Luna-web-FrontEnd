@@ -37,11 +37,12 @@ function Login(){
                     <button>Criar Conta</button>
                 </div>
 
-                <form action="" className="formLogin">
+                <form onSubmit={handleSubmit} className="formLogin">
                     <div className="conjEmail">
                         <label htmlFor="email">E-mail</label>
                         <input
                             id="email"
+                            placeholder="E-mail"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -52,10 +53,15 @@ function Login(){
                         <label htmlFor="">Senha</label>
                         <input 
                             id="senha"
+                            placeholder="Senha"
                             type="password"
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
                         />
+                    </div>
+
+                    <div className="botao">
+                        <button className="submitLogin" onClick={handleSubmit}>Acessar</button>
                     </div>
                 </form>
             </div>

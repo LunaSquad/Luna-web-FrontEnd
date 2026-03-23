@@ -112,7 +112,7 @@
   padding: 20px 20px;
   align-items: center; 
   background-color: #ffffff;
-  width: 600px;
+  width: 580px;
   height: 550px;
   border-radius: 10px;
   box-shadow: 0px 8px 20px -8px #000000;
@@ -165,21 +165,94 @@
 .formLogin{
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  min-height: 250px;
+  /* align-items: center; */  
   flex-direction: column;
-  background-color: aqua;
-  width: 300px;
+  background-color: transparent;
+  width: 270px;
   gap: 40px;
 }
 
 .conjEmail{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  color: #005A63;
+}
+
+.conjEmail input{
+  border: none;
+  border-bottom: 2px solid #005A63;
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.conjEmail input:focus{
+  outline: none;
+}
+
+.conjEmail input::placeholder{
+  color: #000000;
 }
 
 .conjSenha{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  color: #005A63;
+}
+
+.conjSenha input{
+  border: none;
+  border-bottom: 2px solid #005A63;
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.conjSenha input:focus{
+  outline: none;
+}
+
+.conjSenha input::placeholder{
+  color: #000000;
+}
+
+
+.botao{
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.submitLogin{
+  width: 130px;
+  border: none;
+  border-radius: 5px;
+  background-color: #005A63;
+  color: #FFDDD2;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  cursor: pointer;
 }
