@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import NavTitulo from "../components/NavbarTitulo"
+import Button from "../components/button"
+import Input from "../components/input"
 
 function Login(){
     const [email,setEmail] = useState("")
@@ -15,6 +17,15 @@ function Login(){
         console.log("Informações Enviadas!")
 
         navigate("/home")
+    }
+
+
+    function Entrar(){
+        navigate("/")
+    }
+
+    function irParaCadastro(){
+        navigate("/cadastro")
     }
 
     return(
@@ -33,35 +44,56 @@ function Login(){
 
             <div className="logins">
                 <div className="opc">
-                    <button>Entrar</button>
-                    <button>Criar Conta</button>
+                    <Button onClick={Entrar}>Entrar</Button>
+                    <Button onClick={irParaCadastro}>Criar Conta</Button>
                 </div>
 
                 <form onSubmit={handleSubmit} className="formLogin">
                     <div className="conjEmail">
-                        <label htmlFor="email">E-mail</label>
-                        <input
+                        {/* <label htmlFor="email">E-mail</label> */}
+                        {/* <input
                             id="email"
                             placeholder="E-mail"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                     
+                        /> */}
+                        <Input
+                            id="email"
+                            label="E-mail"
+                            type="email"
+                            placeholder="E-mail"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div className="conjSenha">
-                        <label htmlFor="">Senha</label>
+                        {/* <label htmlFor="">Senha</label>
                         <input 
                             id="senha"
                             placeholder="Senha"
                             type="password"
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
+                        /> */}
+                        <Input
+                            id="senha"
+                            label="Senha"
+                            type="password"
+                            placeholder="Senha"
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
                         />
                     </div>
 
                     <div className="botao">
-                        <button className="submitLogin" onClick={handleSubmit}>Acessar</button>
+                        <Button
+                            type="submit"
+                            className="submitLogin"
+                        >
+                            Acessar
+                        </Button>
                     </div>
                 </form>
             </div>
