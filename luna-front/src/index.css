@@ -352,3 +352,126 @@
   font-size: 22px;
   cursor: pointer;
 }
+
+.navLateral{
+  min-height: 100vh;
+  background-color: #005A63;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: width 0.5s ease-in-out;
+  overflow: hidden;
+}
+.navLateral.fechada{
+  width: 80px;
+  /* align-items: flex-start; */
+}
+.navLateral.aberta{
+  width: 230px;
+  transition: all 0.5s ease-in-out;
+}
+
+.menuButton{
+  background: transparent;
+  border: none;
+  color: #FDFDF8;
+  cursor: pointer;
+}
+
+.navConteudo{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.navItem{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: #FDFDF8;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: 18px;
+  height: 70px;
+  border-radius: 50px;
+  width: 300px;
+  transition: all 0.5s ease-in-out;
+}
+
+.navLateral.aberta .navItem {
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 0;
+}
+
+.navIcone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+
+  transition: transform 0.5s ease;
+}
+
+.navLateral.aberta .navItem:not(.sair):hover{
+  padding: 0;
+  background-color: rgba(255, 255, 255,0.4);
+  height: 70px;
+  border-radius: 50px;
+  width: 300px;
+  transform: translateX(5px);
+  align-items: center;
+}
+
+.navLateral.aberta .navItem:not(.sair):hover .navIcone {
+  transform: translateX(10px) scale(1);
+}
+
+.navItem .sair:hover{
+    background-color: none;
+}
+
+.infoHeader{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.infoHeaderIcon{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 90, 99,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #005A63;
+  flex-shrink: 0;
+}
+
+.infoHeaderText{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoHeaderTitle{
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+}
+
+.infoHeaderSubtitle{
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #000000;
+}
