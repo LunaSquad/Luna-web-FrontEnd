@@ -2,8 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, House, Presentation, GraduationCap, Users, LogOut } from "lucide-react";
 
-export default function NavLateral(){
-    const [aberta, setAberta] = useState(false)
+type NavLateralProps = {
+    aberta: boolean;
+    setAberta: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+
+export default function NavLateral({aberta, setAberta} : NavLateralProps){
 
     const itens = [
         {icone: <House size={28}/>, texto: "Home", rota:"/home"},

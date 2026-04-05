@@ -1,11 +1,19 @@
+import { useState } from "react"
+import {House} from "lucide-react"
+import InfoHeader from "../components/InfoHeader"
+import LayoutBase from "../components/layout/LayoutBase"
 
 function Home() {
   return (
-    <div className="layout">
-      <main className="conteudoPagina">
-        <h1>Página Home</h1>
-      </main>
-    </div>
+    <LayoutBase>
+
+      <InfoHeader
+        icon={<House size={26}/>}
+        title="Home"
+        subtitle="Vai ter algo aqui"
+      />
+
+    </LayoutBase>
   )
 }
 
