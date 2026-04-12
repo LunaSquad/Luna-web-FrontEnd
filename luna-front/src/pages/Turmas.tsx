@@ -4,6 +4,8 @@ import InfoHeader from "../components/InfoHeader"
 import LayoutBase from "../components/layout/LayoutBase"
 import SearchActionBar from "../components/SearchActionBar"
 import Table from "../components/TableInformations"
+import ModalTurma from "./modals/ModalTurmas"
+import FormTurma from "../components/FormTurma"
 
 type Turma = {
   id: number;
@@ -102,6 +104,16 @@ function Turmas() {
       />
 
       <Table columns={columns} data={turmas} />
+
+      <ModalTurma
+        isOpen={modalAberto} 
+        onClose={() => setModalAberto(false)}
+      >
+        <div className="logoTurma">
+          <Users  size={24}/>
+        </div>
+        <FormTurma />
+      </ModalTurma>
 
     </LayoutBase>
   )

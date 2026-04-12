@@ -1,4 +1,5 @@
 import React from "react"
+import { ImagePlus } from "lucide-react"
 
 interface UploadImagemProps {
   label: string
@@ -24,7 +25,9 @@ function UploadImagem({ label, onChange }: UploadImagemProps) {
           className="uploadInput"
         />
 
-        <span className="uploadIcon">📷</span>
+        <span className="uploadIcon">
+          <ImagePlus size={22} />
+        </span>
       </label>
     </div>
   )

@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { Pencil, Trash2, Presentation } from "lucide-react"
+import { Pencil, Trash2, Book } from "lucide-react"
 import InfoHeader from "../components/InfoHeader"
 import LayoutBase from "../components/layout/LayoutBase"
 import SearchActionBar from "../components/SearchActionBar"
 import Table from "../components/TableInformations"
+import ModalProf from "./modals/ModalProf"
+import FormProfessores from "../components/FormProfessor"
 
 type Professor = {
   id: number;
@@ -77,7 +79,7 @@ function Professores() {
     <LayoutBase>
 
       <InfoHeader
-        icon={<Presentation size={26}/>}
+        icon={<Book size={26}/>}
         title="Professores"
         subtitle="Administrar Corpo Docente"
       />
@@ -87,12 +89,25 @@ function Professores() {
         onSearchChange={setBusca}
         searchPlaceholder="Buscar Professor"
         buttonLabel="Novo Professor"
-        onButtonClick={() => setModalAberto(true)}
+        onButtonClick={() => {
+          console.log("clicou") 
+          setModalAberto(true)}}
       />
 
       <Table columns={columns} data={professores} />
 
+      <ModalProf
+        isOpen={modalAberto} 
+        onClose={() => setModalAberto(false)}
+      >
+        <div className="logoProf">
+          <Book  size={24}/>
+        </div>
+        <FormProfessores />
+      </ModalProf>
+
     </LayoutBase>
+
   )
 }
 

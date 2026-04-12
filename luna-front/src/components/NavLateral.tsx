@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, House, Presentation, GraduationCap, Users, LogOut } from "lucide-react";
+import { Menu, House, Book, GraduationCap, Users, LogOut } from "lucide-react";
 
 type NavLateralProps = {
     aberta: boolean;
@@ -12,7 +12,7 @@ export default function NavLateral({aberta, setAberta} : NavLateralProps){
 
     const itens = [
         {icone: <House size={28}/>, texto: "Home", rota:"/home"},
-        {icone: <Presentation size={28}/>, texto: "Professores", rota:"/professores"},
+        {icone: <Book size={28}/>, texto: "Professores", rota:"/professores"},
         {icone: <GraduationCap size={28}/>, texto: "Alunos", rota:"/alunos"},
         {icone: <Users size={28}/>, texto: "Turmas", rota:"/turmas"}
     ]

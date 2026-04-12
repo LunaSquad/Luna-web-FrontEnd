@@ -316,7 +316,7 @@
 }
 
 .uploadBox {
-  width: 200px;
+  width: 270px;
   height: 40px;
   border: 2px dashed #005A63;
   border-radius: 12px;
@@ -710,3 +710,347 @@
   border-radius: 50%;
   color: #005A63;
 }
+
+/* modal professor */
+
+.modalOverlayProf {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.4); /* fundo cinza */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999; /* fica na frente de tudo */
+}
+
+.modalContentProf {
+  position: relative;
+  background-color: #f5f5f2;
+  padding: 30px;
+  border-radius: 16px;
+  width: 800px;
+  max-width: 90%;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.closeButton {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoProf{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 90, 99,0.5);
+  color: #005A63;
+}
+
+.formCadastroProf{
+  display: flex;
+  justify-content: center;
+  min-height: 260px;
+  align-items: center;  
+  flex-direction: column;
+  background-color: transparent;
+  width: 100%;
+  padding: 0 70px;
+  margin-bottom: 10px;
+  gap: 20px;
+}
+
+.dadosCadGeralProf{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dadosCad3,
+.dadosCad4{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.submitCadastrarProf{
+  width: 270px; 
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  background-color: #005A63;
+  color: #FFDDD2;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* modal aluno */
+
+.modalOverlayAluno {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.4); /* fundo cinza */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999; /* fica na frente de tudo */
+}
+
+.modalContentAluno {
+  position: relative;
+  background-color: #f5f5f2;
+  padding: 30px;
+  border-radius: 16px;
+  width: 800px;
+  max-width: 90%;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.closeButton {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoAluno{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 90, 99,0.5);
+  color: #005A63;
+}
+
+.formCadastroAluno{
+  display: flex;
+  justify-content: center;
+  min-height: 260px;
+  align-items: center;  
+  flex-direction: column;
+  background-color: transparent;
+  width: 100%;
+  padding: 0 70px;
+  margin-bottom: 10px;
+  gap: 20px;
+}
+
+.dadosCadGeralAluno{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dadosCad5,
+.dadosCad6{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.submitCadastrarAluno{
+  width: 270px; 
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  background-color: #005A63;
+  color: #FFDDD2;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* modal aluno */
+
+.modalOverlayTurma {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.4); /* fundo cinza */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999; /* fica na frente de tudo */
+}
+
+.modalContentTurma {
+  position: relative;
+  background-color: #f5f5f2;
+  padding: 30px;
+  border-radius: 16px;
+  width: 800px;
+  max-width: 90%;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.closeButton {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoTurma{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 90, 99,0.5);
+  color: #005A63;
+}
+
+.formCadastroTurma{
+  display: flex;
+  justify-content: center;
+  min-height: 260px;
+  flex-direction: column;
+  background-color: transparent;
+  width: 100%;  
+  padding: 0 70px;  
+  margin-bottom: 10px;
+  gap: 20px;
+}
+
+.dadosCadGeralTurma{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dadosCad7,
+.inputGroup{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup input,
+.inputGroup select {
+  border: none;
+  border-bottom: 2px solid #005A63;
+  background: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  outline: none;
+}
+
+/* BUSCA */
+.searchAluno input {
+  width: 100%;
+  padding: 12px;
+  margin: 20px 0px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* LISTA */
+.listaAlunos {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  max-height: 250px;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  overflow-y: auto;
+}
+
+.alunoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.alunoInfo {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.alunoInfo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+
+.submitCadastrarAluno{
+  width: 270px; 
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  background-color: #005A63;
+  color: #FFDDD2;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  cursor: pointer;
+}
+

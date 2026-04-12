@@ -4,6 +4,8 @@ import InfoHeader from "../components/InfoHeader"
 import LayoutBase from "../components/layout/LayoutBase"
 import SearchActionBar from "../components/SearchActionBar"
 import Table from "../components/TableInformations"
+import ModalAluno from "./modals/ModalAluno"
+import FormAlunos from "../components/FormAluno"
 
 type Aluno = {
   id: number;
@@ -113,6 +115,16 @@ function Alunos() {
       />
 
       <Table columns={columns} data={alunos} />
+
+      <ModalAluno
+        isOpen={modalAberto} 
+        onClose={() => setModalAberto(false)}
+      >
+        <div className="logoAluno">
+          <GraduationCap  size={24}/>
+        </div>
+        <FormAlunos />
+      </ModalAluno>
 
     </LayoutBase>
   )
