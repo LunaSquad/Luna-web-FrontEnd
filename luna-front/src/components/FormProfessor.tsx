@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Input from "./input";
 import UploadImagem from "./buttonImage";
@@ -7,10 +7,6 @@ interface FormProfessoresProps{
     dados ?: any
     onClose?: () => void
 }
-
-
-
-
 
 export default function FormProfessores({dados, onClose}: FormProfessoresProps){
 
@@ -29,6 +25,20 @@ export default function FormProfessores({dados, onClose}: FormProfessoresProps){
 
         if (onClose) onClose()
     }
+
+    useEffect(() => {
+        if (dados) {
+            setNome(dados.nome || "")
+            setSobrenome(dados.sobrenome || "")
+            setCpf(dados.cpf || "")
+            setData(dados.data || "")
+            setRg(dados.rg || "")
+            setCidade(dados.cidade || "")
+            setTelefone(dados.telefone || "")
+            setEmail(dados.email || "")
+            
+        }
+    }, [dados])
 
     return(
         <form onSubmit={handleSubmit} className="formCadastroProf">

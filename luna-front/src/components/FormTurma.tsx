@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Input from "./input";
 import UploadImagem from "./buttonImage";
@@ -7,10 +7,6 @@ interface FormTurmasProps{
     dados ?: any
     onClose?: () => void
 }
-
-
-
-
 
 export default function FormTurma({dados, onClose}: FormTurmasProps){
 
@@ -31,6 +27,14 @@ export default function FormTurma({dados, onClose}: FormTurmasProps){
             : [...prev, id]
         )
     }
+
+    useEffect(() => {
+                if (dados) {
+                    setNomeTurma(dados.nomeTurma || "")
+                    setProfessor(dados.professor || "")
+                    
+                }
+            }, [dados])
 
 
     function handleSubmit(e: React.FormEvent){

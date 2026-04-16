@@ -2,16 +2,14 @@ import { useState } from "react"
 import {House} from "lucide-react"
 import InfoHeader from "../components/InfoHeader"
 import LayoutBase from "../components/layout/LayoutBase"
+import NavbarHome from "../components/NavbarHome"
+
 
 function Home() {
   return (
     <LayoutBase>
 
-      <InfoHeader
-        icon={<House size={26}/>}
-        title="Home"
-        subtitle="Vai ter algo aqui"
-      />
+      <NavbarHome></NavbarHome>
 
     </LayoutBase>
   )

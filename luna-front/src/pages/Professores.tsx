@@ -39,6 +39,7 @@ const professores: Professor[] = [
 function Professores() {
   const [busca, setBusca] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
+  const [professorSelecionado, setProfessorSelecionado] = useState<Professor | null > (null)
 
   const columns = [
     {
@@ -67,7 +68,12 @@ function Professores() {
             <Trash2 size={20} />
           </button>
 
-          <button type="button" onClick={() => console.log("Editar", row.id)}>
+          <button type="button" 
+          onClick={() => {
+            setProfessorSelecionado(row) // envia dados
+            setModalAberto(true)
+          }}
+          >
             <Pencil size={20} />
           </button>
         </div>
@@ -90,8 +96,9 @@ function Professores() {
         searchPlaceholder="Buscar Professor"
         buttonLabel="Novo Professor"
         onButtonClick={() => {
-          console.log("clicou") 
-          setModalAberto(true)}}
+        setProfessorSelecionado(null) // limpa
+        setModalAberto(true)
+}}
       />
 
       <Table columns={columns} data={professores} />
@@ -103,7 +110,10 @@ function Professores() {
         <div className="logoProf">
           <Book  size={24}/>
         </div>
-        <FormProfessores />
+        <FormProfessores
+          dados={professorSelecionado}
+          onClose={() => setModalAberto(false)}
+        />
       </ModalProf>
 
     </LayoutBase>

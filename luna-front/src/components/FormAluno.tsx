@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Button from "./button";
 import Input from "./input";
 import UploadImagem from "./buttonImage";
@@ -7,10 +7,6 @@ interface FormAlunosProps{
     dados ?: any
     onClose?: () => void
 }
-
-
-
-
 
 export default function FormAlunos({dados, onClose}: FormAlunosProps){
 
@@ -28,6 +24,20 @@ export default function FormAlunos({dados, onClose}: FormAlunosProps){
 
         if (onClose) onClose()
     }
+
+    useEffect(() => {
+            if (dados) {
+                setNome(dados.nome || "")
+                setSobrenome(dados.sobrenome || "")
+                setCpf(dados.cpf || "")
+                setNomeResponsavel(dados.nomeResponsavel || "")
+                setRa(dados.ra || "")
+                setData(dados.data || "")
+                setTelefone(dados.telefone || "")
+                setEmail(dados.email || "")
+                
+            }
+        }, [dados])
 
     return(
         <form onSubmit={handleSubmit} className="formCadastroAluno">

@@ -43,6 +43,7 @@ const turmas: Turma[] = [
 function Turmas() {
   const [busca, setBusca] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
+  const [turmaSelecionado, setTurmaSelecionado] = useState<Turma | null > (null)
 
   const columns = [
     {
@@ -78,7 +79,12 @@ function Turmas() {
             <Trash2 size={20} />
           </button>
 
-          <button type="button" onClick={() => console.log("Editar", row.id)}>
+          <button type="button" 
+            onClick={() => {
+            setTurmaSelecionado(row) // envia dados
+            setModalAberto(true)
+          }}
+          >
             <Pencil size={20} />
           </button>
         </div>
@@ -100,7 +106,10 @@ function Turmas() {
         onSearchChange={setBusca}
         searchPlaceholder="Buscar Turma"
         buttonLabel="Nova Turma"
-        onButtonClick={() => setModalAberto(true)}
+        onButtonClick={() => {
+        setTurmaSelecionado(null) // limpa
+        setModalAberto(true)
+        }}
       />
 
       <Table columns={columns} data={turmas} />
@@ -112,7 +121,10 @@ function Turmas() {
         <div className="logoTurma">
           <Users  size={24}/>
         </div>
-        <FormTurma />
+        <FormTurma 
+          dados={turmaSelecionado}
+          onClose={() => setModalAberto(false)}
+        />
       </ModalTurma>
 
     </LayoutBase>

@@ -47,6 +47,7 @@ const alunos: Aluno[] = [
 function Alunos() {
   const [busca, setBusca] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
+  const [alunoSelecionado, setAlunoSelecionado] = useState<Aluno | null > (null)
 
   const columns = [
     {
@@ -89,7 +90,12 @@ function Alunos() {
             <Trash2 size={20} />
           </button>
 
-          <button type="button" onClick={() => console.log("Editar", row.id)}>
+          <button type="button" 
+          onClick={() => {
+            setAlunoSelecionado(row) // envia dados
+            setModalAberto(true)
+          }}
+          >
             <Pencil size={20} />
           </button>
         </div>
@@ -111,7 +117,10 @@ function Alunos() {
         onSearchChange={setBusca}
         searchPlaceholder="Buscar Aluno"
         buttonLabel="Novo Aluno"
-        onButtonClick={() => setModalAberto(true)}
+        onButtonClick={() => {
+        setAlunoSelecionado(null) // limpa
+        setModalAberto(true)
+        }}
       />
 
       <Table columns={columns} data={alunos} />
@@ -123,7 +132,10 @@ function Alunos() {
         <div className="logoAluno">
           <GraduationCap  size={24}/>
         </div>
-        <FormAlunos />
+        <FormAlunos 
+          dados={alunoSelecionado}
+          onClose={() => setModalAberto(false)}
+        />
       </ModalAluno>
 
     </LayoutBase>
