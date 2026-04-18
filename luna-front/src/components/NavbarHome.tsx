@@ -1,5 +1,6 @@
-import { Bell, ListFilter, Search } from "lucide-react"
+import { Settings2, Search } from "lucide-react"
 import Button from "./button"
+import UserInfo from "./UserInfo"
 
 type NavBarHomeProps = {
     searchValue: string
@@ -7,7 +8,14 @@ type NavBarHomeProps = {
     searchPlaceholder?: string
     buttonLabel: string
     onButtonClick: () => void
+
+    // dados do usuario passados aqui também
+
+    nome: string
+    foto: string
+    notificacoes: number
 }
+
 
 export default function NavbarHome({
     searchValue,
@@ -15,6 +23,9 @@ export default function NavbarHome({
     searchPlaceholder = "Filtrar",
     buttonLabel,
     onButtonClick,
+    nome,
+    foto,
+    notificacoes
 }: NavBarHomeProps){
     
     return(
@@ -36,10 +47,17 @@ export default function NavbarHome({
                         onClick={onButtonClick}
                         className="buttonFilter"
                     >
-                        Filtrar <ListFilter size={20} />
+                        <Settings2 size={20} className="buscaFilter" />
                         <span>{buttonLabel}</span>
                     </Button>
                 </div>
+
+                <UserInfo 
+                    nome={nome}
+                    foto={foto}
+                    notificacoes={notificacoes}
+                />
+                
         </div>
     )
 }

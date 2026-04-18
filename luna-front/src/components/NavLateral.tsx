@@ -8,7 +8,9 @@ type NavLateralProps = {
 }
 
 
-export default function NavLateral({aberta, setAberta} : NavLateralProps){
+export default function NavLateral({
+    aberta, setAberta
+} : NavLateralProps){
 
     const itens = [
         {icone: <House size={28}/>, texto: "Home", rota:"/home"},

@@ -7,8 +7,9 @@ interface InfoHeaderProps{
     subtitle: string
 }
 
-export default function InfoHeader(
-    {icon, title, subtitle} : InfoHeaderProps){
+export default function InfoHeader({
+    icon, title, subtitle
+} : InfoHeaderProps){
         return(
             <div className="infoHeader">
                     <div className="TitleInformations">
