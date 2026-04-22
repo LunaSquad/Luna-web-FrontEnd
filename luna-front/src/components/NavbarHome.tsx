@@ -3,29 +3,29 @@ import Button from "./button"
 import UserInfo from "./UserInfo"
 
 type NavBarHomeProps = {
-    searchValue: string
     onSearchChange: (value: string) => void
     searchPlaceholder?: string
     buttonLabel: string
-    onButtonClick: () => void
+    onButtonClickc: () => void
 
     // dados do usuario passados aqui também
 
     nome: string
     foto: string
     notificacoes: number
+    onButtonClick: () => void
 }
 
 
 export default function NavbarHome({
-    searchValue,
     onSearchChange,
     searchPlaceholder = "Filtrar",
     buttonLabel,
-    onButtonClick,
+    onButtonClickc,
     nome,
     foto,
-    notificacoes
+    notificacoes,
+    onButtonClick
 }: NavBarHomeProps){
     
     return(
@@ -35,7 +35,7 @@ export default function NavbarHome({
                         <Search size={18} className="buscaIcon" />
                         <input
                         type="text"
-                        value={searchValue}
+                        // value={searchValue}
                         onChange={(e) => onSearchChange(e.target.value)}
                         placeholder={searchPlaceholder}
                         className="buscaInput"
@@ -44,7 +44,7 @@ export default function NavbarHome({
 
                     <Button
                         type="button"
-                        onClick={onButtonClick}
+                        onClick={onButtonClickc}
                         className="buttonFilter"
                     >
                         <Settings2 size={20} className="buscaFilter" />
@@ -52,10 +52,11 @@ export default function NavbarHome({
                     </Button>
                 </div>
 
-                <UserInfo 
+                <UserInfo
                     nome={nome}
                     foto={foto}
                     notificacoes={notificacoes}
+                    onButtonClick={onButtonClick}
                 />
                 
         </div>

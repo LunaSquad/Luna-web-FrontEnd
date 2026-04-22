@@ -1,6 +1,3 @@
-import { Link } from "react-router-dom";
-import { Book, GraduationCap, Users} from "lucide-react";
-
 interface CardHomeProps{
     icon: React.ReactNode
     title: string

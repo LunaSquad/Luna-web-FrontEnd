@@ -4,16 +4,21 @@ interface UserInfoProps{
     nome: string
     foto: string
     notificacoes: number
+    onButtonClick: () => void
 }
 
 export default function UserInfo({
     nome,
     foto,
-    notificacoes
+    notificacoes,
+    onButtonClick
 }: UserInfoProps){
     return(
         <div className="userInfo">
-                    <div className="bellWrapper">
+                    <div 
+                    className="bellWrapper"
+                    onClick={onButtonClick}
+                    >
                         <Bell size={26} className="bellInfo"/>
 
                         {notificacoes > 0 && (

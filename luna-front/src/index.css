@@ -1,5 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* calendario-style.css */
+
+.fc {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: none !important;
+  max-width: 400px; /* Largura parecida com a da foto */
+  max-height: 400px;
+}
+
+/* 1. Cabeçalho (Mês e Setas) */
+.fc .fc-toolbar {
+  margin-bottom: 20px !important;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.1rem !important;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  color: #000000;
+}
+
+/* Estilizando os botões de seta */
+.fc .fc-button-primary {
+  background: white !important;
+  border: none;
+  color: #005f6b !important; /* Cor petróleo */
+  border-radius: 8px !important;
+  padding: 5px 10px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* 2. Dias da Semana (Dom, Seg...) */
+.fc th {
+  border: none !important;
+  color: #999 !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem;
+  padding-bottom: 15px !important;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+}
+
+/* 3. Grade de Dias (Números) */
+.fc td {
+  border: none;
+}
+
+.fc .fc-daygrid-day-number {
+  color: #444;
+  font-weight: 400;
+  float: none !important;
+  border: none;
+  display: block;
+  text-align: center;
+  padding: 12px 0 !important;
+  text-decoration: none !important;
+}
+
+.fc-daygrid-day-frame {
+  min-height: 100px;
+  /* padding: 8px; */
+}
+
+/* 4. Destaque para o dia atual ou selecionado */
+.fc .fc-day-today {
+  background: none !important; 
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+  background: #005f6b; /* Cor da imagem */
+  color: white !important;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 5. Eventos (As caixinhas) */
+.fc-daygrid-event {
+  border-radius: 4px !important;
+  font-size: 0.7rem !important;
+  border: none !important;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -1150,6 +1248,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .bellInfo{
@@ -1204,9 +1303,14 @@
   flex: 3;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 85px;
   margin-top: 20px;
+}
 
+.cardsPrincipais{
+  flex: 3;
+  display: flex;
+  gap: 25px;
 }
 
 .cardHome{
@@ -1217,9 +1321,14 @@
   justify-content: space-between;
   background-color: #ffffff;
   width: 220px;
-  height: 100px;
+  height: 120px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.cardHome:hover{
+  transform: translateY(-8px);
 }
 
 .titleCardHome{
@@ -1233,16 +1342,93 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 10px;
 }
 
 .qtdCard{
   font-family: "Inter", sans-serif;
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 700;
   font-style: normal;
 }
 
 .iconCard{
-  height: 25px;
-  /* width: 40px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width: 45px;
+  background-color: rgba(0, 90, 99,0.4);
+  color: #005A63;
+  border-radius: 50%;
+}
+
+.atalhosPrincipais{
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  gap: 20px;
+}
+
+.cardsAtalhos{
+  flex: 3;
+  display: flex;
+  gap: 25px;
+}
+
+.cardAtl{
+  display: flex;
+  /* justify-content: center; */
+  padding: 35px 0px;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #ffffff;
+  width: 220px;
+  height: 280px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.cardAtl:hover{
+  transform: translateY(-8px);
+}
+
+.iconName{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: rgba(0, 90, 99,0.4);
+  color: #005A63;
+}
+
+.titleAtalhos{
+  margin-top: 25px;
+  width: 180px;
+}
+
+.btnAtalhos{
+  margin-top: 25px;
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #005A63;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: normal;
+  color: #FFDDD2;
+  cursor: pointer;
 }
