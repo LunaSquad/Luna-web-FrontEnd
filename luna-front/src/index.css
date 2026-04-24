@@ -1,103 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* calendario-style.css */
-
-.fc {
-  background: white;
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  border: none !important;
-  max-width: 400px; /* Largura parecida com a da foto */
-  max-height: 400px;
-}
-
-/* 1. Cabeçalho (Mês e Setas) */
-.fc .fc-toolbar {
-  margin-bottom: 20px !important;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
-}
-
-.fc .fc-toolbar-title {
-  font-size: 1.1rem !important;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 20px;
-  color: #000000;
-}
-
-/* Estilizando os botões de seta */
-.fc .fc-button-primary {
-  background: white !important;
-  border: none;
-  color: #005f6b !important; /* Cor petróleo */
-  border-radius: 8px !important;
-  padding: 5px 10px !important;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-/* 2. Dias da Semana (Dom, Seg...) */
-.fc th {
-  border: none !important;
-  color: #999 !important;
-  font-weight: 600 !important;
-  font-size: 0.85rem;
-  padding-bottom: 15px !important;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 14px;
-}
-
-/* 3. Grade de Dias (Números) */
-.fc td {
-  border: none;
-}
-
-.fc .fc-daygrid-day-number {
-  color: #444;
-  font-weight: 400;
-  float: none !important;
-  border: none;
-  display: block;
-  text-align: center;
-  padding: 12px 0 !important;
-  text-decoration: none !important;
-}
-
-.fc-daygrid-day-frame {
-  min-height: 100px;
-  /* padding: 8px; */
-}
-
-/* 4. Destaque para o dia atual ou selecionado */
-.fc .fc-day-today {
-  background: none !important; 
-}
-
-.fc .fc-day-today .fc-daygrid-day-number {
-  background: #005f6b; /* Cor da imagem */
-  color: white !important;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 5. Eventos (As caixinhas) */
-.fc-daygrid-event {
-  border-radius: 4px !important;
-  font-size: 0.7rem !important;
-  border: none !important;
-}
-
 *{
   margin: 0;
   padding: 0;
@@ -1432,3 +1334,184 @@
   color: #FFDDD2;
   cursor: pointer;
 }
+
+/* calendar.css */
+
+/* 1. Container Principal */
+.calendar-wrapper {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  width: fit-content;
+  position: relative;
+  font-family: 'Inter', sans-serif; /* Ou sua fonte de preferência */
+}
+
+/* 2. Cabeçalho (Janeiro 2026) */
+.calendar-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  padding: 30px 0px;
+  /* border-bottom: 2px solid #9ca3af; */
+  /* margin-bottom: 10px; */
+}
+
+
+/* 3. Navegação (Botões de Seta) */
+.calendar-nav {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-button-prev, 
+.nav-button-next {
+  background: white;
+  border: 1.5px solid #f3f4f6;
+  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #004d4d; /* O verde petróleo da imagem */
+  transition: all 0.2s ease;
+}
+
+.nav-button-prev:hover, 
+.nav-button-next:hover {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+/* 4. Estrutura do Calendário */
+.calendar-months {
+  display: flex;
+  max-height: 330px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: block;
+}
+
+.calendar-month {
+  margin-top: 5px;
+  border-collapse: separate;
+  border-spacing: 0 4px; /* Espaço entre as linhas */
+  display: block;
+}
+
+/* 5. Dias da Semana (Dom, Seg...) */
+.calendar-weekday {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding-bottom: 15px;
+  width: 45px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 6. Estilo Individual dos Dias */
+.calendar-day {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #374151;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: 0.2s;
+}
+
+.calendar-day button{
+  border: none;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.calendar-day:hover:not(.calendar-day-selected) {
+  background-color: #f3f4f6;
+  border-radius: 50%;
+}
+
+/* Dia Selecionado (Destaque Verde) */
+.calendar-day-selected {
+  background-color: #004d4d !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Dia Atual (Opcional, se quiser marcar o hoje) */
+.calendar-day-today {
+  color: #004d4d;
+  font-weight: bold;
+}
+
+/* Dias fora do mês (acinzentados como na imagem) */
+.calendar-day-outside {
+  color: #d1d5db !important;
+  opacity: 0.8;
+}
+
+/* 7. Botão Flutuante (FAB) do canto inferior */
+.calendar-fab {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background-color: #004d4d;
+  border: none;
+  border-radius: 8px;
+  width: 50px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 77, 77, 0.2);
+}
+
+.calendar-fab:hover {
+  background-color: #003d3d;
+  transform: translateY(-1px);
+}
+
+.calendar-month table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+}
+
+.calendar-month tbody {
+  display: table-row-group;
+}
+
+.calendar-month tr {
+  display: table-row;
+}
+
+.calendar-month td {
+  display: table-cell;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+
