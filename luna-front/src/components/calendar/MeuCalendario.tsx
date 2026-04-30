@@ -7,14 +7,14 @@ export default function MyCalendar() {
   const [selected, setSelected] = React.useState<Date>();
 
   return (
-    <div style={{ position: 'relative', width: 'fit-content' }}>
+    // REMOVA o style inline e use a className
+    <div className="calendar-wrapper"> 
       <DayPicker
         mode="single"
         selected={selected}
         onSelect={setSelected}
         locale={ptBR}
         showOutsideDays
-        // fixedWeeks
         components={{
           Chevron: ({ orientation }) => {
             return orientation === 'left' ? (
@@ -24,7 +24,6 @@ export default function MyCalendar() {
             );
           },
         }}
-        // Classes para você estilizar no seu CSS
         classNames={{
           months: 'calendar-months',
           month: 'calendar-month',
@@ -40,24 +39,12 @@ export default function MyCalendar() {
         }}
       />
 
-      {/* Botão flutuante da imagem */}
-      <button
-        style={{
-          position: 'absolute',
-          bottom: '10px',
-          right: '10px',
-          backgroundColor: 'transparent',
-          border: 'none',
-          borderRadius: '8px',
-          padding: '10px',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
+      {/* Use a classe calendar-fab para o botão também */}
+      <button className="calendar-fab">
         <CalendarDays size={20} color="white" />
       </button>
     </div>
   );
 }
+
+

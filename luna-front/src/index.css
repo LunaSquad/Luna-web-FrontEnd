@@ -1338,14 +1338,19 @@
 /* calendar.css */
 
 /* 1. Container Principal */
+/* No seu calendar.css */
 .calendar-wrapper {
   background: #ffffff;
   border-radius: 20px;
-  padding: 25px;
+  /* Aumentamos para 80px para garantir espaço para o botão e o respiro */
+  padding: 25px; 
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   width: fit-content;
   position: relative;
-  font-family: 'Inter', sans-serif; /* Ou sua fonte de preferência */
+  font-family: 'Inter', sans-serif;
+  /* Garante que o container cresça conforme o padding */
+  display: flex;
+  flex-direction: column;
 }
 
 /* 2. Cabeçalho (Janeiro 2026) */
@@ -1357,7 +1362,7 @@
   font-size: 15px;
   font-weight: 700;
   color: #111827;
-  padding: 30px 0px;
+  padding: 10px 0px;
   /* border-bottom: 2px solid #9ca3af; */
   /* margin-bottom: 10px; */
 }
@@ -1432,7 +1437,7 @@
   justify-content: center;
   font-size: 0.95rem;
   color: #374151;
-  border-radius: 12px;
+  border-radius: 50% !important;
   cursor: pointer;
   border: none;
   background: transparent;
@@ -1450,6 +1455,28 @@
 .calendar-day:hover:not(.calendar-day-selected) {
   background-color: #f3f4f6;
   border-radius: 50%;
+}
+
+.calendar-month table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+}
+
+.calendar-month tbody {
+  display: table-row-group;
+}
+
+.calendar-month tr {
+  display: table-row;
+}
+
+.calendar-month td {
+  display: table-cell;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
 }
 
 /* Dia Selecionado (Destaque Verde) */
@@ -1476,7 +1503,7 @@
   position: absolute;
   bottom: 15px;
   right: 15px;
-  background-color: #004d4d;
+  background-color: transparent;
   border: none;
   border-radius: 8px;
   width: 50px;
@@ -1493,25 +1520,12 @@
   transform: translateY(-1px);
 }
 
-.calendar-month table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 6px;
+.has-event::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  background-color: #005A63;
+  border-radius: 50%;
 }
-
-.calendar-month tbody {
-  display: table-row-group;
-}
-
-.calendar-month tr {
-  display: table-row;
-}
-
-.calendar-month td {
-  display: table-cell;
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-}
-
