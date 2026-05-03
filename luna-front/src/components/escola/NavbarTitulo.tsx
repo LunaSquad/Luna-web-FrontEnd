@@ -1,5 +1,5 @@
-import '../index.css'
-import logo from '../assets/logo.svg'
+import '../../index.css'
+import logo from '../../assets/logo.svg'
 
 export default function NavTitulo(){
     return(

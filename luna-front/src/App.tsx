@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "./App.css"
 import Login from "./pages/Login"
 import Cadastro from "./pages/Cadastro"
-import Home from "./pages/Home"
-import Professores from "./pages/Professores"
-import Alunos from "./pages/Alunos"
-import Turmas from "./pages/Turmas"
+import Home from "./pages/pagesEscola/Home"
+import Professores from "./pages/pagesEscola/Professores"
+import Alunos from "./pages/pagesEscola/Alunos"
+import Turmas from "./pages/pagesEscola/Turmas"
 
 function App() {
   return (

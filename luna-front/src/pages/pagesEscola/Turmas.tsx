@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { Pencil, Trash2, Users } from "lucide-react"
-import InfoHeader from "../components/InfoHeader"
-import LayoutBase from "../components/layout/LayoutBase"
-import SearchActionBar from "../components/SearchActionBar"
-import Table from "../components/TableInformations"
-import ModalTurma from "./modals/ModalTurmas"
-import FormTurma from "../components/FormTurma"
+import { Pencil, ThumbsDown, ThumbsUp, Trash2, Users } from "lucide-react"
+import InfoHeader from "../../components/escola/InfoHeader"
+import LayoutBase from "../../components/escola/layout/LayoutBase"
+import SearchActionBar from "../../components/escola/SearchActionBar"
+import Table from "../../components/escola/TableInformations"
+import ModalTurma from "../modals/ModalTurmas"
+import FormTurma from "../../components/escola/FormTurma"
+import ModalDelete from "../modals/ModalDelete"
 
 type Turma = {
   id: number;
@@ -43,6 +44,7 @@ const turmas: Turma[] = [
 function Turmas() {
   const [busca, setBusca] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
   const [turmaSelecionado, setTurmaSelecionado] = useState<Turma | null > (null)
 
   const columns = [
@@ -75,7 +77,12 @@ function Turmas() {
       accessor: "acoes",
       render: (row: Turma) => (
         <div className="acoesCell">
-          <button type="button" onClick={() => console.log("Excluir", row.id)}>
+          <button 
+            type="button"
+            onClick={() => {
+              setTurmaSelecionado(row)
+              setModalDeleteOpen(true)
+            }}>
             <Trash2 size={20} />
           </button>
 
@@ -126,6 +133,15 @@ function Turmas() {
           onClose={() => setModalAberto(false)}
         />
       </ModalTurma>
+
+      <ModalDelete
+        isOpen={modalDeleteOpen}
+        onClose={() => setModalDeleteOpen(false)}
+        icon={<Users size={30} />}
+        title={`Deseja excluir o ${turmaSelecionado?.turma}`}
+        decision1={<ThumbsUp size={22}/>}
+        decision2={<ThumbsDown size={22} />}
+      />
 
     </LayoutBase>
   )

@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import NavTitulo from "../components/NavbarTitulo"
-import Button from "../components/button"
-import Input from "../components/input"
+import NavTitulo from "../components/escola/NavbarTitulo"
+import Button from "../components/escola/button"
+import Input from "../components/escola/input"
+import { Check, Circle } from "lucide-react"
 
 function Login(){
     const [email,setEmail] = useState("")
@@ -11,11 +12,8 @@ function Login(){
     const navigate = useNavigate()
 
 
-    function handleSubmit(e){
+    function handleSubmit(e: React.FormEvent){
         e.preventDefault()
-
-        console.log("Informações Enviadas!")
-
         navigate("/home")
     }
 
@@ -33,32 +31,57 @@ function Login(){
         <div className="container">
             <NavTitulo />
 
-            <div className="circles">
-                <div className="circle"></div>
-                <div className="circle"></div>
-                <div className="circle"></div>
-                <div className="circle"></div>
-                <div className="circle"></div>
-                <div className="circle"></div>
+            <div className="principal-info-right">
+                <div className="principal-platform-title">
+                    <Circle size={16} fill="#D9D9D9"/>
+                    <p>
+                        PLATAFORMA ESCOLAR
+                    </p>
+                </div>
+
+                <h1 className="principal-info-right-title">
+                    Educação que <span>acolhe</span> cada aluno.
+                </h1>
+
+                <p className="principal-info-right-description">
+                    Uma experiência pensada para escolas que valorizam o cuidado individual, a organização inteligente e o desenvolvimento neurodiverso.
+                </p>
+
+                <div className="principal-info-right-opcs">
+                    <div className="principal-info-right-opc">
+                        <p className="opc-icon">
+                            <Check size={16} />
+                        </p>
+                        <p className="opc-description">
+                            Acompanhamento focado em neurodiversidade
+                        </p>
+                    </div>
+                    <div className="principal-info-right-opc">
+                        <p className="opc-icon">
+                            <Check size={16} />
+                        </p>
+                        <p className="opc-description">
+                            Ferramentas de suporte à acessibilidade
+                        </p>
+                    </div>
+                    <div className="principal-info-right-opc">
+                        <p className="opc-icon">
+                            <Check size={16} />
+                        </p>
+                        <p className="opc-description">
+                            Gestão humanizada de alunos e turmas
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div className="logins">
-                <div className="opc">
-                    <Button onClick={Entrar}>Entrar</Button>
-                    <Button onClick={irParaCadastro}>Criar Conta</Button>
+                <div className="form-header-text-login">
+                    <h2>Entrar</h2>
+                    <p>Acesse sua conta</p>
                 </div>
-
                 <form onSubmit={handleSubmit} className="formLogin">
                     <div className="conjEmail">
-                        {/* <label htmlFor="email">E-mail</label> */}
-                        {/* <input
-                            id="email"
-                            placeholder="E-mail"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                    
-                        /> */}
                         <Input
                             id="email"
                             label="E-mail"
@@ -69,14 +92,6 @@ function Login(){
                         />
                     </div>
                     <div className="conjSenha">
-                        {/* <label htmlFor="">Senha</label>
-                        <input 
-                            id="senha"
-                            placeholder="Senha"
-                            type="password"
-                            value={senha}
-                            onChange={(e) => setSenha(e.target.value)}
-                        /> */}
                         <Input
                             id="senha"
                             label="Senha"

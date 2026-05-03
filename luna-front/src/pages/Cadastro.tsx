@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import NavTitulo from "../components/NavbarTitulo"
-import Button from "../components/button"
-import Input from "../components/input"
-import UploadImagem from "../components/buttonImage"
+import NavTitulo from "../components/escola/NavbarTitulo"
+import Button from "../components/escola/button"
+import Input from "../components/escola/input"
+import UploadImagem from "../components/escola/buttonImage"
 
 function Login(){
     const [nome,setNome] = useState("")
@@ -18,7 +18,7 @@ function Login(){
     const navigate = useNavigate()
 
 
-    function handleSubmit(e){
+    function handleSubmit(e: React.FormEvent){
         e.preventDefault()
 
         console.log("Informações Enviadas!")
@@ -39,15 +39,6 @@ function Login(){
 
         <div className="container">
             <NavTitulo />
-
-            <div className="circles">
-                <div className="circle"></div>
-                <div className="circle"></div>
-                <div className="circle"></div>
-                <div className="circle"></div>
-                <div className="circle"></div>
-                <div className="circle"></div>
-            </div>
 
             <div className="Cadastro">
                 <div className="opc">

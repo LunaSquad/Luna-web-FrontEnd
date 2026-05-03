@@ -1,11 +1,13 @@
 import { useState } from "react"
-import { Pencil, Trash2, Book } from "lucide-react"
-import InfoHeader from "../components/InfoHeader"
-import LayoutBase from "../components/layout/LayoutBase"
-import SearchActionBar from "../components/SearchActionBar"
-import Table from "../components/TableInformations"
-import ModalProf from "./modals/ModalProf"
-import FormProfessores from "../components/FormProfessor"
+import { Pencil, Trash2, Book, ThumbsUp, ThumbsDown } from "lucide-react"
+import InfoHeader from "../../components/escola/InfoHeader"
+import LayoutBase from "../../components/escola/layout/LayoutBase"
+import SearchActionBar from "../../components/escola/SearchActionBar"
+import Table from "../../components/escola/TableInformations"
+import ModalProf from "../modals/ModalProf"
+import FormProfessores from "../../components/escola/FormProfessor"
+import ModalDelete from "../modals/ModalDelete"
+import { id } from "date-fns/locale"
 
 type Professor = {
   id: number;
@@ -39,7 +41,8 @@ const professores: Professor[] = [
 function Professores() {
   const [busca, setBusca] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
-  const [professorSelecionado, setProfessorSelecionado] = useState<Professor | null > (null)
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
+  const [professorSelecionado, setProfessorSelecionado] = useState<Professor | null > (null);
 
   const columns = [
     {
@@ -64,12 +67,18 @@ function Professores() {
       accessor: "acoes",
       render: (row: Professor) => (
         <div className="acoesCell">
-          <button type="button" onClick={() => console.log("Excluir", row.id)}>
+          <button 
+            type="button"
+            onClick={() => {
+              setProfessorSelecionado(row)
+              setModalDeleteOpen(true)
+            }}>
             <Trash2 size={20} />
           </button>
 
-          <button type="button" 
-          onClick={() => {
+          <button
+            type="button" 
+            onClick={() => {
             setProfessorSelecionado(row) // envia dados
             setModalAberto(true)
           }}
@@ -115,7 +124,15 @@ function Professores() {
           onClose={() => setModalAberto(false)}
         />
       </ModalProf>
-
+      
+      <ModalDelete
+        isOpen={modalDeleteOpen}
+        onClose={() => setModalDeleteOpen(false)}
+        icon={<Book size={28} />}
+        title={`Deseja excluir o professor ${professorSelecionado?.nome}`}
+        decision1={<ThumbsUp size={22}/>}
+        decision2={<ThumbsDown size={22} />}
+      />
     </LayoutBase>
 
   )

@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { Pencil, Trash2, GraduationCap } from "lucide-react"
-import InfoHeader from "../components/InfoHeader"
-import LayoutBase from "../components/layout/LayoutBase"
-import SearchActionBar from "../components/SearchActionBar"
-import Table from "../components/TableInformations"
-import ModalAluno from "./modals/ModalAluno"
-import FormAlunos from "../components/FormAluno"
+import { Pencil, Trash2, GraduationCap, ThumbsUp, ThumbsDown } from "lucide-react"
+import InfoHeader from "../../components/escola/InfoHeader"
+import LayoutBase from "../../components/escola/layout/LayoutBase"
+import SearchActionBar from "../../components/escola/SearchActionBar"
+import Table from "../../components/escola/TableInformations"
+import ModalAluno from "../modals/ModalAluno"
+import FormAlunos from "../../components/escola/FormAluno"
+import ModalDelete from "../modals/ModalDelete"
 
 type Aluno = {
   id: number;
@@ -47,6 +48,7 @@ const alunos: Aluno[] = [
 function Alunos() {
   const [busca, setBusca] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
   const [alunoSelecionado, setAlunoSelecionado] = useState<Aluno | null > (null)
 
   const columns = [
@@ -86,7 +88,12 @@ function Alunos() {
       accessor: "acoes",
       render: (row: Aluno) => (
         <div className="acoesCell">
-          <button type="button" onClick={() => console.log("Excluir", row.id)}>
+          <button 
+            type="button"
+            onClick={() => {
+              setAlunoSelecionado(row)
+              setModalDeleteOpen(true)
+            }}>
             <Trash2 size={20} />
           </button>
 
@@ -137,6 +144,15 @@ function Alunos() {
           onClose={() => setModalAberto(false)}
         />
       </ModalAluno>
+
+      <ModalDelete
+        isOpen={modalDeleteOpen}
+        onClose={() => setModalDeleteOpen(false)}
+        icon={<GraduationCap size={30} />}
+        title={`Deseja excluir o aluno ${alunoSelecionado?.nome}`}
+        decision1={<ThumbsUp size={22}/>}
+        decision2={<ThumbsDown size={22} />}
+      />
 
     </LayoutBase>
   )

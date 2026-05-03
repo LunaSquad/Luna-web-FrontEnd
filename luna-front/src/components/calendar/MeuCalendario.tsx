@@ -3,7 +3,14 @@ import { DayPicker } from 'react-day-picker';
 import { ptBR } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, CalendarDays } from 'lucide-react';
 
-export default function MyCalendar() {
+interface MeuCalendarioProps {
+  onSelectDate: (date: Date) => void;
+}
+
+export default function MyCalendar(
+  {
+    onSelectDate
+  }: MeuCalendarioProps) {
   const [selected, setSelected] = React.useState<Date>();
 
   return (
@@ -40,7 +47,16 @@ export default function MyCalendar() {
       />
 
       {/* Use a classe calendar-fab para o botão também */}
-      <button className="calendar-fab">
+      <button 
+        className="calendar-fab"
+        onClick={() => {
+          if (selected) {
+            console.log("Botão clicado", selected);
+
+            onSelectDate(selected) //
+          }
+        }}
+      >
         <CalendarDays size={20} color="white" />
       </button>
     </div>
