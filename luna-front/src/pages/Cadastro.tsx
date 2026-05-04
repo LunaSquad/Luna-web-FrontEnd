@@ -4,8 +4,9 @@ import NavTitulo from "../components/escola/NavbarTitulo"
 import Button from "../components/escola/button"
 import Input from "../components/escola/input"
 import UploadImagem from "../components/escola/buttonImage"
+import { Check, Circle, IdCard, Eye, EyeClosed, Map, Mail, Building2, Smartphone, StretchVertical, UserPen} from "lucide-react"
 
-function Login(){
+function Cadastro(){
     const [nome,setNome] = useState("")
     const [cnpj,setCnpj] = useState("")
     const [email,setEmail] = useState("")
@@ -14,109 +15,139 @@ function Login(){
     const [cidade,setCidade] = useState("")
     const [rua,setRua] = useState("")
     const [senha,setSenha] = useState("")
+    const [tipo,setTipo] = useState(0)
+    const [verSenha, setVerSenha] = useState(false)
 
     const navigate = useNavigate()
 
+    const toggleSenha = () => {
+        setVerSenha(!verSenha);
+    };
 
     function handleSubmit(e: React.FormEvent){
+        const dadosEnviados ={
+            nome,
+            cnpj,
+            email,
+            bairro,
+            telefone,
+            cidade,
+            rua,
+            senha,
+            tipo
+        };
+
         e.preventDefault()
-
-        console.log("Informações Enviadas!")
-
         navigate("/")
-    }
-
-
-    function Entrar(){
-        navigate("/")
-    }
-
-    function irParaCadastro(){
-        navigate("/cadastro")
     }
 
     return(
 
-        <div className="container">
+        <div className="containerCadastro">
             <NavTitulo />
 
-            <div className="Cadastro">
-                <div className="opc">
-                    <Button onClick={Entrar}>Entrar</Button>
-                    <Button onClick={irParaCadastro}>Criar Conta</Button>
+            <div className="principal-info-right">
+                <div className="principal-platform-title">
+                    <Circle size={16} fill="#D9D9D9"/>
+                    <p>
+                        PLATAFORMA ESCOLAR
+                    </p>
                 </div>
 
+                <h1 className="principal-info-right-title">
+                    Educação que <span>acolhe</span> cada aluno.
+                </h1>
+
+                <p className="principal-info-right-description">
+                    Uma experiência pensada para escolas que valorizam o cuidado individual, a organização inteligente e o desenvolvimento neurodiverso.
+                </p>
+
+                <div className="principal-info-right-opcs">
+                    <div className="principal-info-right-opc">
+                        <p className="opc-icon">
+                            <Check size={16} />
+                        </p>
+                        <p className="opc-description">
+                            Acompanhamento focado em neurodiversidade
+                        </p>
+                    </div>
+                    <div className="principal-info-right-opc">
+                        <p className="opc-icon">
+                            <Check size={16} />
+                        </p>
+                        <p className="opc-description">
+                            Ferramentas de suporte à acessibilidade
+                        </p>
+                    </div>
+                    <div className="principal-info-right-opc">
+                        <p className="opc-icon">
+                            <Check size={16} />
+                        </p>
+                        <p className="opc-description">
+                            Gestão humanizada de alunos e turmas
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="Cadastro">
+                <div className="form-header-text-cadastro">
+                    <h2>Cadastro</h2>
+                    <p>Preencha os dados da instituição</p>
+                </div>
                 <form onSubmit={handleSubmit} className="formCadastro">
                     <div className="dadosCadGeral">
                         <div className="dadosCad1">
-                            <Input
-                                id="nome"
-                                label="Nome"
-                                type="text"
-                                placeholder="Nome"
-                                value={nome}
-                                onChange={(e) => setNome(e.target.value)}
-                            />
-                            <Input
-                                id="cnpj"
-                                label="CNPJ"
-                                type="text"
-                                placeholder="CNPJ"
-                                value={cnpj}
-                                onChange={(e) => setCnpj(e.target.value)}
-                            />
-                            <Input
-                                id="email"
-                                label="E-mail"
-                                type="email"
-                                placeholder="E-mail"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <Input
-                                id="bairro"
-                                label="Bairro"
-                                type="text"
-                                placeholder="Bairro"
-                                value={bairro}
-                                onChange={(e) => setBairro(e.target.value)}
-                            />
-                         </div>
+                            <div className="input-container">
+                                <Input id="nome" label="Nome" type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+                                <UserPen size={18} />
+                            </div>
+                            <div className="input-container">
+                                <Input id="cnpj" label="CNPJ" type="text" placeholder="CNPJ" value={cnpj} onChange={(e) => setCnpj(e.target.value)} />
+                                <IdCard size={18} />
+                            </div>
+                            <div className="input-container">
+                                <Input id="email" label="E-mail" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <Mail size={18} />
+                            </div>
+                            <div className="input-container">
+                                <Input id="telefone" label="Telefone" type="text" placeholder="Telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
+                                <Smartphone size={18} />
+                            </div>
+                        </div>
+
                         <div className="dadosCad2">
-                                <Input
-                                    id="telefone"
-                                    label="Telefone"
-                                    type="text"
-                                    placeholder="Telefone"
-                                    value={telefone}
-                                    onChange={(e) => setTelefone(e.target.value)}
+                            <div className="input-container">
+                                <Input id="bairro" label="Bairro" type="text" placeholder="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} />
+                                <Map size={18} />
+                            </div>
+                            <div className="input-container">
+                                <Input id="cidade" label="Cidade" type="text" placeholder="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} />
+                                <Building2 size={18} />
+                            </div>
+                            <div className="input-container">
+                                <Input id="rua" label="Rua" type="text" placeholder="Rua" value={rua} onChange={(e) => setRua(e.target.value)} />
+                                <StretchVertical size={18} />
+                            </div>
+                            <div className="input-container">
+                                <Input 
+                                    id="senha" 
+                                    label="Senha" 
+                                    type={verSenha ? "text" : "password"} 
+                                    placeholder="Senha" 
+                                    value={senha} 
+                                    onChange={(e) => setSenha(e.target.value)} 
                                 />
-                                <Input
-                                    id="cidade"
-                                    label="Cidade"
-                                    type="text"
-                                    placeholder="Cidade"
-                                    value={cidade}
-                                    onChange={(e) => setCidade(e.target.value)}
-                                />
-                                <Input
-                                    id="rua"
-                                    label="Rua"
-                                    type="text"
-                                    placeholder="Rua"
-                                    value={rua}
-                                    onChange={(e) => setRua(e.target.value)}
-                                />
-                                <Input
-                                    id="senha"
-                                    label="Senha"
-                                    type="password"
-                                    placeholder="Senha"
-                                    value={senha}
-                                    onChange={(e) => setSenha(e.target.value)}
-                                />
+                                <div className="icon-container-password" onClick={toggleSenha}>
+                                    {verSenha ? <Eye size={18} /> : <EyeClosed size={18} />}
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
+                    <input type="hidden" value={tipo} name="tipo">
+                    </input>
 
                     <UploadImagem
 
@@ -137,7 +168,12 @@ function Login(){
                             Cadastrar
                         </Button>
                     </div>
-                </form>
+                </form> 
+
+                <p className="footer-text">
+                    Já possui conta? <span><Link to="/">Entrar!</Link></span>
+                </p>
+
             </div>
 
         </div>
@@ -146,4 +182,5 @@ function Login(){
     )
 }
 
-export default Login
+export default Cadastro
+

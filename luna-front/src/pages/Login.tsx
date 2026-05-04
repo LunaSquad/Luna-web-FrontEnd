@@ -3,14 +3,18 @@ import { Link, useNavigate } from "react-router-dom"
 import NavTitulo from "../components/escola/NavbarTitulo"
 import Button from "../components/escola/button"
 import Input from "../components/escola/input"
-import { Check, Circle } from "lucide-react"
+import { Check, Circle, Mail, Eye, EyeClosed } from "lucide-react"
 
 function Login(){
     const [email,setEmail] = useState("")
     const [senha,setSenha] = useState("")
+    const [verSenha, setVerSenha] = useState(false)
 
     const navigate = useNavigate()
 
+    const toggleSenha = () => {
+        setVerSenha(!verSenha);
+    };
 
     function handleSubmit(e: React.FormEvent){
         e.preventDefault()
@@ -18,17 +22,9 @@ function Login(){
     }
 
 
-    function Entrar(){
-        navigate("/")
-    }
-
-    function irParaCadastro(){
-        navigate("/cadastro")
-    }
-
     return(
 
-        <div className="container">
+        <div className="containerLogin">
             <NavTitulo />
 
             <div className="principal-info-right">
@@ -90,16 +86,20 @@ function Login(){
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
+                        <Mail size={18} className="icon-input"/>
                     </div>
                     <div className="conjSenha">
                         <Input
                             id="senha"
                             label="Senha"
-                            type="password"
+                            type={verSenha ? "text" : "password"}
                             placeholder="Senha"
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
                         />
+                        <div className="icon-input" onClick={toggleSenha}>
+                            {verSenha ? <EyeClosed size={18} /> : <Eye size={18} />}
+                        </div>
                     </div>
 
                     <div className="botao">
@@ -111,6 +111,10 @@ function Login(){
                         </Button>
                     </div>
                 </form>
+
+                <p className="footer-text">
+                    Novo por aqui? <span><Link to="/cadastro">Cadastre-se</Link></span>
+                </p>
             </div>
 
         </div>
