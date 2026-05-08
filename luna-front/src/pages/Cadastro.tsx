@@ -15,7 +15,6 @@ function Cadastro(){
     const [cidade,setCidade] = useState("")
     const [rua,setRua] = useState("")
     const [senha,setSenha] = useState("")
-    const [tipo,setTipo] = useState(0)
     const [verSenha, setVerSenha] = useState(false)
 
     const navigate = useNavigate()
@@ -34,7 +33,6 @@ function Cadastro(){
             cidade,
             rua,
             senha,
-            tipo
         };
 
         e.preventDefault()
@@ -144,10 +142,6 @@ function Cadastro(){
                             </div>
                         </div>
                     </div>
-
-
-                    <input type="hidden" value={tipo} name="tipo">
-                    </input>
 
                     <UploadImagem
 

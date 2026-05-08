@@ -6,6 +6,7 @@ import Home from "./pages/pagesEscola/Home"
 import Professores from "./pages/pagesEscola/Professores"
 import Alunos from "./pages/pagesEscola/Alunos"
 import Turmas from "./pages/pagesEscola/Turmas"
+import HomeProfessor from "./pages/professor/HomeProfessor"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/professores" element={<Professores />} />
         <Route path="/alunos" element={<Alunos />} />
         <Route path="/turmas" element={<Turmas />} />
+        <Route path="professor/home" element={<HomeProfessor />} />
       </Routes>
     </BrowserRouter>
   )

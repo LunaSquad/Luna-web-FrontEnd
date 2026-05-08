@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
 
+html, body {
+  overflow-x: hidden;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -54,7 +58,8 @@
   padding: 100px 30px;
   background-color: #005A63;
   height: 100vh;
-  width: 480px;
+  width: 100%;
+  max-width: 480px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   font-family: "Inter", sans-serif;
@@ -147,7 +152,8 @@
   padding: 20px 20px;
   align-items: center; 
   background-color: transparent;
-  width: 580px;
+  width: 100%;
+  max-width: 600px;
   height: 550px;
   border-radius: 10px;
   gap: 70px;
@@ -339,7 +345,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 260px;
+  width: 100%;
 }
 
 .input-container {
@@ -372,6 +378,7 @@
 .uploadGroup {
   display: flex;
   text-align: center;
+  align-items: center;
   flex-direction: column;
   gap: 5px;
   font-family: "Inter", sans-serif;
@@ -687,6 +694,7 @@
 
 .customTable {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
 }
 
@@ -1903,3 +1911,237 @@
   cursor: pointer;
 }
 
+/* =============================================
+   RESPONSIVO — TABLET (max-width: 1024px)
+   Mantém estrutura horizontal original
+   ============================================= */
+
+@media (max-width: 1024px) {
+
+  /* ── NAV TOPO ─────────────────────────────── */
+  .navTitulo { padding: 20px; }
+  .navTitulo p { font-size: 22px; }
+
+  /* ── LOGIN — painel verde menor, mantém lateral ── */
+  .containerLogin { 
+    gap: 60px; 
+  }
+
+  .principal-info-right {
+    max-width: 320px;
+    padding: 80px 20px 40px;
+    gap: 28px;
+  }
+
+  .principal-info-right-title {
+    font-size: 36px;
+    width: 280px;
+  }
+
+  .principal-info-right-description {
+    font-size: 14px;
+    width: 260px;
+  }
+
+  .principal-platform-title {
+    width: 220px;
+    font-size: 12px;
+  }
+
+  .logins {
+    padding: 20px 16px;
+    gap: 50px;
+  }
+
+  .formLogin { gap: 32px; }
+
+  .form-header-text-login h2 { font-size: 24px; }
+
+  .conjEmail, .conjSenha { width: 260px; }
+
+  /* ── CADASTRO — painel verde menor, mantém lateral ── */
+  .containerCadastro { gap: 60px; }
+
+  .Cadastro {
+    width: 620px;
+    padding: 20px 16px;
+    gap: 36px;
+  }
+
+  .form-header-text-cadastro { width: 520px; }
+  .form-header-text-cadastro h2 { font-size: 24px; }
+
+  .formCadastro { padding: 0 30px; gap: 18px; }
+
+  .dadosCad1, .dadosCad2 {
+    gap: 16px; 
+    width: 45%;
+  }
+
+  /* ── NAV LATERAL ──────────────────────────── */
+  .navLateral.aberta  { width: 190px; }
+  .navLateral.fechada { width: 64px; }
+
+  .navItem { width: 160px; font-size: 14px; height: 60px; }
+  .navLateral.aberta .navItem:not(.sair):hover { width: 130px; }
+
+  /* ── CONTEÚDO PRINCIPAL ───────────────────── */
+  .conteudoPrincipal { padding: 24px 32px; }
+  .conteudoPrincipal.recolhido  { margin-left: 64px; }
+  .conteudoPrincipal.expandido  { margin-left: 190px; }
+
+  /* ── NAVBAR INTERNA ───────────────────────── */
+  .NavBarCompleta { gap: 10px; }
+  .buscaBox { width: 200px; }
+  .userInfo { max-width: 200px; }
+  .textUser { max-width: 110px; font-size: 13px; }
+  .infoHeaderTitle { font-size: 17px; }
+
+  /* ── HOME — cards quebram em 2 colunas ─────── */
+  .homeContainer { gap: 20px; }
+  .homeMain { gap: 60px; }
+
+  .cardsPrincipais { flex-wrap: wrap; gap: 14px; }
+  .cardHome {
+    width: calc(50% - 7px);
+    min-width: 150px;
+  }
+
+  .cardsAtalhos { flex-wrap: wrap; gap: 14px; }
+  .cardAtl {
+    width: calc(50% - 7px);
+    min-width: 150px;
+    height: 240px;
+    padding: 20px 0;
+  }
+
+  /* Calendário e eventos ficam em coluna */
+  .homeSide { width: 300px; }
+  .calendar-wrapper { padding: 14px 14px 50px 14px; }
+  .events-container { width: 300px; }
+
+  /* ── SEARCH BAR / TABELA ──────────────────── */
+  .searchActionBar { margin: 18px 0; gap: 10px; }
+  .searchBox { width: 240px; }
+
+  .customTable th,
+  .customTable td { padding: 12px 12px; font-size: 13px; }
+
+  .fotoPessoa { width: 28px; height: 28px; }
+
+  /* ── MODAIS (mantém layout de 2 colunas) ──── */
+  .modalContentProf,
+  .modalContentAluno,
+  .modalContentTurma {
+    width: 88%;
+    max-width: 660px;
+    padding: 24px 18px;
+  }
+
+  .formCadastroProf,
+  .formCadastroAluno,
+  .formCadastroTurma { padding: 0 20px; gap: 14px; }
+
+  /* Colunas internas dos modais mantêm lado a lado */
+  .dadosCadGeralProf,
+  .dadosCadGeralAluno,
+  .dadosCadGeralTurma { gap: 20px; }
+
+  .submitCadastrarProf,
+  .submitCadastrarAluno { width: 230px; font-size: 18px; }
+
+  .modalContentDelete { width: 88%; max-width: 340px; }
+  .modalContentEvents { width: 88%; max-width: 420px; }
+
+  /* ── CALENDÁRIO ───────────────────────────── */
+  .calendar-weekday, .calendar-day { width: 36px; height: 36px; }
+}
+
+/* ── TABLET PORTRAIT / 768px ─────────────────── */
+/* ── TABLET PORTRAIT / 768px ─────────────────── */
+@media (max-width: 768px) {
+
+  /* Login — painel verde MANTÉM lateral */
+  .containerLogin { gap: 20px; }
+
+  .inputLabel{
+    font-size: 16px;
+  }
+
+  .principal-info-right {
+    max-width: 260px;
+    min-width: 240px;
+    padding: 70px 16px 30px;
+    gap: 20px;
+  }
+
+  .principal-platform-title{
+    gap: 10px;
+  }
+  .principal-platform-title p{ font-size: 10px; }
+  /* .principal-info-right{ gap: 50px; } */
+  .principal-info-right-title { font-size: 22px; width: 210px; }
+  .principal-info-right-description { font-size: 12px; width: 210px;}
+  .principal-info-right-opcs{ margin-top: 40px;}
+  .principal-info-right-opc{ font-size: 12px;}
+  .principal-platform-title { width: 180px; font-size: 11px; }
+
+  .logins { padding: 70px 12px; gap: 30px; }
+  .formLogin { gap: 24px; }
+  .form-header-text-login h2 { font-size: 20px; }
+  .form-header-text-login { width: 270px; }
+  .conjEmail, .conjSenha { width: 100%; }
+  .submitLogin { width: 110px; font-size: 17px; }
+
+  /* Cadastro — painel verde MANTÉM lateral */
+  .containerCadastro { gap: 30px; }
+
+  .Cadastro {
+    max-height: 530px;
+    width: 460px;
+    padding: 16px 10px;
+    gap: 26px;
+  }
+
+  .form-header-text-cadastro { width: 420px; }
+  .form-header-text-cadastro h2 { font-size: 20px; }
+  .formCadastro { padding: 0 14px; gap: 6px; }
+  .dadosCad1, .dadosCad2 { gap: 5px; }
+  .uploadGroup {height: 40px;}
+  .uploadLabel {font-size: 14px;}
+
+  .uploadBox { height: 30px; width: 100px;}
+
+.uploadIcon {}
+
+.submitCadastrar{}
+
+  /* Nav lateral — recolhida mas presente */
+  .navLateral.aberta  { width: 64px; }
+  .conteudoPrincipal.expandido { margin-left: 64px; }
+  .navItem span { display: none; }
+  .navItem { width: 44px; justify-content: center; padding: 0; }
+
+  /* Conteúdo */
+  .conteudoPrincipal { padding: 16px 12px; }
+
+  /* Home */
+  .homeContainer { flex-direction: column; }
+  .cardHome { width: 100%; }
+  .cardAtl  { width: 100%; height: auto; padding: 20px 16px; }
+  .homeSide { width: 100%; }
+  .events-container { width: 100%; }
+
+  /* Modais */
+  .modalContentProf,
+  .modalContentAluno,
+  .modalContentTurma { width: 92%; padding: 20px 14px; }
+
+  .dadosCadGeralProf,
+  .dadosCadGeralAluno,
+  .dadosCadGeralTurma { flex-direction: column; gap: 14px; }
+
+  .dadosCad3, .dadosCad4,
+  .dadosCad5, .dadosCad6,
+  .dadosCad7 { width: 100%; }
+}
