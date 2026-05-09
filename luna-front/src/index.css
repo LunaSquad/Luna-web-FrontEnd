@@ -127,7 +127,7 @@ html, body {
 .form-header-text-login{
   display: flex;
   flex-direction: column;
-  width: 270px;
+  width: 300px;
   font-family: "Inter", sans-serif;
   gap: 6px;
 }
@@ -156,7 +156,7 @@ html, body {
   max-width: 600px;
   height: 550px;
   border-radius: 10px;
-  gap: 70px;
+  gap: 50px;
 
 }
 
@@ -166,7 +166,7 @@ html, body {
   min-height: 250px;
   flex-direction: column;
   background-color: transparent;
-  width: 270px;
+  width: 300px;
   gap: 40px;
 }
 
@@ -345,7 +345,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 100%;
+  width: 49%;
 }
 
 .input-container {
@@ -1911,6 +1911,314 @@ html, body {
   cursor: pointer;
 }
 
+/* CSS Professores */
+
+.cardsPrincipal{
+  flex: 3;
+  display: flex;
+  gap: 25px;
+  height: 100px;
+  width: 90%;
+  padding: 30px;
+  background-color: #005A63;
+}
+
+
+/* ── PLANO DE AULA ───────────────────────────── */
+
+.planoContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 24px;
+  width: 100%;
+}
+
+.planoOpcoes {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.planoOpcaoCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  padding: 20px 24px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.planoOpcaoCard.ativo {
+  border-color: #005A63;
+  background-color: #f0fafa;
+}
+
+.planoOpcaoCard:hover {
+  border-color: #005A63;
+}
+
+.planoOpcaoIcone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background-color: #005A63;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.planoOpcaoCard:not(.ativo) .planoOpcaoIcone {
+  background-color: rgba(0, 90, 99, 0.33);
+  color: #005A63;
+}
+
+.planoOpcaoTexto {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.planoOpcaoTitulo {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #005A63;
+}
+
+.planoOpcaoDesc {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(0, 90, 99, 0.56);
+}
+
+.planoOpcaoDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #005A63;
+  margin-left: auto;
+  align-self: flex-start;
+}
+
+/* ── FORMULÁRIO ──────────────────────────────── */
+
+.planoFormCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.planoFormRow {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+}
+
+.planoFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.planoFormGroup.full {
+  flex: unset;
+  width: 100%;
+}
+
+.planoFormLabel {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #005A63;
+}
+
+.planoFormInput {
+  border: none;
+  border-bottom: 2px solid #005A63;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #333;
+  padding: 6px 0;
+  width: 100%;
+}
+
+.planoFormInput:focus {
+  outline: none;
+}
+
+.planoFormInput::placeholder {
+  color: #aaaaaa;
+}
+
+.planoInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.planoInputWrapper .planoFormInput {
+  padding-right: 28px;
+}
+
+.planoInputIcon {
+  position: absolute;
+  right: 0;
+  bottom: 6px;
+  color: #005A63;
+  pointer-events: none;
+}
+
+.planoFormTextarea {
+  border: 2px solid #005A63;
+  border-radius: 10px;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #333;
+  padding: 14px;
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+}
+
+.planoFormTextarea:focus {
+  outline: none;
+}
+
+.planoFormTextarea::placeholder {
+  color: #aaaaaa;
+}
+
+.planoTextareaWrapper {
+  position: relative;
+}
+
+.planoTextareaIcon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #005A63;
+  pointer-events: none;
+}
+
+/* ── BOTÕES RODAPÉ ───────────────────────────── */
+
+.planoFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.planoBtnCancelar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 46px;
+  padding: 0 24px;
+  border: 1.5px solid #cccccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #005A63;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.iconCancel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #005A63;
+  width: 20px;
+  height: 20px;
+  /* font-size: 16px; */
+  border-radius: 50%;
+  color: white;
+}
+
+.planoBtnCancelar:hover {
+  border-color: #005A63;
+  color: #005A63;
+}
+
+.planoBtnEnviar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 28px;
+  border: none;
+  border-radius: 10px;
+  background-color: #005A63;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.planoBtnEnviar:hover {
+  opacity: 0.9;
+}
+
+/* ── MODO ANEXO ──────────────────────────────── */
+
+.planoUploadArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 2px dashed #005A63;
+  border-radius: 12px;
+  padding: 40px 20px;
+  background-color: #f9fffe;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.planoUploadArea:hover {
+  background-color: #f0fafa;
+}
+
+.planoUploadIcone {
+  color: #005A63;
+}
+
+.planoUploadTexto {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #555555;
+  text-align: center;
+}
+
+.planoUploadTexto span {
+  color: #005A63;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 /* =============================================
    RESPONSIVO — TABLET (max-width: 1024px)
    Mantém estrutura horizontal original
@@ -1997,28 +2305,54 @@ html, body {
   .textUser { max-width: 110px; font-size: 13px; }
   .infoHeaderTitle { font-size: 17px; }
 
-  /* ── HOME — cards quebram em 2 colunas ─────── */
-  .homeContainer { gap: 20px; }
   .homeMain { gap: 60px; }
+  .homeContainer { gap: 20px;}
 
-  .cardsPrincipais { flex-wrap: wrap; gap: 14px; }
+  /* .cardsPrincipais { flex-wrap: wrap; gap: 14px; } */
   .cardHome {
     width: calc(50% - 7px);
-    min-width: 150px;
+    width: 150px;
   }
 
-  .cardsAtalhos { flex-wrap: wrap; gap: 14px; }
+  .titleCardHome{
+    font-size: 14px;
+  }
+
+  .qtdCard{
+    font-size: 22px;
+  }
+
+  .iconCard{
+    height: 40px;
+    width: 40px;
+  }
+
+  .iconName{
+    height: 60px;
+    width: 60px;
+  }
+
+  .titleAtalhos{
+    margin-top: 25px;
+    width: 160px;
+    font-size: 12px;
+  }
+  
+  .cardsAtalhos { gap: 14px; }
   .cardAtl {
     width: calc(50% - 7px);
-    min-width: 150px;
+    max-width: 160px;
     height: 240px;
     padding: 20px 0;
   }
 
   /* Calendário e eventos ficam em coluna */
   .homeSide { width: 300px; }
-  .calendar-wrapper { padding: 14px 14px 50px 14px; }
-  .events-container { width: 300px; }
+  .calendar-wrapper { padding: 10px 14px 50px 14px; }
+  .events-container { width: 300px; height: 130px;}
+  .events-title{
+    font-size: 14px;
+  }
 
   /* ── SEARCH BAR / TABELA ──────────────────── */
   .searchActionBar { margin: 18px 0; gap: 10px; }
@@ -2054,7 +2388,20 @@ html, body {
   .modalContentEvents { width: 88%; max-width: 420px; }
 
   /* ── CALENDÁRIO ───────────────────────────── */
-  .calendar-weekday, .calendar-day { width: 36px; height: 36px; }
+  .calendar-weekday, .calendar-day { width: 30px; height: 15px; }
+  .calendar-nav {
+    top: 10px;
+  }
+  .calendar-caption{
+    font-size: 13px;
+  }
+
+  .planoOpcaoCard { padding: 16px 18px; gap: 12px; }
+  .planoOpcaoIcone { width: 44px; height: 44px; }
+  .planoOpcaoTitulo { font-size: 14px; }
+  .planoFormRow { gap: 24px; }
+  .planoFormCard { padding: 24px 20px; }
+
 }
 
 /* ── TABLET PORTRAIT / 768px ─────────────────── */
@@ -2097,40 +2444,90 @@ html, body {
   .containerCadastro { gap: 30px; }
 
   .Cadastro {
-    max-height: 530px;
+    max-height: 550px;
     width: 460px;
     padding: 16px 10px;
-    gap: 26px;
+    gap: 30px;
   }
 
   .form-header-text-cadastro { width: 420px; }
   .form-header-text-cadastro h2 { font-size: 20px; }
-  .formCadastro { padding: 0 14px; gap: 6px; }
+  .formCadastro { padding: 0 14px; gap: 10px; }
   .dadosCad1, .dadosCad2 { gap: 5px; }
   .uploadGroup {height: 40px;}
   .uploadLabel {font-size: 14px;}
-
-  .uploadBox { height: 30px; width: 100px;}
-
-.uploadIcon {}
-
-.submitCadastrar{}
+  .uploadBox { height: 30px; width: 80px;}
+  .submitCadastrar{width: 120px; height: 40px ;font-size: 18px;}
 
   /* Nav lateral — recolhida mas presente */
-  .navLateral.aberta  { width: 64px; }
-  .conteudoPrincipal.expandido { margin-left: 64px; }
-  .navItem span { display: none; }
-  .navItem { width: 44px; justify-content: center; padding: 0; }
+  .conteudoPrincipal.expandido { margin-left: 190px; }
 
   /* Conteúdo */
   .conteudoPrincipal { padding: 16px 12px; }
 
   /* Home */
-  .homeContainer { flex-direction: column; }
-  .cardHome { width: 100%; }
-  .cardAtl  { width: 100%; height: auto; padding: 20px 16px; }
-  .homeSide { width: 100%; }
-  .events-container { width: 100%; }
+  .homeContainer {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .homeMain {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .cardsPrincipais {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cardHome {
+    flex: 1;
+    min-width: calc(50% - 6px);
+    width: auto;
+    margin-top: 0;
+  }
+
+  .cardsAtalhos {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cardAtl {
+    flex: 1;
+    min-width: calc(50% - 6px);
+    width: auto;
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .homeSide {
+    width: 100%;
+  }
+
+  .calendar-wrapper {
+    width: 100%;
+  }
+
+  .events-container {
+    width: 100%;
+    height: auto;
+    min-height: 130px;
+  } 
+
+  .calendar-day {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    margin: 0 auto;
+  }
+
+  .calendar-month td {
+    width: auto;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+  }
 
   /* Modais */
   .modalContentProf,
@@ -2144,4 +2541,7 @@ html, body {
   .dadosCad3, .dadosCad4,
   .dadosCad5, .dadosCad6,
   .dadosCad7 { width: 100%; }
+
+  .planoOpcoes { flex-direction: column; }
+  .planoFormRow { flex-direction: column; gap: 16px; }
 }

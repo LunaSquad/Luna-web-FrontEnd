@@ -2,7 +2,6 @@ import { useState } from "react"
 import {GraduationCap, House, Book, Users} from "lucide-react"
 import { useNavigate } from 'react-router-dom';
 import InfoHeader from "../../components/escola/InfoHeader";
-import LayoutBase from "../../components/escola/layout/LayoutBase";
 import NavbarHome from "../../components/escola/NavbarHome";
 import foto from "../../assets/escola.jpg"
 import CardHome from "../../components/escola/cardsHome";
@@ -10,6 +9,7 @@ import Button from "../../components/escola/button";
 import MeuCalendario from "../../components/calendar/MeuCalendario";
 import EventsList from "../../components/escola/EventsInput";
 import ModalEvents from "../modals/ModalEvents";
+import LayoutBaseProf from "../../components/calendar/layout/LayoutBaseProf";
 
 interface Evento {
   description: string;
@@ -50,7 +50,7 @@ function Home() {
   console.log("modalOpen:", modalOpen);
 
   return (
-    <LayoutBase>
+    <LayoutBaseProf>
 
       {/* NAVBAR */}
       <NavbarHome
@@ -72,8 +72,8 @@ function Home() {
         {/* CONTEÚDO LADO DIREITO */}
 
           <div className="homeMain">  
-            <div className="cardsPrincipais">
-              
+            <div className="cardsPrincipal">
+              <h2>2 Ano a</h2>
             </div>
 
               <div className="atalhosPrincipais">
@@ -129,7 +129,7 @@ function Home() {
       />
 
 
-    </LayoutBase>
+    </LayoutBaseProf>
   )
 }
 
