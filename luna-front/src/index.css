@@ -2220,6 +2220,149 @@ html, body {
 }
 
 /* =============================================
+   RESPONSIVO — TELAS MÉDIAS (1025px – 1280px)
+   Cobre o gap entre desktop e o breakpoint 1024px
+   ============================================= */
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+
+    /* ── LOGIN ──────────────────────────────────── */
+    .containerLogin {
+      gap: 160px;
+    }
+
+    .principal-info-right {
+      max-width: 360px;
+      padding: 90px 24px 40px;
+      gap: 30px;
+    }
+
+    .principal-info-right-title {
+      font-size: 40px;
+      width: 310px;
+    }
+
+    .principal-info-right-description {
+      font-size: 14px;
+      width: 290px;
+    }
+
+    .principal-platform-title {
+      width: 240px;
+      font-size: 13px;
+    }
+
+    .logins {
+      padding: 20px 16px;
+      gap: 50px;
+    }
+
+    .formLogin { gap: 36px; }
+    .form-header-text-login h2 { font-size: 26px; }
+    .conjEmail, .conjSenha { width: 280px; }
+
+    /* ── CADASTRO ───────────────────────────────── */
+    .containerCadastro { gap: 120px; }
+
+    .Cadastro {
+      width: 680px;
+      padding: 20px 16px;
+      gap: 26px;
+    }
+
+    .form-header-text-cadastro { width: 570px; }
+    .form-header-text-cadastro h2 { font-size: 26px; }
+    .formCadastro { padding: 0 40px; gap: 18px; }
+
+    .dadosCad1, .dadosCad2 {
+      gap: 18px;
+      width: 47%;
+    }
+
+    .uploadGroup {height: 34px;}
+    .uploadLabel {font-size: 16px;}
+    .uploadBox { height: 40px; width: 150px;}
+    .submitCadastrar{width: 170px; height: 45px ;font-size: 20px;}
+
+
+    /* ── NAV LATERAL ────────────────────────────── */
+    .navLateral.aberta  { width: 210px; }
+    .navLateral.fechada { width: 72px; }
+
+    .navItem { width: 180px; font-size: 16px; height: 65px; }
+    .navLateral.aberta .navItem:not(.sair):hover { width: 148px; }
+
+    /* ── CONTEÚDO PRINCIPAL ─────────────────────── */
+    .conteudoPrincipal { padding: 28px 48px; }
+    .conteudoPrincipal.recolhido  { margin-left: 72px; }
+    .conteudoPrincipal.expandido  { margin-left: 210px; }
+
+    /* ── NAVBAR INTERNA ─────────────────────────── */
+    .buscaBox { width: 260px; }
+    .userInfo { max-width: 240px; }
+    .textUser { max-width: 140px; font-size: 14px; }
+    .infoHeaderTitle { font-size: 18px; }
+
+    /* ── HOME ───────────────────────────────────── */
+    .homeContainer { gap: 24px; }
+    .homeMain { gap: 70px; }
+
+    .cardHome {
+      width: 175px;
+      height: 110px;
+    }
+
+    .titleCardHome { font-size: 15px; }
+    .qtdCard { font-size: 24px; }
+    .iconCard { height: 42px; width: 42px; }
+
+    .cardAtl {
+      width: 175px;
+      height: 260px;
+      padding: 28px 0;
+    }
+
+    .iconName { height: 70px; width: 70px; }
+    .titleAtalhos { width: 165px; font-size: 14px; }
+
+    /* ── LADO DIREITO (calendário + eventos) ────── */
+    .homeSide { width: 320px; }
+    .calendar-wrapper { padding: 12px 18px 52px 18px; }
+    .events-container { width: 320px; height: 155px; }
+
+    /* ── SEARCH BAR / TABELA ────────────────────── */
+    .searchActionBar { margin: 24px 0; gap: 14px; }
+    .searchBox { width: 300px; }
+
+    .customTable th,
+    .customTable td { padding: 14px 14px; font-size: 14px; }
+
+    /* ── MODAIS ─────────────────────────────────── */
+    .modalContentProf,
+    .modalContentAluno,
+    .modalContentTurma {
+      width: 88%;
+      max-width: 720px;
+      padding: 28px 22px;
+    }
+
+    .formCadastroProf,
+    .formCadastroAluno,
+    .formCadastroTurma { padding: 0 40px; gap: 16px; }
+
+    .submitCadastrarProf,
+    .submitCadastrarAluno { width: 250px; font-size: 20px; }
+
+    /* ── PLANO DE AULA ──────────────────────────── */
+    .planoOpcaoCard { padding: 18px 22px; gap: 14px; }
+    .planoOpcaoIcone { width: 48px; height: 48px; }
+    .planoOpcaoTitulo { font-size: 15px; }
+    .planoFormRow { gap: 30px; }
+    .planoFormCard { padding: 26px 24px; }
+  }
+
+
+/* =============================================
    RESPONSIVO — TABLET (max-width: 1024px)
    Mantém estrutura horizontal original
    ============================================= */
@@ -2268,22 +2411,46 @@ html, body {
   .conjEmail, .conjSenha { width: 260px; }
 
   /* ── CADASTRO — painel verde menor, mantém lateral ── */
-  .containerCadastro { gap: 60px; }
-
-  .Cadastro {
-    width: 620px;
-    padding: 20px 16px;
-    gap: 36px;
+  .containerCadastro {
+    gap: 60px;
+    align-items: center;
+    /* overflow-y: auto;         permite scroll se ainda não couber */
   }
-
-  .form-header-text-cadastro { width: 520px; }
-  .form-header-text-cadastro h2 { font-size: 24px; }
-
-  .formCadastro { padding: 0 30px; gap: 18px; }
-
-  .dadosCad1, .dadosCad2 {
-    gap: 16px; 
-    width: 45%;
+ 
+  .Cadastro {
+    width: 580px;
+    max-height: none;         /* remove o limite que estava cortando */
+    gap: 30px;
+    padding: 30px 16px 40px;  /* respiro embaixo pro link não sobrepor */
+  }
+ 
+  .form-header-text-cadastro {
+    width: 100%;
+    max-width: 520px;
+  }
+ 
+  .formCadastro {
+    padding: 0 20px;
+    gap: 16px;
+    /* align-items: flex-start;  evita centralização que bagunça o layout */
+  }
+ 
+  .dadosCadGeral {
+    width: 100%;
+    gap: 20px;
+  }
+ 
+  .dadosCad1,
+  .dadosCad2 {
+    width: 48%;
+    gap: 14px;
+  }
+ 
+  /* O footer-text (link "Já possui conta?") precisa ficar fora do form */
+  .footer-text {
+    margin-top: 10px;   /* garante espaço abaixo do upload */
+    position: static;   /* remove qualquer posicionamento que cause sobreposição */
+    z-index: auto;
   }
 
   /* ── NAV LATERAL ──────────────────────────── */
@@ -2296,7 +2463,10 @@ html, body {
   /* ── CONTEÚDO PRINCIPAL ───────────────────── */
   .conteudoPrincipal { padding: 24px 32px; }
   .conteudoPrincipal.recolhido  { margin-left: 64px; }
-  .conteudoPrincipal.expandido  { margin-left: 190px; }
+  .conteudoPrincipal.expandido {
+    margin-left: 190px;
+    overflow-x: hidden;
+  }
 
   /* ── NAVBAR INTERNA ───────────────────────── */
   .NavBarCompleta { gap: 10px; }
@@ -2305,8 +2475,18 @@ html, body {
   .textUser { max-width: 110px; font-size: 13px; }
   .infoHeaderTitle { font-size: 17px; }
 
-  .homeMain { gap: 60px; }
-  .homeContainer { gap: 20px;}
+  .homeContainer {
+    flex-wrap: wrap;        /* permite quebrar se não couber */
+    gap: 16px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .homeMain {
+    flex: 1;
+    min-width: 0;           /* impede que estoure o pai */
+    overflow: hidden;
+  }
 
   /* .cardsPrincipais { flex-wrap: wrap; gap: 14px; } */
   .cardHome {
@@ -2338,17 +2518,65 @@ html, body {
     font-size: 12px;
   }
   
-  .cardsAtalhos { gap: 14px; }
-  .cardAtl {
-    width: calc(50% - 7px);
-    max-width: 160px;
-    height: 240px;
-    padding: 20px 0;
+  .cardsAtalhos {
+    flex-wrap: nowrap;      /* mantém na mesma linha */
+    gap: 14px;
+    width: 100%;
   }
 
+  .cardAtl {
+    flex: 1;                /* cresce/encolhe igual os cards de cima */
+    min-width: 0;           /* permite encolher abaixo do conteúdo */
+    width: auto;
+    max-width: none;
+    height: 240px;
+    padding: 28px 8px;
+  }
+
+  /* textos internos quebram ao invés de vazar */
+  .titleAtalhos {
+    width: 100%;
+    font-size: 13px;
+    padding: 0 8px;
+    word-break: break-word;
+  }
+
+  .btnAtalhos {
+    width: 90%;
+    font-size: 15px;
+  }
+
+
   /* Calendário e eventos ficam em coluna */
-  .homeSide { width: 300px; }
-  .calendar-wrapper { padding: 10px 14px 50px 14px; }
+  .homeSide {
+    width: 100%;
+    max-width: 300px;
+    flex-shrink: 1;         /* deixa encolher quando nav abre */
+    min-width: 0;
+  }
+
+  .calendar-wrapper {
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+  }
+
+    .calendar-month table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .calendar-month td,
+  .calendar-weekday {
+    width: auto !important;
+    max-width: 38px;
+  }
+
+  .events-container {
+    width: 100%;
+    max-width: 300px;
+  }
+
   .events-container { width: 300px; height: 130px;}
   .events-title{
     font-size: 14px;
@@ -2436,7 +2664,7 @@ html, body {
   .logins { padding: 70px 12px; gap: 30px; }
   .formLogin { gap: 24px; }
   .form-header-text-login h2 { font-size: 20px; }
-  .form-header-text-login { width: 270px; }
+  .form-header-text-login { width: 300px; }
   .conjEmail, .conjSenha { width: 100%; }
   .submitLogin { width: 110px; font-size: 17px; }
 
