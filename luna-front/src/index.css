@@ -1914,13 +1914,9 @@ html, body {
 /* CSS Professores */
 
 .cardsPrincipal{
-  flex: 3;
-  display: flex;
-  gap: 25px;
-  height: 100px;
-  width: 90%;
-  padding: 30px;
-  background-color: #005A63;
+  height: "auto"; 
+  padding: 0; 
+  background-color: "transparent";
 }
 
 
@@ -2219,6 +2215,251 @@ html, body {
   cursor: pointer;
 }
 
+.cardTurma {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #005A63;
+  border-radius: 16px;
+  padding: 24px 28px;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: 700px;
+}
+        .cardTurmaLeft {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          flex: 1;
+          min-width: 180px;
+        }
+        .cardTurmaNome {
+          font-family: "Inter", sans-serif;
+          font-size: 22px;
+          font-weight: 700;
+          color: #fff;
+          margin: 0;
+        }
+
+        .cardTurmaNome span{
+          color: #FFDDD2;
+          font-size: 24px;
+        }
+
+        .cardTurmaDesc {
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          color: #ffffff;
+          margin: 0;
+          max-width: 300px;
+        }
+        .cardTurmaStats {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          margin-top: 4px;
+          color: #FFDDD2 !important;
+        }
+        .cardTurmaStat {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          color: rgba(255,255,255,0.85);
+        }
+        .cardTurmaRight {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          min-width: 210px;
+        }
+        .cardTurmaBtn {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: #ffffff;
+          border: none;
+          border-radius: 12px;
+          padding: 11px 14px;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          gap: 8px;
+          width: 100%;
+        }
+        .cardTurmaBtn:hover {
+           transform: translateY(-3px); 
+        }
+        .cardTurmaBtnLeft { 
+          display: flex; 
+          align-items: center; 
+          gap: 10px;
+        }
+        .cardTurmaBtnIcone {
+          display: flex; align-items: center; justify-content: center;
+          width: 30px; height: 30px;
+          background-color: rgba(0,90,99,0.27);
+          border-radius: 8px; 
+          color: #005A63; 
+          flex-shrink: 0;
+        }
+        .cardTurmaBtnTexto { 
+          display: flex; 
+          flex-direction: column; 
+          text-align: left; 
+        }
+        .cardTurmaBtnTitulo { 
+          font-family: "Inter", sans-serif; 
+          font-size: 13px; 
+          font-weight: 700; 
+          color: #005A63; 
+        }
+        .cardTurmaBtnSub{ 
+          font-family: "Inter", sans-serif; 
+          font-size: 11px; 
+          font-weight: 300; 
+          color: rgba(0,90,99,0.6); 
+        }
+
+        .cardTurmaBtn2 {
+          display: flex;
+          align-items: center;
+          text-align: center;
+          justify-content: space-between;
+          background-color: transparent;
+          border: 1px solid rgba(253,253,248,0.3);
+          border-radius: 12px;
+          padding: 11px 14px;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          gap: 8px;
+          width: 90%;
+        }
+        .cardTurmaBtn2:hover {
+           transform: translateY(-3px); 
+        }
+        .cardTurmaBtnLeft2 { 
+          display: flex; 
+          align-items: center; 
+          justify-content: center;
+          gap: 10px;
+        }
+        .cardTurmaBtnIcone2 {
+          display: flex; 
+          align-items: center; 
+          justify-content: center;
+          width: 35px; 
+          height: 35px;
+          background-color: rgba(255,221,210,0.34);
+          border-radius: 8px; 
+          color: #FFDDD2; 
+          flex-shrink: 0;
+        }
+        .cardTurmaBtnTexto2 { 
+          display: flex; 
+          flex-direction: column; 
+          text-align: left;
+
+        }
+
+        .cardTurmaTituloPrincipal2{
+          display: flex;
+          gap: 10px;
+        }
+
+        .cardTurmaBtnTitulo2 { 
+          display: flex;
+          gap: 14px;
+          font-family: "Inter", sans-serif; 
+          font-size: 13px; 
+          font-weight: 700; 
+          color: #FFDDD2; 
+        }
+
+        .cardTurmaQtdPend{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 18px;
+          height: 18px;
+          background-color: #FFDDD2;
+          color: #005A63;
+          font-family: "Inter", sans-serif; 
+          font-weight: 500;
+          border-radius: 50%;
+          font-size: 12px;
+        }
+
+        .cardTurmaBtnSub2{ 
+          font-family: "Inter", sans-serif; 
+          font-size: 11px; 
+          font-weight: 300; 
+          color: rgba(255,221,210,0.6); 
+        }
+
+        /* ── Slider matérias (substitui cardsAtalhos) ── */
+        .cardsAtalhos {
+          display: flex !important;
+          gap: 16px !important;
+          overflow-x: auto !important;
+          /* cursor: grab; */
+          padding-bottom: 8px;
+          -webkit-overflow-scrolling: touch;
+          user-select: none;
+
+          width: 680px;
+        }
+        .cardsAtalhos::-webkit-scrollbar       { display: none; }
+        .cardsAtalhos::-webkit-scrollbar-thumb { background: #005A63; border-radius: 10px; }
+        .cardsAtalhos::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+
+        /* ── Card Matéria (substitui cardAtl) ── */
+        .cardAtlMateria {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          flex-shrink: 0;
+          width: 185px;
+          min-height: 255px;
+          border-radius: 16px;
+          padding: 18px 16px;
+          position: relative;
+          margin-top: 10px;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+        }
+        .cardAtlMateria:hover { transform: translateY(-6px); box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
+
+        .cardAtlBadge {
+          position: absolute; top: 14px; right: 14px;
+          width: 28px; height: 28px; border-radius: 6px;
+          display: flex; align-items: center; justify-content: center;
+          font-family: "Inter", sans-serif; font-size: 12px; font-weight: 700; color: #fff;
+          background-color: #005A63;
+        }
+        .cardAtlNome {
+          font-family: "Inter", sans-serif; font-size: 14px; font-weight: 700;
+          margin: 0; line-height: 1.3; max-width: 120px;
+        }
+        .cardAtlIconeWrap {
+          flex: 1;
+          display: flex; align-items: center; justify-content: center;
+          width: 100%; pointer-events: none;
+        }
+        .cardAtlIconeCircle {
+          width: 80px; height: 80px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+        }
+        .cardAtlBtn {
+          width: 100%; height: 38px; border: none; border-radius: 10px;
+          font-family: "Inter", sans-serif; font-size: 14px; font-weight: 700; color: #FFDDD2;
+          cursor: pointer; transition: opacity 0.2s; margin-top: auto;
+        }
+        .cardAtlBtn:hover { opacity: 0.88; }
+
 /* =============================================
    RESPONSIVO — TELAS MÉDIAS (1025px – 1280px)
    Cobre o gap entre desktop e o breakpoint 1024px
@@ -2253,7 +2494,7 @@ html, body {
     }
 
     .logins {
-      padding: 20px 16px;
+      padding: 50px 16px;
       gap: 50px;
     }
 
@@ -2630,6 +2871,54 @@ html, body {
   .planoFormRow { gap: 24px; }
   .planoFormCard { padding: 24px 20px; }
 
+  .cardsPrincipal {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+  }
+
+  .cardTurma {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .cardTurmaRight {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .cardTurmaBtn,
+  .cardTurmaBtn2 {
+    width: 100%;
+  }
+
+  .cardsAtalhos {
+    width: 100% !important;
+    flex-wrap: nowrap !important;   /* impede quebra de linha */
+    overflow-x: auto !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cardsAtalhos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cardAtlMateria {
+    flex-shrink: 0 !important;     /* impede o card de encolher e quebrar */
+    width: 160px !important;
+    min-height: 230px !important;
+  }
+
+  .atalhosPrincipais {
+    width: 100% !important;
+  }
+
 }
 
 /* ── TABLET PORTRAIT / 768px ─────────────────── */
@@ -2730,18 +3019,21 @@ html, body {
   }
 
   .homeSide {
-    width: 100%;
-  }
+  width: 100%;
+  max-width: 350px;
+}
 
-  .calendar-wrapper {
-    width: 100%;
-  }
+.calendar-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+}
 
-  .events-container {
-    width: 100%;
-    height: auto;
-    min-height: 130px;
-  } 
+.events-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 180px;
+}
 
   .calendar-day {
     width: 36px !important;
@@ -2772,4 +3064,38 @@ html, body {
 
   .planoOpcoes { flex-direction: column; }
   .planoFormRow { flex-direction: column; gap: 16px; }
+
+
+  .atalhosPrincipais{
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    height: auto !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+  }
+  .cardTurma{
+    width: 100%;
+  }
+  .cardTurmaRight { width: 100%; }
+  .cardAtlMateria { width: 148px; min-height: 210px; }
+
+  .cardsPrincipal {
+  display: flex !important;
+  justify-content: center;
+  width: 100%;
+  height: auto !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
+.cardTurma {
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Matérias — centraliza quando tiver poucos cards */
+.cardsAtalhos {
+  justify-content: center;
+}
 }
