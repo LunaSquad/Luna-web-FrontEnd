@@ -9,6 +9,8 @@ function Login(){
     const [email,setEmail] = useState("")
     const [senha,setSenha] = useState("")
     const [verSenha, setVerSenha] = useState(false)
+    const [erro, setErro] = useState<string | null>(null)
+    const [carregando, setCarregando] = useState(false)
 
     const navigate = useNavigate()
 
@@ -16,9 +18,32 @@ function Login(){
         setVerSenha(!verSenha);
     };
 
-    function handleSubmit(e: React.FormEvent){
+    async function handleSubmit(e: React.FormEvent){
         e.preventDefault()
-        navigate("/home")
+        setErro(null)
+        setCarregando(true)
+
+        try {
+            const response = await fetch("https://sua-api.com/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, senha }),
+            })
+
+            if (!response.ok) {
+                const err = await response.json().catch(() => null)
+                throw new Error(err?.message ?? "Erro ao fazer login")
+            }
+
+            const dados = await response.json()
+            localStorage.setItem("token", dados.token)
+            localStorage.setItem("user", JSON.stringify(dados.user))
+            navigate("/home")
+        } catch (err) {
+            setErro(err instanceof Error ? err.message : "Erro inesperado")
+        } finally {
+            setCarregando(false)
+        }
     }
 
 
@@ -102,12 +127,15 @@ function Login(){
                         </div>
                     </div>
 
+                    {erro && <p className="erro-form">{erro}</p>}
+
                     <div className="botao">
                         <Button
                             type="submit"
                             className="submitLogin"
+                            disabled={carregando}
                         >
-                            Acessar
+                            {carregando ? "Entrando..." : "Acessar"}
                         </Button>
                     </div>
                 </form>

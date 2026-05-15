@@ -15,7 +15,10 @@ function Cadastro(){
     const [cidade,setCidade] = useState("")
     const [rua,setRua] = useState("")
     const [senha,setSenha] = useState("")
+    const [imagem, setImagem] = useState<File | null>(null)
     const [verSenha, setVerSenha] = useState(false)
+    const [erro, setErro] = useState<string | null>(null)
+    const [carregando, setCarregando] = useState(false)
 
     const navigate = useNavigate()
 
@@ -23,20 +26,39 @@ function Cadastro(){
         setVerSenha(!verSenha);
     };
 
-    function handleSubmit(e: React.FormEvent){
-        const dadosEnviados ={
-            nome,
-            cnpj,
-            email,
-            bairro,
-            telefone,
-            cidade,
-            rua,
-            senha,
-        };
-
+    async function handleSubmit(e: React.FormEvent){
         e.preventDefault()
-        navigate("/")
+        setErro(null)
+        setCarregando(true)
+
+        try {
+            const form = new FormData()
+            form.append("nome", nome)
+            form.append("cnpj", cnpj)
+            form.append("email", email)
+            form.append("bairro", bairro)
+            form.append("telefone", telefone)
+            form.append("cidade", cidade)
+            form.append("rua", rua)
+            form.append("senha", senha)
+            if (imagem) form.append("imagem", imagem)
+
+            const response = await fetch("https://sua-api.com/escolas/cadastro", {
+                method: "POST",
+                body: form,
+            })
+
+            if (!response.ok) {
+                const err = await response.json().catch(() => null)
+                throw new Error(err?.message ?? "Erro ao cadastrar")
+            }
+
+            navigate("/")
+        } catch (err) {
+            setErro(err instanceof Error ? err.message : "Erro inesperado")
+        } finally {
+            setCarregando(false)
+        }
     }
 
     return(
@@ -144,22 +166,19 @@ function Cadastro(){
                     </div>
 
                     <UploadImagem
-
                         label="Imagem da Escola"
-                        onChange={(file) =>{
-                            alert("Imagem anexada com sucesso") 
-                            console.log(file)
-                        }
-
-                        }
+                        onChange={(file) => setImagem(file)}
                     />
+
+                    {erro && <p className="erro-form">{erro}</p>}
 
                     <div className="botao">
                         <Button
                             type="submit"
                             className="submitCadastrar"
+                            disabled={carregando}
                         >
-                            Cadastrar
+                            {carregando ? "Cadastrando..." : "Cadastrar"}
                         </Button>
                     </div>
                 </form> 
@@ -177,4 +196,3 @@ function Cadastro(){
 }
 
 export default Cadastro
-
