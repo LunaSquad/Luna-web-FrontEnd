@@ -2435,7 +2435,7 @@ body {
   border-radius: 10px;
 }
 
-/* ── Card Matéria (substitui cardAtl) ── */
+/* ── Card Matéria ── */
 .cardAtlMateria {
   display: flex;
   flex-direction: column;
@@ -3386,7 +3386,6 @@ body {
     font-size: 15px;
   }
 
-
   .homeSide {
     width: 100%;
     max-width: 300px;
@@ -3602,9 +3601,7 @@ body {
 }
 
 /* ── TABLET PORTRAIT / 768px ─────────────────── */
-/* ── TABLET PORTRAIT / 768px ─────────────────── */
 @media (max-width: 768px) {
-
   .containerLogin {
     gap: 20px;
   }
@@ -3902,6 +3899,5 @@ body {
     width: 100%;
     max-width: 700px;
   }
-
 
 }

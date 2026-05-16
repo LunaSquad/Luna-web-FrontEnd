@@ -7,31 +7,15 @@ import Table from "../../components/escola/TableInformations"
 import ModalProf from "../modals/ModalProf"
 import FormProfessores from "../../components/escola/FormProfessor"
 import ModalDelete from "../modals/ModalDelete"
+import { api } from "../../services/api" 
 
 type Professor = {
-  id: number;
+  _id: string; 
   nome: string;
+  sobrenome: string;
   email: string;
-  foto: string;
+  urlFotoProfessor: string; 
 };
-
-const token = localStorage.getItem("token")
-
-async function fetchProfessores(): Promise<Professor[]> {
-  const response = await fetch("https://sua-api.com/professores", {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-  if (!response.ok) throw new Error("Erro ao carregar professores")
-  return response.json()
-}
-
-async function deletarProfessor(id: number) {
-  const response = await fetch(`https://sua-api.com/professores/${id}`, {
-    method: "DELETE",
-    headers: { Authorization: `Bearer ${token}` },
-  })
-  if (!response.ok) throw new Error("Erro ao deletar professor")
-}
 
 function Professores() {
   const [professores, setProfessores] = useState<Professor[]>([])
@@ -40,14 +24,20 @@ function Professores() {
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false)
   const [professorSelecionado, setProfessorSelecionado] = useState<Professor | null>(null)
 
-  // busca lista ao montar
+  const carregarProfessores = async () => {
+    try {
+      const response = await api.get("/professores");
+      setProfessores(response.data);
+    } catch (error) {
+      console.error("Erro ao carregar professores:", error);
+    }
+  };
+
   useEffect(() => {
-    fetchProfessores()
-      .then(setProfessores)
-      .catch((err) => console.error(err.message))
+    carregarProfessores();
   }, [])
 
-  // filtra localmente pela busca
+
   const professoresFiltrados = professores.filter((p) =>
     p.nome.toLowerCase().includes(busca.toLowerCase()) ||
     p.email.toLowerCase().includes(busca.toLowerCase())
@@ -56,20 +46,21 @@ function Professores() {
   async function handleDeletar() {
     if (!professorSelecionado) return
 
-    setProfessores((prev) => prev.filter((p) => p.id !== professorSelecionado.id))
+    setProfessores((prev) => prev.filter((p) => p._id !== professorSelecionado._id))
     setModalDeleteOpen(false)
 
     try {
-      await deletarProfessor(professorSelecionado.id)
+      await api.delete(`/professores/${professorSelecionado._id}`);
+
     } catch (err) {
-      console.error(err)
-      fetchProfessores().then(setProfessores)
+      console.error("Erro ao deletar:", err)
+      carregarProfessores();
     }
   }
 
   function handleSalvo() {
     setModalAberto(false)
-    fetchProfessores().then(setProfessores) 
+    carregarProfessores() 
   }
 
   const columns = [
@@ -78,8 +69,14 @@ function Professores() {
       accessor: "nome",
       render: (row: Professor) => (
         <div className="cellNome">
-          <img src={row.foto} alt={row.nome} className="fotoPessoa" />
-          <span>{row.nome}</span>
+
+          <img 
+            src={row.urlFotoProfessor || "https://via.placeholder.com/40"} 
+            alt={row.nome} 
+            className="fotoPessoa" 
+            style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
+          />
+          <span>{row.nome} {row.sobrenome}</span>
         </div>
       ),
     },
@@ -158,7 +155,7 @@ function Professores() {
         isOpen={modalDeleteOpen}
         onClose={() => setModalDeleteOpen(false)}
         icon={<Book size={28} />}
-        title={`Deseja excluir o professor ${professorSelecionado?.nome}`}
+        title={`Deseja excluir o professor ${professorSelecionado?.nome}?`}
         decision1={<ThumbsUp size={22}/>}
         decision2={<ThumbsDown size={22} />}
         onConfirm={handleDeletar}

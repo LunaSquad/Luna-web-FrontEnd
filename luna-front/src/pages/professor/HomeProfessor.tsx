@@ -8,6 +8,7 @@ import MeuCalendario from "../../components/calendar/MeuCalendario";
 import EventsList from "../../components/escola/EventsInput";
 import ModalEvents from "../modals/ModalEvents";
 import LayoutBaseProf from "../../components/calendar/layout/LayoutBaseProf";
+import { api } from "../../services/api";
 
 interface Evento {
   description: string;
@@ -33,6 +34,11 @@ interface Materia {
   Icone: React.ElementType
 }
 
+interface UserData {
+  nome?: string;
+  foto?: string;
+}
+
 // Matérias com ícone são definidas no front mesmo
 const MATERIAS: Materia[] = [
   { id: 1, nome: "Língua Portuguesa", cor: "#EDF6F9", corTexto: "#005A63", corBotao: "#005A63", badge: 3, Icone: BookOpen },
@@ -45,7 +51,6 @@ const MATERIAS: Materia[] = [
 function Home() {
   const navigate = useNavigate()
 
-  // dados da turma vindos do back
   const [turma, setTurma] = useState<Turma>({
     nome: "2º ano",
     letra: "A",
@@ -55,25 +60,18 @@ function Home() {
     tarefasPendentes: 0,
   })
 
-  // dados do professor vindos do localStorage (salvos no login)
-  const user = JSON.parse(localStorage.getItem("user") ?? "{}")
+  const user: UserData = JSON.parse(localStorage.getItem("user") ?? "{}")
   const token = localStorage.getItem("token")
 
-  // eventos
   const [events, setEvents] = useState<Evento[]>([])
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState<string>("")
 
-  // busca dados da turma do professor ao montar
   useEffect(() => {
     async function fetchTurma() {
       try {
-        const response = await fetch("https://sua-api.com/professores/turma", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        if (!response.ok) throw new Error()
-        const dados = await response.json()
-        setTurma(dados)
+        const response = await api.get<Turma>("/professores/turma")
+        setTurma(response.data)
       } catch {
         console.error("Erro ao carregar turma")
       }
@@ -144,8 +142,8 @@ function Home() {
         onSearchChange={() => {}}
         buttonLabel="Filtrar"
         onButtonClickc={() => {}}
-        nome={user?.nomeEscola ?? "EMEF Prof° Carlos Alberto Vigneron"}
-        foto={user?.fotoEscola ?? foto}
+        nome={user?.nome ?? "Professor"}
+        foto={user?.foto ?? foto}
         notificacoes={5}
         onButtonClick={() => {}}
       />

@@ -3,8 +3,6 @@ import { ClipboardList, Upload, Calendar, PenLine, X, Send, LibraryBig } from "l
 import LayoutBaseProf from "../../components/calendar/layout/LayoutBaseProf";
 import InfoHeader from "../../components/escola/InfoHeader";
 
-// const token = localStorage.getItem("token")
-
 async function enviarPlanoManual(dataAula: string, titulo: string, detalhamento: string) {
   await new Promise((resolve) => setTimeout(resolve, 1500))
 
@@ -55,7 +53,6 @@ export default function PlanoAula() {
         await enviarPlanoAnexo(dataAula, arquivoSelecionado!)
       }
 
-      // limpa o formulário após sucesso
       setDataAula('')
       setTitulo('')
       setDetalhamento('')

@@ -8,7 +8,6 @@ interface ModalProps {
     title: string
     decision1: React.ReactNode
     decision2: React.ReactNode
-    onConfirm?: () => void  
 }
 
 export default function ModalDelete({
@@ -41,12 +40,10 @@ export default function ModalDelete({
                         </h3>
 
                         <div className="modalDecision">
-                            {/* decision1 = confirmar */}
                             <button className="buttonDecision1" onClick={onConfirm}>
                                 {decision1}
                             </button>
 
-                            {/* decision2 = cancelar */}
                             <button className="buttonDecision2" onClick={onClose}>
                                 {decision2}
                             </button>
