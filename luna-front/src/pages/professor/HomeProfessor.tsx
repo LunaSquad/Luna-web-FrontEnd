@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { GraduationCap, Book, Users, Plus, Clock, ClipboardList, CheckCircle2, ChevronRight, BookOpen, FlaskConical, Globe, Calculator, Landmark } from "lucide-react"
 import { useNavigate } from 'react-router-dom';
 import NavbarHome from "../../components/escola/NavbarHome";
@@ -14,6 +14,15 @@ interface Evento {
   date: string;
 }
 
+interface Turma {
+  nome: string
+  letra: string
+  totalAlunos: number
+  totalTarefas: number
+  percentualConcluidas: number
+  tarefasPendentes: number
+}
+
 interface Materia {
   id: number
   nome: string
@@ -24,50 +33,69 @@ interface Materia {
   Icone: React.ElementType
 }
 
+// Matérias com ícone são definidas no front mesmo
+// só os dados dinâmicos (badge, nome) virão do back futuramente
 const MATERIAS: Materia[] = [
-  { 
-    id: 1, nome: "Língua Portuguesa", 
-    cor: "#EDF6F9", 
-    corTexto: "#005A63", 
-    corBotao: "#005A63", 
-    badge: 3, 
-    Icone: BookOpen },
-  { id: 2, nome: "Matemática",        
-    cor: "#D7E1FD", 
-    corTexto: "#02136B", 
-    corBotao: "#02136B", 
-    badge: 3, 
-    Icone: Calculator },
-  { id: 3, nome: "Geografia",         
-    cor: "#FFDDD2", 
-    corTexto: "#71270F", 
-    corBotao: "#71270F", 
-    badge: 3, 
-    Icone: Globe },
-  { id: 4, nome: "Ciências",          
-    cor: "#C6FDDB", 
-    corTexto: "#013816", 
-    corBotao: "#013816", 
-    badge: 2, 
-    Icone: FlaskConical },
-  { id: 5, 
-    nome: "História",          
-    cor: "#DD8C6A", 
-    corTexto: "#3B180B", 
-    corBotao: "#3B180B", 
-    badge: 1, 
-    Icone: Landmark },
+  { id: 1, nome: "Língua Portuguesa", cor: "#EDF6F9", corTexto: "#005A63", corBotao: "#005A63", badge: 3, Icone: BookOpen },
+  { id: 2, nome: "Matemática",        cor: "#D7E1FD", corTexto: "#02136B", corBotao: "#02136B", badge: 3, Icone: Calculator },
+  { id: 3, nome: "Geografia",         cor: "#FFDDD2", corTexto: "#71270F", corBotao: "#71270F", badge: 3, Icone: Globe },
+  { id: 4, nome: "Ciências",          cor: "#C6FDDB", corTexto: "#013816", corBotao: "#013816", badge: 2, Icone: FlaskConical },
+  { id: 5, nome: "História",          cor: "#DD8C6A", corTexto: "#3B180B", corBotao: "#3B180B", badge: 1, Icone: Landmark },
 ]
 
 function Home() {
-  const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<string>("");
-  const [events, setEvents] = useState<Evento[]>([
-    { description: "Análise de evolução comportamental e acadêmica (Alunos TDAH).", date: "2026-06-06" },
-    { description: "Análise de evolução comportamental e acadêmica (Alunos TDA).", date: "2026-06-30" },
-    { description: "Análise de evolução comportamental e acadêmica (Alunos TD).",   date: "2026-01-24" },
-  ])
+  const navigate = useNavigate()
+
+  // dados da turma vindos do back
+  const [turma, setTurma] = useState<Turma>({
+    nome: "2º ano",
+    letra: "A",
+    totalAlunos: 0,
+    totalTarefas: 0,
+    percentualConcluidas: 0,
+    tarefasPendentes: 0,
+  })
+
+  // dados do professor vindos do localStorage (salvos no login)
+  const user = JSON.parse(localStorage.getItem("user") ?? "{}")
+  const token = localStorage.getItem("token")
+
+  // eventos
+  const [events, setEvents] = useState<Evento[]>([])
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedDate, setSelectedDate] = useState<string>("")
+
+  // busca dados da turma do professor ao montar
+  useEffect(() => {
+    async function fetchTurma() {
+      try {
+        const response = await fetch("https://sua-api.com/professores/turma", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        if (!response.ok) throw new Error()
+        const dados = await response.json()
+        setTurma(dados)
+      } catch {
+        console.error("Erro ao carregar turma")
+      }
+    }
+
+    async function fetchEventos() {
+      try {
+        const response = await fetch("https://sua-api.com/eventos", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        if (!response.ok) throw new Error()
+        const dados = await response.json()
+        setEvents(dados)
+      } catch {
+        console.error("Erro ao carregar eventos")
+      }
+    }
+
+    fetchTurma()
+    fetchEventos()
+  }, [])
 
   const goTo = (path: string): void => { navigate(path) }
 
@@ -76,46 +104,72 @@ function Home() {
     setSelectedDate(formatted)
     setModalOpen(true)
   }
-  const handleAddEvent = (description: string, date: string) => {
+
+  const handleAddEvent = async (description: string, date: string) => {
     const newEvent: Evento = { description, date }
+
+    // otimista: atualiza a UI imediatamente
     setEvents((prev) => [...prev, newEvent])
-  }
-  const handleDeleteEvent = (index: number) => {
-    setEvents(events.filter((_, i) => i !== index))
+
+    try {
+      await fetch("https://sua-api.com/eventos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(newEvent),
+      })
+    } catch {
+      console.error("Erro ao salvar evento")
+    }
   }
 
+  const handleDeleteEvent = async (index: number) => {
+    const eventoParaDeletar = events[index]
+
+    // otimista: remove da UI imediatamente
+    setEvents(events.filter((_, i) => i !== index))
+
+    try {
+      await fetch(`https://sua-api.com/eventos/${index}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      })
+    } catch {
+      console.error("Erro ao deletar evento")
+    }
+  }
 
   return (
     <LayoutBaseProf>
-      {/* NAVBAR — igual ao original */}
       <NavbarHome
         onSearchChange={() => {}}
         buttonLabel="Filtrar"
         onButtonClickc={() => {}}
-        nome="EMEF Prof° Carlos Alberto Vigneron"
-        foto={foto}
+        nome={user?.nomeEscola ?? "EMEF Prof° Carlos Alberto Vigneron"}
+        foto={user?.fotoEscola ?? foto}
         notificacoes={5}
         onButtonClick={() => {}}
       />
 
-      {/* CONTEÚDO — estrutura original preservada */}
-      <div className="homeContainer">
+      <div className="homeContainer homeContainer--prof">
 
         <div className="homeMain">
 
-          {/* ── ERA: cardsPrincipal com <h2>2 Ano a</h2> ──
-               AGORA: card verde da turma */}
           <div className="cardsPrincipal">
             <div className="cardTurma">
               <div className="cardTurmaLeft">
-                <h2 className="cardTurmaNome">2º ano <span>A</span></h2>
+                <h2 className="cardTurmaNome">
+                  {turma.nome} <span>{turma.letra}</span>
+                </h2>
                 <p className="cardTurmaDesc">
                   Acompanhe o progresso, gerencie atividades e mantenha a rotina da turma em dia.
                 </p>
                 <div className="cardTurmaStats">
-                  <span className="cardTurmaStat"><Users size={13}/> 10 alunos</span>
-                  <span className="cardTurmaStat"><ClipboardList size={13} /> 15 tarefas</span>
-                  <span className="cardTurmaStat"><CheckCircle2 size={13} /> 85% concluídas</span>
+                  <span className="cardTurmaStat"><Users size={13}/> {turma.totalAlunos} alunos</span>
+                  <span className="cardTurmaStat"><ClipboardList size={13} /> {turma.totalTarefas} tarefas</span>
+                  <span className="cardTurmaStat"><CheckCircle2 size={13} /> {turma.percentualConcluidas}% concluídas</span>
                 </div>
               </div>
 
@@ -136,12 +190,8 @@ function Home() {
                     <div className="cardTurmaBtnIcone2"><Clock size={18} /></div>
                     <div className="cardTurmaBtnTexto2">
                       <div className="cardTurmaTituloPrincipal2">
-                        <span className="cardTurmaBtnTitulo2">
-                        Pendente
-                      </span>
-                      <div className="cardTurmaQtdPend">
-                        5
-                      </div>
+                        <span className="cardTurmaBtnTitulo2">Pendente</span>
+                        <div className="cardTurmaQtdPend">{turma.tarefasPendentes}</div>
                       </div>
                       <span className="cardTurmaBtnSub2">Atividades para realizar hoje</span>
                     </div>
@@ -152,12 +202,9 @@ function Home() {
             </div>
           </div>
 
-          {/* ── ERA: atalhosPrincipais com cardAtl fixos ──
-               AGORA: matérias com drag-to-scroll */}
           <div className="atalhosPrincipais">
             <h2>Matérias</h2>
-
-            <div className="cardsAtalhos"> 
+            <div className="cardsAtalhos">
               {MATERIAS.map(({ id, nome, cor, corTexto, corBotao, badge, Icone }) => (
                 <div key={id} className="cardAtlMateria" style={{ backgroundColor: cor }}>
                   <div className="cardAtlBadge">
@@ -183,7 +230,6 @@ function Home() {
 
         </div>
 
-        {/* LADO DIREITO — calendário + eventos, igual ao original */}
         <div className="homeSide">
           <div className="calendario">
             <MeuCalendario onSelectDate={handleSelectDate} />

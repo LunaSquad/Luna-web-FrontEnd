@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {GraduationCap, House, Book, Users} from "lucide-react"
 import { useNavigate } from 'react-router-dom';
 import InfoHeader from "../../components/escola/InfoHeader";
@@ -16,20 +16,58 @@ interface Evento {
   date: string;
 }
 
+interface DadosEscola {
+  totalAlunos: number
+  totalProfessores: number
+  turmasAtivas: number
+}
+
+const token = localStorage.getItem("token")
+const user = JSON.parse(localStorage.getItem("user") ?? "{}")
+
 function Home() {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string>("");
-  const [events,setEvents] = useState<Evento[]>([
-    { description: "Análise de evolução comportamental e acadêmica (Alunos TDAH).", date: "2026-06-06" },
-    { description: "Análise de evolução comportamental e acadêmica (Alunos TDA).", date: "2026-06-30" },
-    { description: "Análise de evolução comportamental e acadêmica (Alunos TD).", date: "2026-01-24" },
-  ])
+  const [events, setEvents] = useState<Evento[]>([])
+  const [dadosEscola, setDadosEscola] = useState<DadosEscola>({
+    totalAlunos: 0,
+    totalProfessores: 0,
+    turmasAtivas: 0,
+  })
 
-  // Função tipada para lidar com a rota
-  const goTo = (path: string): void => {
-    navigate(path);
-  };
+  useEffect(() => {
+    async function fetchDadosEscola() {
+      try {
+        const response = await fetch("https://sua-api.com/escola/resumo", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        if (!response.ok) throw new Error()
+        const dados = await response.json()
+        setDadosEscola(dados)
+      } catch {
+        console.error("Erro ao carregar dados da escola")
+      }
+    }
+
+    async function fetchEventos() {
+      try {
+        const response = await fetch("https://sua-api.com/eventos", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        if (!response.ok) throw new Error()
+        const dados = await response.json()
+        setEvents(dados)
+      } catch {
+        console.error("Erro ao carregar eventos")
+      }
+    }
+
+    fetchDadosEscola()
+    fetchEventos()
+  }, [])
+
+  const goTo = (path: string): void => { navigate(path) }
 
   const handleSelectDate = (date: Date) => {
     const formatted = date.toLocaleDateString('sv-SE')
@@ -37,113 +75,117 @@ function Home() {
     setModalOpen(true)
   }
 
-  const handleAddEvent = (description: string, date: string) => {
+  const handleAddEvent = async (description: string, date: string) => {
     const newEvent: Evento = { description, date }
-    setEvents((prev) => [...prev, newEvent])
+    setEvents((prev) => [...prev, newEvent]) // otimista
+
+    try {
+      await fetch("https://sua-api.com/eventos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(newEvent),
+      })
+    } catch {
+      console.error("Erro ao salvar evento")
+    }
   }
 
-  const handleDeleteEvent = (index: number) => {
-    const updatedEvents = events.filter((_, i) => i !== index);
-    setEvents(updatedEvents);
-  };
+  const handleDeleteEvent = async (index: number) => {
+    const evento = events[index]
+    setEvents(events.filter((_, i) => i !== index)) // otimista
 
-  console.log("modalOpen:", modalOpen);
+    try {
+      await fetch(`https://sua-api.com/eventos/${index}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      })
+    } catch {
+      console.error("Erro ao deletar evento")
+    }
+  }
 
   return (
     <LayoutBase>
 
-      {/* NAVBAR */}
       <NavbarHome
         onSearchChange={() => {}}
         buttonLabel="Filtrar"
         onButtonClickc={() => {}}
-
-        nome="EMEF Prof° Carlos Alberto Vigneron"
-        foto={foto}
+        nome={user?.nomeEscola ?? "EMEF Prof° Carlos Alberto Vigneron"}
+        foto={user?.fotoEscola ?? foto}
         notificacoes={5}
         onButtonClick={() => {}}
-      >
+      />
 
-      </NavbarHome>
-
-      {/* CONTEÚDO */}
       <div className="homeContainer">
         
-        {/* CONTEÚDO LADO DIREITO */}
-
-          <div className="homeMain">  
-            <div className="cardsPrincipais">
-                <CardHome
-                  icon={<GraduationCap size={26}/>}
-                  title="Alunos"
-                  count = {200}
-                />
-
-                <CardHome
-                  icon={<Book size={26}/>}
-                  title="Professores"
-                  count = {10}
-                />
-
-                <CardHome
-                  icon={<Users size={26}/>}
-                  title="Turmas Ativas"
-                  count = {6}
-                />
-            </div>
-
-              <div className="atalhosPrincipais">
-                <h2>Acesso Rápido</h2>
-                  <div className="cardsAtalhos">
-                      <div className="cardAtl">
-                        <div className="iconName">
-                          <GraduationCap size={40} />
-                        </div>
-                        <p className="titleAtalhos">Gerenciar dados de alunos</p>
-                        <Button className="btnAtalhos" onClick={() => goTo('/alunos')}>Alunos</Button>
-                      </div>
-
-                      <div className="cardAtl">
-                        <div className="iconName">
-                          <Book size={35} />
-                        </div>
-                        <p className="titleAtalhos">Administrar corpo docente</p>
-                        <Button className="btnAtalhos" onClick={() => goTo('/professores')}>Professores</Button>
-                      </div>
-
-                      <div className="cardAtl">
-                        <div className="iconName">
-                          <Users size={35} />
-                        </div>
-                        <p className="titleAtalhos">Organize turmas e distribuição de alunos</p>
-                        <Button className="btnAtalhos" onClick={() => goTo('/turmas')}>Turmas</Button>
-                      </div>
-                  </div>
-              </div>
+        <div className="homeMain">  
+          <div className="cardsPrincipais">
+            <CardHome
+              icon={<GraduationCap size={26}/>}
+              title="Alunos"
+              count={dadosEscola.totalAlunos}
+            />
+            <CardHome
+              icon={<Book size={26}/>}
+              title="Professores"
+              count={dadosEscola.totalProfessores}
+            />
+            <CardHome
+              icon={<Users size={26}/>}
+              title="Turmas Ativas"
+              count={dadosEscola.turmasAtivas}
+            />
           </div>
 
-        <div className="homeSide">
-            <div className="calendario">
-                <MeuCalendario
-                  onSelectDate={handleSelectDate}
-                 />
-            </div>
+          <div className="atalhosPrincipais">
+            <h2>Acesso Rápido</h2>
+            <div className="cardsAtalhos">
+              <div className="cardAtl">
+                <div className="iconName">
+                  <GraduationCap size={40} />
+                </div>
+                <p className="titleAtalhos">Gerenciar dados de alunos</p>
+                <Button className="btnAtalhos" onClick={() => goTo('/alunos')}>Alunos</Button>
+              </div>
 
-            <EventsList
-             events={events}
-             onDelete={handleDeleteEvent} />
+              <div className="cardAtl">
+                <div className="iconName">
+                  <Book size={35} />
+                </div>
+                <p className="titleAtalhos">Administrar corpo docente</p>
+                <Button className="btnAtalhos" onClick={() => goTo('/professores')}>Professores</Button>
+              </div>
+
+              <div className="cardAtl">
+                <div className="iconName">
+                  <Users size={35} />
+                </div>
+                <p className="titleAtalhos">Organize turmas e distribuição de alunos</p>
+                <Button className="btnAtalhos" onClick={() => goTo('/turmas')}>Turmas</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="homeSide">
+          <div className="calendario">
+            <MeuCalendario onSelectDate={handleSelectDate} />
+          </div>
+          <EventsList events={events} onDelete={handleDeleteEvent} />
         </div>
 
       </div>
-
 
       <ModalEvents
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         onAddEvent={handleAddEvent}
-        dados={{ date: selectedDate }} // 👈 aqui
+        dados={{ date: selectedDate }}
       />
-
 
     </LayoutBase>
   )

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Pencil, Trash2, GraduationCap, ThumbsUp, ThumbsDown } from "lucide-react"
 import InfoHeader from "../../components/escola/InfoHeader"
 import LayoutBase from "../../components/escola/layout/LayoutBase"
@@ -11,45 +11,67 @@ import ModalDelete from "../modals/ModalDelete"
 type Aluno = {
   id: number;
   nome: string;
-  ra: number;
-  turma: string;
-  responsavel: string;
+  email: string;
   foto: string;
+  turma: string;
+  nomeResponsavel: string;
 };
 
-const alunos: Aluno[] = [
-  {
-    id: 1,
-    nome: "Maria Clara",
-    ra: 234585960,
-    turma: "3°A",
-    responsavel:"Carla Silva",
-    foto: "/images/maria.png",
-  },
-  {
-    id: 2,
-    nome: "João Oliveira",
-    ra: 109847282,
-    turma: "1°A",
-    responsavel:"Adriana Oliveira",
-    foto: "/images/joao.png",
-  },
-  {
-    id: 3,
-    nome: "Carol Silva",
-    ra: 387437485,
-    turma: "1°A",
-    responsavel:"Fernanda Silva",
-    foto: "/images/fernanda.png",
-  },
-];
+const token = localStorage.getItem("token")
 
+async function fetchAlunos(): Promise<Aluno[]> {
+  const response = await fetch("https://sua-api.com/alunos", {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  if (!response.ok) throw new Error("Erro ao carregar alunos")
+  return response.json()
+}
+
+async function deletarAluno(id: number) {
+  const response = await fetch(`https://sua-api.com/alunos/${id}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  if (!response.ok) throw new Error("Erro ao deletar aluno")
+}
 
 function Alunos() {
-  const [busca, setBusca] = useState("");
-  const [modalAberto, setModalAberto] = useState(false);
-  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
-  const [alunoSelecionado, setAlunoSelecionado] = useState<Aluno | null > (null)
+  const [alunos, setAlunos] = useState<Aluno[]>([])
+  const [busca, setBusca] = useState("")
+  const [modalAberto, setModalAberto] = useState(false)
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false)
+  const [alunoSelecionado, setAlunoSelecionado] = useState<Aluno | null>(null)
+
+  useEffect(() => {
+    fetchAlunos()
+      .then(setAlunos)
+      .catch((err) => console.error(err.message))
+  }, [])
+
+  const alunosFiltrados = alunos.filter((a) =>
+    a.nome.toLowerCase().includes(busca.toLowerCase()) ||
+    a.email.toLowerCase().includes(busca.toLowerCase()) ||
+    a.turma.toLowerCase().includes(busca.toLowerCase())
+  )
+
+  async function handleDeletar() {
+    if (!alunoSelecionado) return
+
+    setAlunos((prev) => prev.filter((a) => a.id !== alunoSelecionado.id))
+    setModalDeleteOpen(false)
+
+    try {
+      await deletarAluno(alunoSelecionado.id)
+    } catch (err) {
+      console.error(err)
+      fetchAlunos().then(setAlunos)
+    }
+  }
+
+  function handleSalvo() {
+    setModalAberto(false)
+    fetchAlunos().then(setAlunos)
+  }
 
   const columns = [
     {
@@ -63,10 +85,10 @@ function Alunos() {
       ),
     },
     {
-      header: "RA",
-      accessor: "ra",
+      header: "E-mail",
+      accessor: "email",
       render: (row: Aluno) => (
-        <span className="cellRa">{row.ra}</span>
+        <span className="emailBadge">{row.email}</span>
       ),
     },
     {
@@ -78,9 +100,9 @@ function Alunos() {
     },
     {
       header: "Responsável",
-      accessor: "responsavel",
+      accessor: "nomeResponsavel",
       render: (row: Aluno) => (
-        <span className="cellResponsavel">{row.responsavel}</span>
+        <span className="cellResponsavel">{row.nomeResponsavel}</span>
       ),
     },
     {
@@ -88,7 +110,7 @@ function Alunos() {
       accessor: "acoes",
       render: (row: Aluno) => (
         <div className="acoesCell">
-          <button 
+          <button
             type="button"
             onClick={() => {
               setAlunoSelecionado(row)
@@ -97,18 +119,19 @@ function Alunos() {
             <Trash2 size={20} />
           </button>
 
-          <button type="button" 
-          onClick={() => {
-            setAlunoSelecionado(row) // envia dados
-            setModalAberto(true)
-          }}
+          <button
+            type="button"
+            onClick={() => {
+              setAlunoSelecionado(row)
+              setModalAberto(true)
+            }}
           >
             <Pencil size={20} />
           </button>
         </div>
       ),
     },
-  ];
+  ]
 
   return (
     <LayoutBase>
@@ -116,7 +139,7 @@ function Alunos() {
       <InfoHeader
         icon={<GraduationCap size={26}/>}
         title="Alunos"
-        subtitle="Gerenciar matrículas e dados dos alunos"
+        subtitle="Gerenciar dados de alunos"
       />
 
       <SearchActionBar
@@ -125,33 +148,35 @@ function Alunos() {
         searchPlaceholder="Buscar Aluno"
         buttonLabel="Novo Aluno"
         onButtonClick={() => {
-        setAlunoSelecionado(null) // limpa
-        setModalAberto(true)
+          setAlunoSelecionado(null)
+          setModalAberto(true)
         }}
       />
 
-      <Table columns={columns} data={alunos} />
+      <Table columns={columns} data={alunosFiltrados} />
 
       <ModalAluno
-        isOpen={modalAberto} 
+        isOpen={modalAberto}
         onClose={() => setModalAberto(false)}
       >
         <div className="logoAluno">
-          <GraduationCap  size={24}/>
+          <GraduationCap size={24}/>
         </div>
-        <FormAlunos 
+        <FormAlunos
           dados={alunoSelecionado}
           onClose={() => setModalAberto(false)}
+          onSalvo={handleSalvo}
         />
       </ModalAluno>
 
       <ModalDelete
         isOpen={modalDeleteOpen}
         onClose={() => setModalDeleteOpen(false)}
-        icon={<GraduationCap size={30} />}
+        icon={<GraduationCap size={28} />}
         title={`Deseja excluir o aluno ${alunoSelecionado?.nome}`}
         decision1={<ThumbsUp size={22}/>}
         decision2={<ThumbsDown size={22} />}
+        onConfirm={handleDeletar}
       />
 
     </LayoutBase>

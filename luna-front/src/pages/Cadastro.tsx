@@ -4,17 +4,17 @@ import NavTitulo from "../components/escola/NavbarTitulo"
 import Button from "../components/escola/button"
 import Input from "../components/escola/input"
 import UploadImagem from "../components/escola/buttonImage"
-import { Check, Circle, IdCard, Eye, EyeClosed, Map, Mail, Building2, Smartphone, StretchVertical, UserPen} from "lucide-react"
+import { Check, Circle, IdCard, Eye, EyeClosed, Map, Mail, Building2, Smartphone, StretchVertical, UserPen } from "lucide-react"
 
-function Cadastro(){
-    const [nome,setNome] = useState("")
-    const [cnpj,setCnpj] = useState("")
-    const [email,setEmail] = useState("")
-    const [bairro,setBairro] = useState("")
-    const [telefone,setTelefone] = useState("")
-    const [cidade,setCidade] = useState("")
-    const [rua,setRua] = useState("")
-    const [senha,setSenha] = useState("")
+function Cadastro() {
+    const [nome, setNome] = useState("")
+    const [cnpj, setCnpj] = useState("")
+    const [email, setEmail] = useState("")
+    const [bairro, setBairro] = useState("")
+    const [telefone, setTelefone] = useState("")
+    const [cidade, setCidade] = useState("")
+    const [rua, setRua] = useState("")
+    const [senha, setSenha] = useState("")
     const [imagem, setImagem] = useState<File | null>(null)
     const [verSenha, setVerSenha] = useState(false)
     const [erro, setErro] = useState<string | null>(null)
@@ -26,7 +26,7 @@ function Cadastro(){
         setVerSenha(!verSenha);
     };
 
-    async function handleSubmit(e: React.FormEvent){
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
         setErro(null)
         setCarregando(true)
@@ -61,14 +61,14 @@ function Cadastro(){
         }
     }
 
-    return(
+    return (
 
         <div className="containerCadastro">
             <NavTitulo />
 
             <div className="principal-info-right">
                 <div className="principal-platform-title">
-                    <Circle size={16} fill="#D9D9D9"/>
+                    <Circle size={16} fill="#D9D9D9" />
                     <p>
                         PLATAFORMA ESCOLAR
                     </p>
@@ -150,13 +150,13 @@ function Cadastro(){
                                 <StretchVertical size={18} />
                             </div>
                             <div className="input-container">
-                                <Input 
-                                    id="senha" 
-                                    label="Senha" 
-                                    type={verSenha ? "text" : "password"} 
-                                    placeholder="Senha" 
-                                    value={senha} 
-                                    onChange={(e) => setSenha(e.target.value)} 
+                                <Input
+                                    id="senha"
+                                    label="Senha"
+                                    type={verSenha ? "text" : "password"}
+                                    placeholder="Senha"
+                                    value={senha}
+                                    onChange={(e) => setSenha(e.target.value)}
                                 />
                                 <div className="icon-container-password" onClick={toggleSenha}>
                                     {verSenha ? <Eye size={18} /> : <EyeClosed size={18} />}
@@ -181,7 +181,7 @@ function Cadastro(){
                             {carregando ? "Cadastrando..." : "Cadastrar"}
                         </Button>
                     </div>
-                </form> 
+                </form>
 
                 <p className="footer-text">
                     Já possui conta? <span><Link to="/">Entrar!</Link></span>

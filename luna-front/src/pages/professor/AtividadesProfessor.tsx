@@ -3,12 +3,50 @@ import { ClipboardList, Upload, Calendar, PenLine, X, Send, LibraryBig } from "l
 import LayoutBaseProf from "../../components/calendar/layout/LayoutBaseProf";
 import InfoHeader from "../../components/escola/InfoHeader";
 
+const token = localStorage.getItem("token")
+
+async function enviarPlanoManual(dataAula: string, titulo: string, detalhamento: string) {
+  const response = await fetch("https://sua-api.com/planos-aula", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ dataAula, titulo, detalhamento }),
+  })
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => null)
+    throw new Error(err?.message ?? "Erro ao enviar plano")
+  }
+
+  return response.json()
+}
+
+async function enviarPlanoAnexo(dataAula: string, arquivo: File) {
+  const form = new FormData()
+  form.append("dataAula", dataAula)
+  form.append("arquivo", arquivo)
+
+  const response = await fetch("https://sua-api.com/planos-aula/anexo", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: form, // não coloca Content-Type aqui
+  })
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => null)
+    throw new Error(err?.message ?? "Erro ao enviar arquivo")
+  }
+
+  return response.json()
+}
+
 export default function PlanoAula() {
   const [modo, setModo] = useState('manual');
   const [arquivoSelecionado, setArquivoSelecionado] = useState<File | null>(null);
   const inputArquivoRef = useRef<HTMLInputElement>(null);
 
-  // estados dos campos
   const [dataAula, setDataAula] = useState('');
   const [titulo, setTitulo] = useState('');
   const [detalhamento, setDetalhamento] = useState('');
@@ -18,36 +56,49 @@ export default function PlanoAula() {
   async function handleEnviar() {
     setErro('');
 
-    if (modo === 'manual') {
-        if (!dataAula || !titulo || !detalhamento) {
-        setErro('Preencha todos os campos.');
-        return;
-        }
-    } else {
-        if (!arquivoSelecionado) {
-        setErro('Selecione um arquivo.');
-        return;
-        }
+    if (!dataAula) {
+      setErro('Preencha a data da aula.');
+      return;
+    }
+
+    if (modo === 'manual' && (!titulo || !detalhamento)) {
+      setErro('Preencha todos os campos.');
+      return;
+    }
+
+    if (modo === 'anexo' && !arquivoSelecionado) {
+      setErro('Selecione um arquivo.');
+      return;
     }
 
     setCarregando(true);
 
-    // simula delay de chamada à API
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      if (modo === 'manual') {
+        await enviarPlanoManual(dataAula, titulo, detalhamento)
+      } else {
+        await enviarPlanoAnexo(dataAula, arquivoSelecionado!)
+      }
 
-    console.log('Dados enviados:', modo === 'manual'
-        ? { dataAula, titulo, detalhamento }
-        : { arquivo: arquivoSelecionado?.name }
-    );
+      // limpa o formulário após sucesso
+      setDataAula('')
+      setTitulo('')
+      setDetalhamento('')
+      setArquivoSelecionado(null)
 
-    setCarregando(false);
-    alert('Plano enviado com sucesso! (simulação)');
+      alert('Plano enviado com sucesso!')
+    } catch (err) {
+      setErro(err instanceof Error ? err.message : 'Erro inesperado')
+    } finally {
+      setCarregando(false)
+    }
   }
 
+  // JSX idêntico ao original
   return (
     <LayoutBaseProf>
       <InfoHeader
-        icon={<LibraryBig size={26}/>}
+        icon={<LibraryBig size={26} />}
         title="Plano de Aula"
         subtitle="Envie um novo plano de aula"
       />
@@ -84,25 +135,26 @@ export default function PlanoAula() {
           </div>
         </div>
 
-        {modo === 'manual' && (
-          <div className="planoFormCard">
-            <div className="planoFormRow">
-              <div className="planoFormGroup">
-                <label className="planoFormLabel">Data da aula</label>
-                <div className="planoInputWrapper">
-                  <input
-                    className="planoFormInput"
-                    type="text"
-                    placeholder="Ex: 00/00/0000"
-                    value={dataAula}
-                    onChange={(e) => setDataAula(e.target.value)}
-                  />
-                  <Calendar size={18} className="planoInputIcon" />
-                </div>
-              </div>
+        <div className="planoFormCard">
 
+          <div className="planoFormRow">
+            <div className="planoFormGroup">
+              <label className="planoFormLabel">Data da aula</label>
+              <div className="planoInputWrapper">
+                <input
+                  className="planoFormInput"
+                  type="text"
+                  placeholder="Ex: 00/00/0000"
+                  value={dataAula}
+                  onChange={(e) => setDataAula(e.target.value)}
+                />
+                <Calendar size={18} className="planoInputIcon" />
+              </div>
+            </div>
+
+            {modo === 'manual' && (
               <div className="planoFormGroup">
-                <label className="planoFormLabel">Conteúdo Programático(Título)</label>
+                <label className="planoFormLabel">Conteúdo Programático (Título)</label>
                 <div className="planoInputWrapper">
                   <input
                     className="planoFormInput"
@@ -114,10 +166,12 @@ export default function PlanoAula() {
                   <PenLine size={18} className="planoInputIcon" />
                 </div>
               </div>
-            </div>
+            )}
+          </div>
 
+          {modo === 'manual' && (
             <div className="planoFormGroup full">
-              <label className="planoFormLabel">Conteúdo Programático(Detalhamento)</label>
+              <label className="planoFormLabel">Conteúdo Programático (Detalhamento)</label>
               <div className="planoTextareaWrapper">
                 <textarea
                   className="planoFormTextarea"
@@ -128,11 +182,9 @@ export default function PlanoAula() {
                 <PenLine size={18} className="planoTextareaIcon" />
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {modo === 'anexo' && (
-          <div className="planoFormCard">
+          {modo === 'anexo' && (
             <div
               className="planoUploadArea"
               onClick={() => inputArquivoRef.current?.click()}
@@ -150,14 +202,14 @@ export default function PlanoAula() {
               <p className="planoUploadTexto">
                 {arquivoSelecionado
                   ? arquivoSelecionado.name
-                  : <>Arraste e solte seu arquivo aqui ou <span>clique para selecionar</span></>
+                  : <><span>Clique ou arraste o arquivo</span><br />PDF, DOC, DOCX ou imagens</>
                 }
               </p>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* mensagem de erro */}
+        </div>
+
         {erro && (
           <p style={{ color: 'red', fontFamily: 'Inter', fontSize: 14 }}>{erro}</p>
         )}
@@ -165,7 +217,7 @@ export default function PlanoAula() {
         <div className="planoFooter">
           <button className="planoBtnCancelar" onClick={() => window.history.back()}>
             <div className="iconCancel">
-              <X size={18}/>
+              <X size={18} />
             </div>
             Cancelar
           </button>

@@ -1,56 +1,60 @@
 import { X } from "lucide-react"
 import React from "react"
 
-interface ModalProps{
+interface ModalProps {
     isOpen: boolean
     onClose: () => void
     icon: React.ReactNode
     title: string
     decision1: React.ReactNode
     decision2: React.ReactNode
+    onConfirm?: () => void  // ← adiciona
 }
 
 export default function ModalDelete({
-  isOpen, 
-  onClose,
-  icon,
-  title,
-  decision1,
-  decision2
+    isOpen,
+    onClose,
+    icon,
+    title,
+    decision1,
+    decision2,
+    onConfirm,  // ← adiciona
 }: ModalProps) {
-    if(!isOpen) return null
+    if (!isOpen) return null
 
-    return(
+    return (
         <div className="modalOverlayDelete">
-          <div className="modalContentDelete" onClick={(e) => e.stopPropagation()}>
+            <div className="modalContentDelete" onClick={(e) => e.stopPropagation()}>
 
-            <button className="closeButtonDelete" onClick={onClose}>
-              <X  size={28}/>
-            </button>
+                <button className="closeButtonDelete" onClick={onClose}>
+                    <X size={28} />
+                </button>
 
-            <div className="modalDeleteInformation">
-                <div className="modalIcon">
-                    {icon}
-                </div>
+                <div className="modalDeleteInformation">
+                    <div className="modalIcon">
+                        {icon}
+                    </div>
 
-                <div className="modalDados">
-                    <h3 className="modalText">
-                        {title}
-                    </h3>
+                    <div className="modalDados">
+                        <h3 className="modalText">
+                            {title}
+                        </h3>
 
-                    <div className="modalDecision">
-                        <button className="buttonDecision1">
-                            {decision1}
-                        </button>
+                        <div className="modalDecision">
+                            {/* decision1 = confirmar */}
+                            <button className="buttonDecision1" onClick={onConfirm}>
+                                {decision1}
+                            </button>
 
-                        <button className="buttonDecision2">
-                            {decision2}
-                        </button>
+                            {/* decision2 = cancelar */}
+                            <button className="buttonDecision2" onClick={onClose}>
+                                {decision2}
+                            </button>
+                        </div>
                     </div>
                 </div>
+
             </div>
-            
-          </div>
         </div>
     )
 }

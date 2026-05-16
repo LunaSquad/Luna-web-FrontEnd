@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 
-.navTitulo{
+.navTitulo {
   position: fixed;
   justify-content: space-between;
   top: 0;
@@ -25,7 +26,7 @@ html, body {
   z-index: 900;
 }
 
-.navTitulo p{
+.navTitulo p {
   font-family: "MuseoModerno", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
@@ -34,12 +35,12 @@ html, body {
   color: #FFDDD2;
 }
 
-.navTitulo img{
+.navTitulo img {
   width: 42px;
   height: 42px;
 }
 
-.containerLogin{
+.containerLogin {
   height: 100vh;
   width: 100vw;
   background-color: #FDFDF8;
@@ -51,7 +52,7 @@ html, body {
   overflow: hidden;
 }
 
-.principal-info-right{
+.principal-info-right {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -69,7 +70,7 @@ html, body {
   flex-shrink: 0;
 }
 
-.principal-platform-title{
+.principal-platform-title {
   display: flex;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.3);
@@ -82,31 +83,31 @@ html, body {
   gap: 20px;
 }
 
-.principal-info-right-title{
+.principal-info-right-title {
   color: #ffffff;
   font-size: 50px;
   width: 360px;
 }
 
-.principal-info-right-title span{
+.principal-info-right-title span {
   color: #FFDDD2;
-  font-style: italic; 
+  font-style: italic;
   font-weight: 300;
 }
 
-.principal-info-right-description{
+.principal-info-right-description {
   color: #ffffff;
   font-size: 16px;
   width: 330px;
 }
 
-.principal-info-right-opcs{
+.principal-info-right-opcs {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.principal-info-right-opc{
+.principal-info-right-opc {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -114,7 +115,7 @@ html, body {
   font-size: 16px;
 }
 
-.opc-icon{
+.opc-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +125,7 @@ html, body {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.form-header-text-login{
+.form-header-text-login {
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -132,25 +133,25 @@ html, body {
   gap: 6px;
 }
 
-.form-header-text-login h2{
+.form-header-text-login h2 {
   font-weight: 600;
   font-size: 28px;
   color: #005A63;
 }
 
-.form-header-text-login p{
+.form-header-text-login p {
   color: #A6A6A6;
   font-weight: 300;
   font-size: 14px;
 }
 
-.logins{
+.logins {
   position: relative;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   padding: 20px 20px;
-  align-items: center; 
+  align-items: center;
   background-color: transparent;
   width: 100%;
   max-width: 600px;
@@ -160,7 +161,7 @@ html, body {
 
 }
 
-.formLogin{
+.formLogin {
   display: flex;
   justify-content: flex-start;
   min-height: 250px;
@@ -170,7 +171,7 @@ html, body {
   gap: 40px;
 }
 
-.inputGroup{
+.inputGroup {
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -183,7 +184,7 @@ html, body {
   width: 100%;
 }
 
-.inputLabel{
+.inputLabel {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
@@ -192,7 +193,7 @@ html, body {
   color: #005A63;
 }
 
-.inputField{
+.inputField {
   border: none;
   border-bottom: 2px solid #005A63;
   color: #000000;
@@ -204,15 +205,15 @@ html, body {
   background-color: transparent;
 }
 
-.inputField:focus{
+.inputField:focus {
   outline: none;
 }
 
-.inputField::placeholder{
+.inputField::placeholder {
   color: #A6A6A6;
 }
 
-.conjEmail{
+.conjEmail {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -226,14 +227,14 @@ html, body {
   color: #005A63;
 }
 
-.conjEmail .icon-input{
+.conjEmail .icon-input {
   position: absolute;
   right: 0;
   bottom: 8px;
   pointer-events: none;
 }
 
-.conjSenha{
+.conjSenha {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -247,22 +248,22 @@ html, body {
   color: #005A63;
 }
 
-.conjSenha .icon-input{
+.conjSenha .icon-input {
   position: absolute;
   right: 0;
   bottom: 8px;
   cursor: pointer;
 }
 
-.botao{
+.botao {
   display: flex;
   justify-content: center;
   height: 40px;
   margin-top: 20px;
 }
 
-.submitLogin{
-  width: 130px; 
+.submitLogin {
+  width: 130px;
   border: none;
   border-radius: 5px;
   background-color: #005A63;
@@ -275,7 +276,7 @@ html, body {
   cursor: pointer;
 }
 
-.containerCadastro{
+.containerCadastro {
   height: 100vh;
   width: 100vw;
   background-color: #FDFDF8;
@@ -287,13 +288,13 @@ html, body {
   overflow: hidden;
 }
 
-.Cadastro{
+.Cadastro {
   position: relative;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   padding: 20px 20px;
-  align-items: center; 
+  align-items: center;
   background-color: transparent;
   width: 780px;
   max-height: 700px;
@@ -301,7 +302,7 @@ html, body {
   gap: 50px;
 }
 
-.form-header-text-cadastro{
+.form-header-text-cadastro {
   display: flex;
   flex-direction: column;
   width: 600px;
@@ -309,23 +310,23 @@ html, body {
   gap: 6px;
 }
 
-.form-header-text-cadastro h2{
+.form-header-text-cadastro h2 {
   font-weight: 600;
   font-size: 28px;
   color: #005A63;
 }
 
-.form-header-text-cadastro p{
+.form-header-text-cadastro p {
   color: #A6A6A6;
   font-weight: 300;
   font-size: 14px;
 }
 
-.formCadastro{
+.formCadastro {
   display: flex;
   justify-content: center;
   min-height: 250px;
-  align-items: center;  
+  align-items: center;
   flex-direction: column;
   background-color: transparent;
   width: 100%;
@@ -333,14 +334,14 @@ html, body {
   gap: 20px;
 }
 
-.dadosCadGeral{
+.dadosCadGeral {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
 .dadosCad1,
-.dadosCad2{
+.dadosCad2 {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -349,21 +350,21 @@ html, body {
 }
 
 .input-container {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-container svg {
-    position: absolute;
-    right: 0;
-    bottom: 8px;
-    color: #005A63;
-    pointer-events: none; 
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  color: #005A63;
+  pointer-events: none;
 }
 
-.input-container .icon-container-password{
+.input-container .icon-container-password {
   position: absolute;
   right: 0;
   bottom: 0px;
@@ -371,8 +372,8 @@ html, body {
 }
 
 .input-container .icon-container-password svg {
-    position: static; 
-    pointer-events: auto; 
+  position: static;
+  pointer-events: auto;
 }
 
 .uploadGroup {
@@ -414,8 +415,8 @@ html, body {
   color: #005A63;
 }
 
-.submitCadastrar{
-  width: 170px; 
+.submitCadastrar {
+  width: 170px;
   height: 50px;
   border: none;
   border-radius: 5px;
@@ -429,18 +430,18 @@ html, body {
   cursor: pointer;
 }
 
-.footer-text{
+.footer-text {
   font-family: "Inter", sans-serif;
   font-weight: 300;
 }
 
-.footer-text a{
+.footer-text a {
   text-decoration: none;
   color: #005A63;
   font-weight: 700;
 }
 
-.navLateral{
+.navLateral {
   position: fixed;
   top: 0;
   left: 0;
@@ -455,30 +456,32 @@ html, body {
   overflow: hidden;
   z-index: 1;
 }
-.navLateral.fechada{
+
+.navLateral.fechada {
   width: 80px;
   /* align-items: flex-start; */
 }
-.navLateral.aberta{
+
+.navLateral.aberta {
   width: 230px;
   transition: all 0.5s ease-in-out;
 }
 
-.menuButton{
+.menuButton {
   background: transparent;
   border: none;
   color: #FDFDF8;
   cursor: pointer;
 }
 
-.navConteudo{
+.navConteudo {
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 100%;
 }
 
-.navItem{
+.navItem {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -509,9 +512,9 @@ html, body {
   transition: transform 0.5s ease;
 }
 
-.navLateral.aberta .navItem:not(.sair):hover{
+.navLateral.aberta .navItem:not(.sair):hover {
   padding: 0;
-  background-color: rgba(255, 255, 255,0.4);
+  background-color: rgba(255, 255, 255, 0.4);
   height: 70px;
   border-radius: 50px;
   font-size: 16px;
@@ -524,28 +527,28 @@ html, body {
   transform: translateX(10px) scale(1);
 }
 
-.navItem .sair:hover{
-    background-color: none;
+.navItem .sair:hover {
+  background-color: none;
 }
 
-.infoHeader{
+.infoHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.TitleInformations{
+.TitleInformations {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.infoHeaderIcon{
+.infoHeaderIcon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: rgba(0, 90, 99,0.5);
+  background-color: rgba(0, 90, 99, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -553,13 +556,13 @@ html, body {
   flex-shrink: 0;
 }
 
-.infoHeaderText{
+.infoHeaderText {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.infoHeaderTitle{
+.infoHeaderTitle {
   margin: 0;
   font-family: "Inter", sans-serif;
   font-weight: 600;
@@ -567,7 +570,7 @@ html, body {
   color: #000000;
 }
 
-.infoHeaderSubtitle{
+.infoHeaderSubtitle {
   margin: 0;
   font-family: "Inter", sans-serif;
   font-weight: 300;
@@ -575,7 +578,7 @@ html, body {
   color: #000000;
 }
 
-.LogoHeader img{
+.LogoHeader img {
   width: 55px;
 }
 
@@ -643,7 +646,7 @@ html, body {
   outline: none;
   background: transparent;
   width: 100%;
-  height: 100%  ;
+  height: 100%;
   font-family: "Inter", sans-serif;
   font-size: 15px;
   color: #333;
@@ -674,7 +677,7 @@ html, body {
   opacity: 0.92;
 }
 
-.plusIcon{
+.plusIcon {
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -699,7 +702,7 @@ html, body {
 }
 
 .customTable thead tr {
-  background-color: rgba(191, 186, 185,0.2); 
+  background-color: rgba(191, 186, 185, 0.2);
 }
 
 .customTable th {
@@ -760,7 +763,7 @@ html, body {
   cursor: pointer;
 }
 
-.turmaBadge{
+.turmaBadge {
   display: inline-block;
   padding: 4px 12px;
   border: 1px solid #FFDDD2;
@@ -768,13 +771,13 @@ html, body {
   background-color: #ffddd279;
 }
 
-.cellResponsavel{
+.cellResponsavel {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.alunoBadge{
+.alunoBadge {
   display: inline-block;
   padding: 4px 12px;
   border: 1px solid #FFDDD2;
@@ -782,13 +785,13 @@ html, body {
   background-color: #ffddd279;
 }
 
-.cellProf{
+.cellProf {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.iconeTurma{
+.iconeTurma {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -811,7 +814,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999; 
+  z-index: 999;
 }
 
 .modalContentProf {
@@ -822,7 +825,7 @@ html, body {
   width: 800px;
   max-width: 90%;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .closeButton {
@@ -839,22 +842,22 @@ html, body {
   justify-content: center;
 }
 
-.logoProf{
+.logoProf {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background-color: rgba(0, 90, 99,0.5);
+  background-color: rgba(0, 90, 99, 0.5);
   color: #005A63;
 }
 
-.formCadastroProf{
+.formCadastroProf {
   display: flex;
   justify-content: center;
   min-height: 260px;
-  align-items: center;  
+  align-items: center;
   flex-direction: column;
   background-color: transparent;
   width: 100%;
@@ -863,22 +866,22 @@ html, body {
   gap: 20px;
 }
 
-.dadosCadGeralProf{
+.dadosCadGeralProf {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
 .dadosCad3,
-.dadosCad4{
+.dadosCad4 {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 
-.submitCadastrarProf{
-  width: 270px; 
+.submitCadastrarProf {
+  width: 270px;
   height: 50px;
   border: none;
   border-radius: 15px;
@@ -901,13 +904,15 @@ html, body {
   width: 100%;
   height: 100%;
 
-  background-color: rgba(0, 0, 0, 0.4); /* fundo cinza */
-  
+  background-color: rgba(0, 0, 0, 0.4);
+  /* fundo cinza */
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  z-index: 999; /* fica na frente de tudo */
+  z-index: 999;
+  /* fica na frente de tudo */
 }
 
 .modalContentAluno {
@@ -918,7 +923,7 @@ html, body {
   width: 800px;
   max-width: 90%;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .closeButton {
@@ -935,22 +940,22 @@ html, body {
   justify-content: center;
 }
 
-.logoAluno{
+.logoAluno {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background-color: rgba(0, 90, 99,0.5);
+  background-color: rgba(0, 90, 99, 0.5);
   color: #005A63;
 }
 
-.formCadastroAluno{
+.formCadastroAluno {
   display: flex;
   justify-content: center;
   min-height: 260px;
-  align-items: center;  
+  align-items: center;
   flex-direction: column;
   background-color: transparent;
   width: 100%;
@@ -959,22 +964,22 @@ html, body {
   gap: 20px;
 }
 
-.dadosCadGeralAluno{
+.dadosCadGeralAluno {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
 .dadosCad5,
-.dadosCad6{
+.dadosCad6 {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 
-.submitCadastrarAluno{
-  width: 270px; 
+.submitCadastrarAluno {
+  width: 270px;
   height: 50px;
   border: none;
   border-radius: 15px;
@@ -997,13 +1002,15 @@ html, body {
   width: 100%;
   height: 100%;
 
-  background-color: rgba(0, 0, 0, 0.4); /* fundo cinza */
-  
+  background-color: rgba(0, 0, 0, 0.4);
+  /* fundo cinza */
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  z-index: 999; /* fica na frente de tudo */
+  z-index: 999;
+  /* fica na frente de tudo */
 }
 
 .modalContentTurma {
@@ -1014,7 +1021,7 @@ html, body {
   width: 800px;
   max-width: 90%;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .closeButton {
@@ -1031,37 +1038,37 @@ html, body {
   justify-content: center;
 }
 
-.logoTurma{
+.logoTurma {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background-color: rgba(0, 90, 99,0.5);
+  background-color: rgba(0, 90, 99, 0.5);
   color: #005A63;
 }
 
-.formCadastroTurma{
+.formCadastroTurma {
   display: flex;
   justify-content: center;
   min-height: 260px;
   flex-direction: column;
   background-color: transparent;
-  width: 100%;  
-  padding: 0 70px;  
+  width: 100%;
+  padding: 0 70px;
   margin-bottom: 10px;
   gap: 20px;
 }
 
-.dadosCadGeralTurma{
+.dadosCadGeralTurma {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
 .dadosCad7,
-.inputGroup{
+.inputGroup {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1088,7 +1095,7 @@ html, body {
   margin: 20px 0px;
   border-radius: 10px;
   border: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* LISTA */
@@ -1124,8 +1131,8 @@ html, body {
 }
 
 
-.submitCadastrarAluno{
-  width: 270px; 
+.submitCadastrarAluno {
+  width: 270px;
   height: 50px;
   border: none;
   border-radius: 15px;
@@ -1139,13 +1146,13 @@ html, body {
   cursor: pointer;
 }
 
-.NavBarCompleta{
+.NavBarCompleta {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.searchAction{
+.searchAction {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1153,7 +1160,7 @@ html, body {
   flex-wrap: wrap;
 }
 
-.buscaBox{
+.buscaBox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1166,7 +1173,7 @@ html, body {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.buscaIcon{
+.buscaIcon {
   color: #005A63;
   flex-shrink: 0;
 }
@@ -1187,7 +1194,7 @@ html, body {
   color: #000000;
 }
 
-.buttonFilter{
+.buttonFilter {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1214,7 +1221,7 @@ html, body {
   flex-shrink: 0;
 }
 
-.buttonFilter:hover{
+.buttonFilter:hover {
   background-color: #005A63;
   color: #ffffff;
 }
@@ -1223,7 +1230,7 @@ html, body {
   color: #ffffff;
 }
 
-.userInfo{
+.userInfo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1231,18 +1238,18 @@ html, body {
   gap: 12px;
 }
 
-.bellWrapper{
+.bellWrapper {
   position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.bellInfo{
+.bellInfo {
   color: #005A63;
 }
 
-.badge{
+.badge {
   position: absolute;
   top: -6px;
   right: -6px;
@@ -1261,26 +1268,27 @@ html, body {
   justify-content: center;
 }
 
-.textUser{
+.textUser {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 700;
   font-style: normal;
   color: #000000;
-  max-width: 180px; /* controla o limite */
-  white-space: nowrap; 
+  max-width: 180px;
+  /* controla o limite */
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.avatarUser{
+.avatarUser {
   width: 45px;
   height: 45px;
   overflow: hidden;
   border-radius: 50%;
 }
 
-.homeContainer{
+.homeContainer {
   display: flex;
   flex-direction: row;
   gap: 30px;
@@ -1289,7 +1297,7 @@ html, body {
   justify-content: space-between;
 }
 
-.homeMain{
+.homeMain {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1297,13 +1305,13 @@ html, body {
   margin-top: 15px;
 }
 
-.cardsPrincipais{
+.cardsPrincipais {
   flex: 3;
   display: flex;
   gap: 25px;
 }
 
-.cardHome{
+.cardHome {
   display: flex;
   padding: 10px 15px;
   margin-top: 20px;
@@ -1317,43 +1325,43 @@ html, body {
   transition: all 0.3s ease-in-out;
 }
 
-.cardHome:hover{
+.cardHome:hover {
   transform: translateY(-8px);
 }
 
-.titleCardHome{
+.titleCardHome {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
 }
 
-.cardInformation{
+.cardInformation {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 10px;
 }
 
-.qtdCard{
+.qtdCard {
   font-family: "Inter", sans-serif;
   font-size: 26px;
   font-weight: 700;
   font-style: normal;
 }
 
-.iconCard{
+.iconCard {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 45px;
   width: 45px;
-  background-color: rgba(0, 90, 99,0.4);
+  background-color: rgba(0, 90, 99, 0.4);
   color: #005A63;
   border-radius: 50%;
 }
 
-.atalhosPrincipais{
+.atalhosPrincipais {
   display: flex;
   flex-direction: column;
   font-family: "Inter", sans-serif;
@@ -1363,13 +1371,13 @@ html, body {
   gap: 30px;
 }
 
-.cardsAtalhos{
+.cardsAtalhos {
   flex: 3;
   display: flex;
   gap: 25px;
 }
 
-.cardAtl{
+.cardAtl {
   display: flex;
   /* justify-content: center; */
   padding: 35px 0px;
@@ -1388,27 +1396,27 @@ html, body {
   transition: all 0.3s ease-in-out;
 }
 
-.cardAtl:hover{
+.cardAtl:hover {
   transform: translateY(-8px);
 }
 
-.iconName{
+.iconName {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  background-color: rgba(0, 90, 99,0.4);
+  background-color: rgba(0, 90, 99, 0.4);
   color: #005A63;
 }
 
-.titleAtalhos{
+.titleAtalhos {
   margin-top: 25px;
   width: 180px;
 }
 
-.btnAtalhos{
+.btnAtalhos {
   margin-top: 25px;
   width: 140px;
   height: 40px;
@@ -1423,8 +1431,9 @@ html, body {
   cursor: pointer;
 }
 
-.homeSide{
-  width: 350px;       /* Ajuste a largura conforme sua necessidade */
+.homeSide {
+  width: 350px;
+  /* Ajuste a largura conforme sua necessidade */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1471,7 +1480,7 @@ html, body {
   justify-content: space-between;
 }
 
-.nav-button-prev, 
+.nav-button-prev,
 .nav-button-next {
   background: white;
   border: 1.5px solid #f3f4f6;
@@ -1482,11 +1491,12 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #005A63; /* O verde petróleo da imagem */
+  color: #005A63;
+  /* O verde petróleo da imagem */
   transition: all 0.2s ease;
 }
 
-.nav-button-prev:hover, 
+.nav-button-prev:hover,
 .nav-button-next:hover {
   background: #f9fafb;
   border-color: #e5e7eb;
@@ -1504,7 +1514,8 @@ html, body {
 .calendar-month {
   margin-top: 0px;
   border-collapse: separate;
-  border-spacing: 0 2px; /* Espaço entre as linhas */
+  border-spacing: 0 2px;
+  /* Espaço entre as linhas */
   display: block;
 }
 
@@ -1536,7 +1547,7 @@ html, body {
   transition: 0.2s;
 }
 
-.calendar-day button{
+.calendar-day button {
   border: none;
   background-color: transparent;
   font-family: "Inter", sans-serif;
@@ -1584,7 +1595,7 @@ html, body {
   background-color: #004d4d;
 }
 
-.calendar-day-today button{
+.calendar-day-today button {
   color: #FFDDD2 !important;
   font-weight: bold;
 }
@@ -1627,7 +1638,7 @@ html, body {
   border-radius: 50%;
 }
 
-.rdp-root{
+.rdp-root {
   margin: 0;
 }
 
@@ -1640,12 +1651,13 @@ html, body {
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   font-family: 'Inter', sans-serif;
   display: flex;
-  flex-direction: column; /* 👈 ESSENCIAL */
+  flex-direction: column;
+  /* 👈 ESSENCIAL */
 }
 
 .events-list {
   flex: 1;
-  overflow-y: auto; 
+  overflow-y: auto;
   padding-right: 5px;
 }
 
@@ -1678,34 +1690,35 @@ html, body {
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 15px;
-  border-left: 6px solid #005A63; 
+  border-left: 6px solid #005A63;
   overflow: hidden;
 }
 
 .event-content {
   display: flex;
   justify-content: space-between;
-  width: 100%; /* Garante que o conteúdo use toda a largura do card */
+  width: 100%;
+  /* Garante que o conteúdo use toda a largura do card */
   gap: 15px;
 }
 
 .event-text {
-  flex: 1; 
+  flex: 1;
   font-size: 14px;
   font-weight: 600;
   color: #000000;
   line-height: 1.4;
   margin: 0;
-  white-space: normal; 
+  white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
   min-width: 0;
 }
 
-.event-info-right { 
+.event-info-right {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; 
+  align-items: flex-end;
   justify-content: space-between;
   min-width: fit-content;
   flex-shrink: 0;
@@ -1753,7 +1766,7 @@ html, body {
   border-radius: 16px;
   width: 400px;
   max-width: 90%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   margin-top: 30px;
 }
 
@@ -1770,7 +1783,7 @@ html, body {
   justify-content: center;
 }
 
-.modalDeleteInformation{
+.modalDeleteInformation {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1778,7 +1791,7 @@ html, body {
   padding-top: 30px;
 }
 
-.modalIcon{
+.modalIcon {
   position: absolute;
   display: flex;
   align-items: center;
@@ -1791,7 +1804,7 @@ html, body {
   top: -20px;
 }
 
-.modalDados{
+.modalDados {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1800,19 +1813,19 @@ html, body {
   gap: 16px;
 }
 
-.modalText{
+.modalText {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
 }
 
-.modalDecision{
+.modalDecision {
   display: flex;
   gap: 20px;
 }
 
 .buttonDecision1,
-.buttonDecision2{
+.buttonDecision2 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1847,7 +1860,7 @@ html, body {
   border-radius: 16px;
   width: 500px;
   max-width: 90%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   margin-top: 30px;
 }
 
@@ -1864,7 +1877,7 @@ html, body {
   justify-content: center;
 }
 
-.modalEventsInformation{
+.modalEventsInformation {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1873,14 +1886,14 @@ html, body {
   gap: 20px;
 }
 
-.modalEventsTitle{
+.modalEventsTitle {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-size: 18px;
 }
 
-.modalEventsDados{
+.modalEventsDados {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1888,12 +1901,12 @@ html, body {
   gap: 16px;
 }
 
-.modalDecision{
+.modalDecision {
   display: flex;
   gap: 20px;
 }
 
-.buttonEvents{
+.buttonEvents {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1913,9 +1926,9 @@ html, body {
 
 /* CSS Professores */
 
-.cardsPrincipal{
-  height: "auto"; 
-  padding: 0; 
+.cardsPrincipal {
+  height: "auto";
+  padding: 0;
   background-color: "transparent";
 }
 
@@ -1999,7 +2012,7 @@ html, body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #005A63;
+  background-color: rgba(0,90,99,0.9);
   margin-left: auto;
   align-self: flex-start;
 }
@@ -2139,7 +2152,7 @@ html, body {
   transition: 0.2s ease;
 }
 
-.iconCancel{
+.iconCancel {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2226,381 +2239,576 @@ html, body {
   flex-wrap: wrap;
   width: 700px;
 }
-        .cardTurmaLeft {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          flex: 1;
-          min-width: 180px;
-        }
-        .cardTurmaNome {
-          font-family: "Inter", sans-serif;
-          font-size: 22px;
-          font-weight: 700;
-          color: #fff;
-          margin: 0;
-        }
 
-        .cardTurmaNome span{
-          color: #FFDDD2;
-          font-size: 24px;
-        }
+.cardTurmaLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-width: 180px;
+}
 
-        .cardTurmaDesc {
-          font-family: "Inter", sans-serif;
-          font-size: 13px;
-          font-weight: 500;
-          color: #ffffff;
-          margin: 0;
-          max-width: 300px;
-        }
-        .cardTurmaStats {
-          display: flex;
-          gap: 16px;
-          flex-wrap: wrap;
-          margin-top: 4px;
-          color: #FFDDD2 !important;
-        }
-        .cardTurmaStat {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          font-family: "Inter", sans-serif;
-          font-size: 13px;
-          color: rgba(255,255,255,0.85);
-        }
-        .cardTurmaRight {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          min-width: 210px;
-        }
-        .cardTurmaBtn {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background-color: #ffffff;
-          border: none;
-          border-radius: 12px;
-          padding: 11px 14px;
-          cursor: pointer;
-          transition: all 0.2s ease-in-out;
-          gap: 8px;
-          width: 100%;
-        }
-        .cardTurmaBtn:hover {
-           transform: translateY(-3px); 
-        }
-        .cardTurmaBtnLeft { 
-          display: flex; 
-          align-items: center; 
-          gap: 10px;
-        }
-        .cardTurmaBtnIcone {
-          display: flex; align-items: center; justify-content: center;
-          width: 30px; height: 30px;
-          background-color: rgba(0,90,99,0.27);
-          border-radius: 8px; 
-          color: #005A63; 
-          flex-shrink: 0;
-        }
-        .cardTurmaBtnTexto { 
-          display: flex; 
-          flex-direction: column; 
-          text-align: left; 
-        }
-        .cardTurmaBtnTitulo { 
-          font-family: "Inter", sans-serif; 
-          font-size: 13px; 
-          font-weight: 700; 
-          color: #005A63; 
-        }
-        .cardTurmaBtnSub{ 
-          font-family: "Inter", sans-serif; 
-          font-size: 11px; 
-          font-weight: 300; 
-          color: rgba(0,90,99,0.6); 
-        }
+.cardTurmaNome {
+  font-family: "Inter", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
 
-        .cardTurmaBtn2 {
-          display: flex;
-          align-items: center;
-          text-align: center;
-          justify-content: space-between;
-          background-color: transparent;
-          border: 1px solid rgba(253,253,248,0.3);
-          border-radius: 12px;
-          padding: 11px 14px;
-          cursor: pointer;
-          transition: all 0.2s ease-in-out;
-          gap: 8px;
-          width: 90%;
-        }
-        .cardTurmaBtn2:hover {
-           transform: translateY(-3px); 
-        }
-        .cardTurmaBtnLeft2 { 
-          display: flex; 
-          align-items: center; 
-          justify-content: center;
-          gap: 10px;
-        }
-        .cardTurmaBtnIcone2 {
-          display: flex; 
-          align-items: center; 
-          justify-content: center;
-          width: 35px; 
-          height: 35px;
-          background-color: rgba(255,221,210,0.34);
-          border-radius: 8px; 
-          color: #FFDDD2; 
-          flex-shrink: 0;
-        }
-        .cardTurmaBtnTexto2 { 
-          display: flex; 
-          flex-direction: column; 
-          text-align: left;
+.cardTurmaNome span {
+  color: #FFDDD2;
+  font-size: 24px;
+}
 
-        }
+.cardTurmaDesc {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+  max-width: 300px;
+}
 
-        .cardTurmaTituloPrincipal2{
-          display: flex;
-          gap: 10px;
-        }
+.cardTurmaStats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  color: #FFDDD2 !important;
+}
 
-        .cardTurmaBtnTitulo2 { 
-          display: flex;
-          gap: 14px;
-          font-family: "Inter", sans-serif; 
-          font-size: 13px; 
-          font-weight: 700; 
-          color: #FFDDD2; 
-        }
+.cardTurmaStat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
 
-        .cardTurmaQtdPend{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 18px;
-          height: 18px;
-          background-color: #FFDDD2;
-          color: #005A63;
-          font-family: "Inter", sans-serif; 
-          font-weight: 500;
-          border-radius: 50%;
-          font-size: 12px;
-        }
+.cardTurmaRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 210px;
+}
 
-        .cardTurmaBtnSub2{ 
-          font-family: "Inter", sans-serif; 
-          font-size: 11px; 
-          font-weight: 300; 
-          color: rgba(255,221,210,0.6); 
-        }
+.cardTurmaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  gap: 8px;
+  width: 100%;
+}
 
-        /* ── Slider matérias (substitui cardsAtalhos) ── */
-        .cardsAtalhos {
-          display: flex !important;
-          gap: 16px !important;
-          overflow-x: auto !important;
-          /* cursor: grab; */
-          padding-bottom: 8px;
-          -webkit-overflow-scrolling: touch;
-          user-select: none;
+.cardTurmaBtn:hover {
+  transform: translateY(-3px);
+}
 
-          width: 680px;
-        }
-        .cardsAtalhos::-webkit-scrollbar       { display: none; }
-        .cardsAtalhos::-webkit-scrollbar-thumb { background: #005A63; border-radius: 10px; }
-        .cardsAtalhos::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+.cardTurmaBtnLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-        /* ── Card Matéria (substitui cardAtl) ── */
-        .cardAtlMateria {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          flex-shrink: 0;
-          width: 185px;
-          min-height: 255px;
-          border-radius: 16px;
-          padding: 18px 16px;
-          position: relative;
-          margin-top: 10px;
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-        }
-        .cardAtlMateria:hover { transform: translateY(-6px); box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
+.cardTurmaBtnIcone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 90, 99, 0.27);
+  border-radius: 8px;
+  color: #005A63;
+  flex-shrink: 0;
+}
 
-        .cardAtlBadge {
-          position: absolute; top: 14px; right: 14px;
-          width: 28px; height: 28px; border-radius: 6px;
-          display: flex; align-items: center; justify-content: center;
-          font-family: "Inter", sans-serif; font-size: 12px; font-weight: 700; color: #fff;
-          background-color: #005A63;
-        }
-        .cardAtlNome {
-          font-family: "Inter", sans-serif; font-size: 14px; font-weight: 700;
-          margin: 0; line-height: 1.3; max-width: 120px;
-        }
-        .cardAtlIconeWrap {
-          flex: 1;
-          display: flex; align-items: center; justify-content: center;
-          width: 100%; pointer-events: none;
-        }
-        .cardAtlIconeCircle {
-          width: 80px; height: 80px; border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-        }
-        .cardAtlBtn {
-          width: 100%; height: 38px; border: none; border-radius: 10px;
-          font-family: "Inter", sans-serif; font-size: 14px; font-weight: 700; color: #FFDDD2;
-          cursor: pointer; transition: opacity 0.2s; margin-top: auto;
-        }
-        .cardAtlBtn:hover { opacity: 0.88; }
+.cardTurmaBtnTexto {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.cardTurmaBtnTitulo {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #005A63;
+}
+
+.cardTurmaBtnSub {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(0, 90, 99, 0.6);
+}
+
+.cardTurmaBtn2 {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  background-color: transparent;
+  border: 1px solid rgba(253, 253, 248, 0.3);
+  border-radius: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  gap: 8px;
+  width: 90%;
+}
+
+.cardTurmaBtn2:hover {
+  transform: translateY(-3px);
+}
+
+.cardTurmaBtnLeft2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cardTurmaBtnIcone2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: rgba(255, 221, 210, 0.34);
+  border-radius: 8px;
+  color: #FFDDD2;
+  flex-shrink: 0;
+}
+
+.cardTurmaBtnTexto2 {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+}
+
+.cardTurmaTituloPrincipal2 {
+  display: flex;
+  gap: 10px;
+}
+
+.cardTurmaBtnTitulo2 {
+  display: flex;
+  gap: 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFDDD2;
+}
+
+.cardTurmaQtdPend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background-color: #FFDDD2;
+  color: #005A63;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.cardTurmaBtnSub2 {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255, 221, 210, 0.6);
+}
+
+/* ── Slider matérias (substitui cardsAtalhos) ── */
+.cardsAtalhos {
+  display: flex !important;
+  gap: 16px !important;
+  overflow-x: auto !important;
+  padding-bottom: 2px;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  width: 680px;
+}
+
+.cardsAtalhos::-webkit-scrollbar {
+  display: none;
+}
+
+.cardsAtalhos::-webkit-scrollbar-thumb {
+  background: #005A63;
+  border-radius: 10px;
+}
+
+.cardsAtalhos::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* ── Card Matéria (substitui cardAtl) ── */
+.cardAtlMateria {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  width: 185px;
+  min-height: 255px;
+  border-radius: 16px;
+  padding: 18px 16px;
+  position: relative;
+  margin-top: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.cardAtlMateria:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.cardAtlBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #005A63;
+}
+
+.cardAtlNome {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+  max-width: 120px;
+}
+
+.cardAtlIconeWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+.cardAtlIconeCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardAtlBtn {
+  width: 100%;
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFDDD2;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: auto;
+}
+
+.cardAtlBtn:hover {
+  opacity: 0.88;
+}
 
 /* =============================================
    RESPONSIVO — TELAS MÉDIAS (1025px – 1280px)
    Cobre o gap entre desktop e o breakpoint 1024px
    ============================================= */
 
-  @media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
 
-    /* ── LOGIN ──────────────────────────────────── */
-    .containerLogin {
-      gap: 160px;
-    }
-
-    .principal-info-right {
-      max-width: 360px;
-      padding: 90px 24px 40px;
-      gap: 30px;
-    }
-
-    .principal-info-right-title {
-      font-size: 40px;
-      width: 310px;
-    }
-
-    .principal-info-right-description {
-      font-size: 14px;
-      width: 290px;
-    }
-
-    .principal-platform-title {
-      width: 240px;
-      font-size: 13px;
-    }
-
-    .logins {
-      padding: 50px 16px;
-      gap: 50px;
-    }
-
-    .formLogin { gap: 36px; }
-    .form-header-text-login h2 { font-size: 26px; }
-    .conjEmail, .conjSenha { width: 280px; }
-
-    /* ── CADASTRO ───────────────────────────────── */
-    .containerCadastro { gap: 120px; }
-
-    .Cadastro {
-      width: 680px;
-      padding: 20px 16px;
-      gap: 26px;
-    }
-
-    .form-header-text-cadastro { width: 570px; }
-    .form-header-text-cadastro h2 { font-size: 26px; }
-    .formCadastro { padding: 0 40px; gap: 18px; }
-
-    .dadosCad1, .dadosCad2 {
-      gap: 18px;
-      width: 47%;
-    }
-
-    .uploadGroup {height: 34px;}
-    .uploadLabel {font-size: 16px;}
-    .uploadBox { height: 40px; width: 150px;}
-    .submitCadastrar{width: 170px; height: 45px ;font-size: 20px;}
-
-
-    /* ── NAV LATERAL ────────────────────────────── */
-    .navLateral.aberta  { width: 210px; }
-    .navLateral.fechada { width: 72px; }
-
-    .navItem { width: 180px; font-size: 16px; height: 65px; }
-    .navLateral.aberta .navItem:not(.sair):hover { width: 148px; }
-
-    /* ── CONTEÚDO PRINCIPAL ─────────────────────── */
-    .conteudoPrincipal { padding: 28px 48px; }
-    .conteudoPrincipal.recolhido  { margin-left: 72px; }
-    .conteudoPrincipal.expandido  { margin-left: 210px; }
-
-    /* ── NAVBAR INTERNA ─────────────────────────── */
-    .buscaBox { width: 260px; }
-    .userInfo { max-width: 240px; }
-    .textUser { max-width: 140px; font-size: 14px; }
-    .infoHeaderTitle { font-size: 18px; }
-
-    /* ── HOME ───────────────────────────────────── */
-    .homeContainer { gap: 24px; }
-    .homeMain { gap: 70px; }
-
-    .cardHome {
-      width: 175px;
-      height: 110px;
-    }
-
-    .titleCardHome { font-size: 15px; }
-    .qtdCard { font-size: 24px; }
-    .iconCard { height: 42px; width: 42px; }
-
-    .cardAtl {
-      width: 175px;
-      height: 260px;
-      padding: 28px 0;
-    }
-
-    .iconName { height: 70px; width: 70px; }
-    .titleAtalhos { width: 165px; font-size: 14px; }
-
-    /* ── LADO DIREITO (calendário + eventos) ────── */
-    .homeSide { width: 320px; }
-    .calendar-wrapper { padding: 12px 18px 52px 18px; }
-    .events-container { width: 320px; height: 155px; }
-
-    /* ── SEARCH BAR / TABELA ────────────────────── */
-    .searchActionBar { margin: 24px 0; gap: 14px; }
-    .searchBox { width: 300px; }
-
-    .customTable th,
-    .customTable td { padding: 14px 14px; font-size: 14px; }
-
-    /* ── MODAIS ─────────────────────────────────── */
-    .modalContentProf,
-    .modalContentAluno,
-    .modalContentTurma {
-      width: 88%;
-      max-width: 720px;
-      padding: 28px 22px;
-    }
-
-    .formCadastroProf,
-    .formCadastroAluno,
-    .formCadastroTurma { padding: 0 40px; gap: 16px; }
-
-    .submitCadastrarProf,
-    .submitCadastrarAluno { width: 250px; font-size: 20px; }
-
-    /* ── PLANO DE AULA ──────────────────────────── */
-    .planoOpcaoCard { padding: 18px 22px; gap: 14px; }
-    .planoOpcaoIcone { width: 48px; height: 48px; }
-    .planoOpcaoTitulo { font-size: 15px; }
-    .planoFormRow { gap: 30px; }
-    .planoFormCard { padding: 26px 24px; }
+  /* ── LOGIN ──────────────────────────────────── */
+  .containerLogin {
+    gap: 160px;
   }
+
+  .principal-info-right {
+    max-width: 360px;
+    padding: 90px 24px 40px;
+    gap: 30px;
+  }
+
+  .principal-info-right-title {
+    font-size: 40px;
+    width: 310px;
+  }
+
+  .principal-info-right-description {
+    font-size: 14px;
+    width: 290px;
+  }
+
+  .principal-platform-title {
+    width: 240px;
+    font-size: 13px;
+  }
+
+  .logins {
+    padding: 50px 16px;
+    gap: 50px;
+  }
+
+  .formLogin {
+    gap: 36px;
+  }
+
+  .form-header-text-login h2 {
+    font-size: 26px;
+  }
+
+  .conjEmail,
+  .conjSenha {
+    width: 280px;
+  }
+
+  /* ── CADASTRO ───────────────────────────────── */
+  .containerCadastro {
+    gap: 120px;
+  }
+
+  .Cadastro {
+    width: 680px;
+    padding: 20px 16px;
+    gap: 26px;
+  }
+
+  .form-header-text-cadastro {
+    width: 570px;
+  }
+
+  .form-header-text-cadastro h2 {
+    font-size: 26px;
+  }
+
+  .formCadastro {
+    padding: 0 40px;
+    gap: 18px;
+  }
+
+  .dadosCad1,
+  .dadosCad2 {
+    gap: 18px;
+    width: 47%;
+  }
+
+  .uploadGroup {
+    height: 34px;
+  }
+
+  .uploadLabel {
+    font-size: 16px;
+  }
+
+  .uploadBox {
+    height: 40px;
+    width: 150px;
+  }
+
+  .submitCadastrar {
+    width: 170px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+
+  /* ── NAV LATERAL ────────────────────────────── */
+  .navLateral.aberta {
+    width: 210px;
+  }
+
+  .navLateral.fechada {
+    width: 72px;
+  }
+
+  .navItem {
+    width: 180px;
+    font-size: 16px;
+    height: 65px;
+  }
+
+  .navLateral.aberta .navItem:not(.sair):hover {
+    width: 148px;
+  }
+
+  /* ── CONTEÚDO PRINCIPAL ─────────────────────── */
+  .conteudoPrincipal {
+    padding: 28px 48px;
+  }
+
+  .conteudoPrincipal.recolhido {
+    margin-left: 72px;
+  }
+
+  .conteudoPrincipal.expandido {
+    margin-left: 210px;
+  }
+
+  /* ── NAVBAR INTERNA ─────────────────────────── */
+  .buscaBox {
+    width: 260px;
+  }
+
+  .userInfo {
+    max-width: 240px;
+  }
+
+  .textUser {
+    max-width: 140px;
+    font-size: 14px;
+  }
+
+  .infoHeaderTitle {
+    font-size: 18px;
+  }
+
+  /* ── HOME ───────────────────────────────────── */
+  .homeContainer {
+    gap: 24px;
+  }
+
+  .homeMain {
+    gap: 70px;
+  }
+
+  .cardHome {
+    width: 175px;
+    height: 110px;
+  }
+
+  .titleCardHome {
+    font-size: 15px;
+  }
+
+  .qtdCard {
+    font-size: 24px;
+  }
+
+  .iconCard {
+    height: 42px;
+    width: 42px;
+  }
+
+  .cardAtl {
+    width: 185px;
+    height: 260px;
+    padding: 28px 0;
+  }
+
+  .iconName {
+    height: 70px;
+    width: 70px;
+  }
+
+  .titleAtalhos {
+    width: 165px;
+    font-size: 14px;
+  }
+
+  /* ── LADO DIREITO (calendário + eventos) ────── */
+  .homeSide {
+    width: 320px;
+  }
+
+  .calendar-wrapper {
+    padding: 12px 18px 52px 18px;
+  }
+
+  .events-container {
+    width: 320px;
+    height: 155px;
+  }
+
+  /* ── SEARCH BAR / TABELA ────────────────────── */
+  .searchActionBar {
+    margin: 24px 0;
+    gap: 14px;
+  }
+
+  .searchBox {
+    width: 300px;
+  }
+
+  .customTable th,
+  .customTable td {
+    padding: 14px 14px;
+    font-size: 14px;
+  }
+
+  /* ── MODAIS ─────────────────────────────────── */
+  .modalContentProf,
+  .modalContentAluno,
+  .modalContentTurma {
+    width: 88%;
+    max-width: 720px;
+    padding: 28px 22px;
+  }
+
+  .formCadastroProf,
+  .formCadastroAluno,
+  .formCadastroTurma {
+    padding: 0 40px;
+    gap: 16px;
+  }
+
+  .submitCadastrarProf,
+  .submitCadastrarAluno {
+    width: 250px;
+    font-size: 20px;
+  }
+
+  /* ── PLANO DE AULA ──────────────────────────── */
+  .planoOpcaoCard {
+    padding: 18px 22px;
+    gap: 14px;
+  }
+
+  .planoOpcaoIcone {
+    width: 48px;
+    height: 48px;
+  }
+
+  .planoOpcaoTitulo {
+    font-size: 15px;
+  }
+
+  .planoFormRow {
+    gap: 30px;
+  }
+
+  .planoFormCard {
+    padding: 26px 24px;
+  }
+}
 
 
 /* =============================================
@@ -2611,12 +2819,17 @@ html, body {
 @media (max-width: 1024px) {
 
   /* ── NAV TOPO ─────────────────────────────── */
-  .navTitulo { padding: 20px; }
-  .navTitulo p { font-size: 22px; }
+  .navTitulo {
+    padding: 20px;
+  }
+
+  .navTitulo p {
+    font-size: 22px;
+  }
 
   /* ── LOGIN — painel verde menor, mantém lateral ── */
-  .containerLogin { 
-    gap: 60px; 
+  .containerLogin {
+    gap: 60px;
   }
 
   .principal-info-right {
@@ -2645,11 +2858,18 @@ html, body {
     gap: 50px;
   }
 
-  .formLogin { gap: 32px; }
+  .formLogin {
+    gap: 32px;
+  }
 
-  .form-header-text-login h2 { font-size: 24px; }
+  .form-header-text-login h2 {
+    font-size: 24px;
+  }
 
-  .conjEmail, .conjSenha { width: 260px; }
+  .conjEmail,
+  .conjSenha {
+    width: 260px;
+  }
 
   /* ── CADASTRO — painel verde menor, mantém lateral ── */
   .containerCadastro {
@@ -2657,67 +2877,105 @@ html, body {
     align-items: center;
     /* overflow-y: auto;         permite scroll se ainda não couber */
   }
- 
+
   .Cadastro {
     width: 580px;
-    max-height: none;         /* remove o limite que estava cortando */
+    max-height: none;
+    /* remove o limite que estava cortando */
     gap: 30px;
-    padding: 30px 16px 40px;  /* respiro embaixo pro link não sobrepor */
+    padding: 30px 16px 40px;
+    /* respiro embaixo pro link não sobrepor */
   }
- 
+
   .form-header-text-cadastro {
     width: 100%;
     max-width: 520px;
   }
- 
+
   .formCadastro {
     padding: 0 20px;
     gap: 16px;
     /* align-items: flex-start;  evita centralização que bagunça o layout */
   }
- 
+
   .dadosCadGeral {
     width: 100%;
     gap: 20px;
   }
- 
+
   .dadosCad1,
   .dadosCad2 {
     width: 48%;
     gap: 14px;
   }
- 
+
   /* O footer-text (link "Já possui conta?") precisa ficar fora do form */
   .footer-text {
-    margin-top: 10px;   /* garante espaço abaixo do upload */
-    position: static;   /* remove qualquer posicionamento que cause sobreposição */
+    margin-top: 10px;
+    /* garante espaço abaixo do upload */
+    position: static;
+    /* remove qualquer posicionamento que cause sobreposição */
     z-index: auto;
   }
 
   /* ── NAV LATERAL ──────────────────────────── */
-  .navLateral.aberta  { width: 190px; }
-  .navLateral.fechada { width: 64px; }
+  .navLateral.aberta {
+    width: 190px;
+  }
 
-  .navItem { width: 160px; font-size: 14px; height: 60px; }
-  .navLateral.aberta .navItem:not(.sair):hover { width: 130px; }
+  .navLateral.fechada {
+    width: 64px;
+  }
+
+  .navItem {
+    width: 160px;
+    font-size: 14px;
+    height: 60px;
+  }
+
+  .navLateral.aberta .navItem:not(.sair):hover {
+    width: 130px;
+  }
 
   /* ── CONTEÚDO PRINCIPAL ───────────────────── */
-  .conteudoPrincipal { padding: 24px 32px; }
-  .conteudoPrincipal.recolhido  { margin-left: 64px; }
+  .conteudoPrincipal {
+    padding: 24px 32px;
+  }
+
+  .conteudoPrincipal.recolhido {
+    margin-left: 64px;
+  }
+
   .conteudoPrincipal.expandido {
     margin-left: 190px;
     overflow-x: hidden;
   }
 
   /* ── NAVBAR INTERNA ───────────────────────── */
-  .NavBarCompleta { gap: 10px; }
-  .buscaBox { width: 200px; }
-  .userInfo { max-width: 200px; }
-  .textUser { max-width: 110px; font-size: 13px; }
-  .infoHeaderTitle { font-size: 17px; }
+  .NavBarCompleta {
+    gap: 10px;
+  }
+
+  .buscaBox {
+    width: 200px;
+  }
+
+  .userInfo {
+    max-width: 200px;
+  }
+
+  .textUser {
+    max-width: 110px;
+    font-size: 13px;
+  }
+
+  .infoHeaderTitle {
+    font-size: 17px;
+  }
 
   .homeContainer {
-    flex-wrap: wrap;        /* permite quebrar se não couber */
+    flex-wrap: wrap;
+    /* permite quebrar se não couber */
     gap: 16px;
     width: 100%;
     overflow-x: hidden;
@@ -2725,7 +2983,7 @@ html, body {
 
   .homeMain {
     flex: 1;
-    min-width: 0;           /* impede que estoure o pai */
+    min-width: 0;
     overflow: hidden;
   }
 
@@ -2735,39 +2993,42 @@ html, body {
     width: 150px;
   }
 
-  .titleCardHome{
+  .titleCardHome {
     font-size: 14px;
   }
 
-  .qtdCard{
+  .qtdCard {
     font-size: 22px;
   }
 
-  .iconCard{
+  .iconCard {
     height: 40px;
     width: 40px;
   }
 
-  .iconName{
+  .iconName {
     height: 60px;
     width: 60px;
   }
 
-  .titleAtalhos{
+  .titleAtalhos {
     margin-top: 25px;
     width: 160px;
     font-size: 12px;
   }
-  
+
   .cardsAtalhos {
-    flex-wrap: nowrap;      /* mantém na mesma linha */
+    flex-wrap: nowrap;
+    /* mantém na mesma linha */
     gap: 14px;
     width: 100%;
   }
 
   .cardAtl {
-    flex: 1;                /* cresce/encolhe igual os cards de cima */
-    min-width: 0;           /* permite encolher abaixo do conteúdo */
+    flex: 1;
+    /* cresce/encolhe igual os cards de cima */
+    min-width: 0;
+    /* permite encolher abaixo do conteúdo */
     width: auto;
     max-width: none;
     height: 240px;
@@ -2792,7 +3053,8 @@ html, body {
   .homeSide {
     width: 100%;
     max-width: 300px;
-    flex-shrink: 1;         /* deixa encolher quando nav abre */
+    flex-shrink: 1;
+    /* deixa encolher quando nav abre */
     min-width: 0;
   }
 
@@ -2802,7 +3064,7 @@ html, body {
     overflow: hidden;
   }
 
-    .calendar-month table {
+  .calendar-month table {
     table-layout: fixed;
     width: 100%;
   }
@@ -2818,19 +3080,65 @@ html, body {
     max-width: 300px;
   }
 
-  .events-container { width: 300px; height: 130px;}
-  .events-title{
+  .events-container {
+    width: 300px;
+    height: 130px;
+  }
+
+  .events-title {
     font-size: 14px;
   }
 
+  .homeContainer--prof .homeMain {
+    gap: 20px !important;
+  }
+
+  .homeContainer--prof .atalhosPrincipais {
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .homeContainer--prof .cardAtlMateria {
+    margin-top: 0 !important;
+    flex-shrink: 0 !important;
+    width: 170px !important;
+    min-height: 190px !important;
+  }
+
+  .homeContainer--prof .cardAtlNome {
+    font-size: 11px !important;
+  }
+
+  .homeContainer--prof .cardAtlIconeCircle {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .homeContainer--prof .cardAtlBtn {
+    font-size: 12px !important;
+    height: 32px !important;
+  }
+
   /* ── SEARCH BAR / TABELA ──────────────────── */
-  .searchActionBar { margin: 18px 0; gap: 10px; }
-  .searchBox { width: 240px; }
+  .searchActionBar {
+    margin: 18px 0;
+    gap: 10px;
+  }
+
+  .searchBox {
+    width: 240px;
+  }
 
   .customTable th,
-  .customTable td { padding: 12px 12px; font-size: 13px; }
+  .customTable td {
+    padding: 12px 12px;
+    font-size: 13px;
+  }
 
-  .fotoPessoa { width: 28px; height: 28px; }
+  .fotoPessoa {
+    width: 28px;
+    height: 28px;
+  }
 
   /* ── MODAIS (mantém layout de 2 colunas) ──── */
   .modalContentProf,
@@ -2843,33 +3151,70 @@ html, body {
 
   .formCadastroProf,
   .formCadastroAluno,
-  .formCadastroTurma { padding: 0 20px; gap: 14px; }
+  .formCadastroTurma {
+    padding: 0 20px;
+    gap: 14px;
+  }
 
   /* Colunas internas dos modais mantêm lado a lado */
   .dadosCadGeralProf,
   .dadosCadGeralAluno,
-  .dadosCadGeralTurma { gap: 20px; }
+  .dadosCadGeralTurma {
+    gap: 20px;
+  }
 
   .submitCadastrarProf,
-  .submitCadastrarAluno { width: 230px; font-size: 18px; }
+  .submitCadastrarAluno {
+    width: 230px;
+    font-size: 18px;
+  }
 
-  .modalContentDelete { width: 88%; max-width: 340px; }
-  .modalContentEvents { width: 88%; max-width: 420px; }
+  .modalContentDelete {
+    width: 88%;
+    max-width: 340px;
+  }
+
+  .modalContentEvents {
+    width: 88%;
+    max-width: 420px;
+  }
 
   /* ── CALENDÁRIO ───────────────────────────── */
-  .calendar-weekday, .calendar-day { width: 30px; height: 15px; }
+  .calendar-weekday,
+  .calendar-day {
+    width: 30px;
+    height: 15px;
+  }
+
   .calendar-nav {
     top: 10px;
   }
-  .calendar-caption{
+
+  .calendar-caption {
     font-size: 13px;
   }
 
-  .planoOpcaoCard { padding: 16px 18px; gap: 12px; }
-  .planoOpcaoIcone { width: 44px; height: 44px; }
-  .planoOpcaoTitulo { font-size: 14px; }
-  .planoFormRow { gap: 24px; }
-  .planoFormCard { padding: 24px 20px; }
+  .planoOpcaoCard {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+
+  .planoOpcaoIcone {
+    width: 44px;
+    height: 44px;
+  }
+
+  .planoOpcaoTitulo {
+    font-size: 14px;
+  }
+
+  .planoFormRow {
+    gap: 24px;
+  }
+
+  .planoFormCard {
+    padding: 24px 20px;
+  }
 
   .cardsPrincipal {
     display: flex;
@@ -2899,7 +3244,8 @@ html, body {
 
   .cardsAtalhos {
     width: 100% !important;
-    flex-wrap: nowrap !important;   /* impede quebra de linha */
+    flex-wrap: nowrap !important;
+    /* impede quebra de linha */
     overflow-x: auto !important;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -2910,7 +3256,9 @@ html, body {
   }
 
   .cardAtlMateria {
-    flex-shrink: 0 !important;     /* impede o card de encolher e quebrar */
+    margin-top: 0 !important;
+    flex-shrink: 0 !important;
+    /* impede o card de encolher e quebrar */
     width: 160px !important;
     min-height: 230px !important;
   }
@@ -2926,9 +3274,11 @@ html, body {
 @media (max-width: 768px) {
 
   /* Login — painel verde MANTÉM lateral */
-  .containerLogin { gap: 20px; }
+  .containerLogin {
+    gap: 20px;
+  }
 
-  .inputLabel{
+  .inputLabel {
     font-size: 16px;
   }
 
@@ -2939,26 +3289,69 @@ html, body {
     gap: 20px;
   }
 
-  .principal-platform-title{
+  .principal-platform-title {
     gap: 10px;
   }
-  .principal-platform-title p{ font-size: 10px; }
-  /* .principal-info-right{ gap: 50px; } */
-  .principal-info-right-title { font-size: 22px; width: 210px; }
-  .principal-info-right-description { font-size: 12px; width: 210px;}
-  .principal-info-right-opcs{ margin-top: 40px;}
-  .principal-info-right-opc{ font-size: 12px;}
-  .principal-platform-title { width: 180px; font-size: 11px; }
 
-  .logins { padding: 70px 12px; gap: 30px; }
-  .formLogin { gap: 24px; }
-  .form-header-text-login h2 { font-size: 20px; }
-  .form-header-text-login { width: 300px; }
-  .conjEmail, .conjSenha { width: 100%; }
-  .submitLogin { width: 110px; font-size: 17px; }
+  .principal-platform-title p {
+    font-size: 10px;
+  }
+
+  /* .principal-info-right{ gap: 50px; } */
+  .principal-info-right-title {
+    font-size: 22px;
+    width: 210px;
+  }
+
+  .principal-info-right-description {
+    font-size: 12px;
+    width: 210px;
+  }
+
+  .principal-info-right-opcs {
+    margin-top: 40px;
+  }
+
+  .principal-info-right-opc {
+    font-size: 12px;
+  }
+
+  .principal-platform-title {
+    width: 180px;
+    font-size: 11px;
+  }
+
+  .logins {
+    padding: 70px 12px;
+    gap: 30px;
+  }
+
+  .formLogin {
+    gap: 24px;
+  }
+
+  .form-header-text-login h2 {
+    font-size: 20px;
+  }
+
+  .form-header-text-login {
+    width: 300px;
+  }
+
+  .conjEmail,
+  .conjSenha {
+    width: 100%;
+  }
+
+  .submitLogin {
+    width: 110px;
+    font-size: 17px;
+  }
 
   /* Cadastro — painel verde MANTÉM lateral */
-  .containerCadastro { gap: 30px; }
+  .containerCadastro {
+    gap: 30px;
+  }
 
   .Cadastro {
     max-height: 550px;
@@ -2967,20 +3360,56 @@ html, body {
     gap: 30px;
   }
 
-  .form-header-text-cadastro { width: 420px; }
-  .form-header-text-cadastro h2 { font-size: 20px; }
-  .formCadastro { padding: 0 14px; gap: 10px; }
-  .dadosCad1, .dadosCad2 { gap: 5px; }
-  .uploadGroup {height: 40px;}
-  .uploadLabel {font-size: 14px;}
-  .uploadBox { height: 30px; width: 80px;}
-  .submitCadastrar{width: 120px; height: 40px ;font-size: 18px;}
+  .form-header-text-cadastro {
+    width: 420px;
+  }
+
+  .form-header-text-cadastro h2 {
+    font-size: 20px;
+  }
+
+  .formCadastro {
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .dadosCad1,
+  .dadosCad2 {
+    gap: 5px;
+  }
+
+  .uploadGroup {
+    height: 40px;
+  }
+
+  .uploadLabel {
+    font-size: 14px;
+  }
+
+  .uploadBox {
+    height: 30px;
+    width: 180px;
+  }
+
+  .formCadastro .uploadBox{
+    width: 80px;
+  }
+
+  .submitCadastrar {
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+  }
 
   /* Nav lateral — recolhida mas presente */
-  .conteudoPrincipal.expandido { margin-left: 190px; }
+  .conteudoPrincipal.expandido {
+    margin-left: 190px;
+  }
 
   /* Conteúdo */
-  .conteudoPrincipal { padding: 16px 12px; }
+  .conteudoPrincipal {
+    padding: 16px 12px;
+  }
 
   /* Home */
   .homeContainer {
@@ -3019,54 +3448,99 @@ html, body {
   }
 
   .homeSide {
-  width: 100%;
-  max-width: 350px;
-}
+    width: 100%;
+    max-width: 100%;
+  }
 
-.calendar-wrapper {
-  width: 100% !important;
-  max-width: 100% !important;
-}
+  .calendar-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 
-.events-container {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  min-height: 180px;
-}
+  .events-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 120px;
+    max-height: 280px;
+  }
 
+  .events-list {
+    overflow-y: auto;
+    max-height: 200px;
+  }
+
+  .calendar-day-today,
+  .calendar-day-selected {
+    border-radius: 50% !important;
+    width: 36px !important;
+    height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  .calendar-month td {
+    width: 40px !important;
+    height: 40px !important;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0 !important;
+  }
+
+  /* garante que o botão interno também seja redondo */
   .calendar-day {
     width: 36px !important;
     height: 36px !important;
     border-radius: 50% !important;
-    margin: 0 auto;
+    margin: 0 auto !important;
   }
 
-  .calendar-month td {
-    width: auto;
-    height: 40px;
-    text-align: center;
-    vertical-align: middle;
-  }
 
   /* Modais */
   .modalContentProf,
   .modalContentAluno,
-  .modalContentTurma { width: 92%; padding: 20px 14px; }
+  .modalContentTurma {
+    width: 95%;
+    padding: 16px 10px;
+  }
 
   .dadosCadGeralProf,
   .dadosCadGeralAluno,
-  .dadosCadGeralTurma { flex-direction: column; gap: 14px; }
+  .dadosCadGeralTurma {
+    flex-direction: row;
+    gap: 16px;
+  }
 
-  .dadosCad3, .dadosCad4,
-  .dadosCad5, .dadosCad6,
-  .dadosCad7 { width: 100%; }
+  .dadosCad3,
+  .dadosCad4,
+  .dadosCad5,
+  .dadosCad6,
+  .dadosCad7 {
+    width: 48%;
+    flex-direction: column;
+    gap: 14px;
+  }
 
-  .planoOpcoes { flex-direction: column; }
-  .planoFormRow { flex-direction: column; gap: 16px; }
+  .formCadastroProf,
+  .formCadastroAluno,
+  .formCadastroTurma {
+    padding: 0 10px !important;
+    gap: 10px !important;
+  }
+
+  .planoOpcoes {
+    flex-direction: column;
+  }
+
+  .planoFormRow {
+    flex-direction: column;
+    gap: 16px;
+  }
 
 
-  .atalhosPrincipais{
+  .atalhosPrincipais {
     display: flex !important;
     justify-content: center;
     width: 100%;
@@ -3074,28 +3548,33 @@ html, body {
     padding: 0 !important;
     background-color: transparent !important;
   }
-  .cardTurma{
+
+  .cardTurma {
     width: 100%;
   }
-  .cardTurmaRight { width: 100%; }
-  .cardAtlMateria { width: 148px; min-height: 210px; }
+
+  .cardTurmaRight {
+    width: 100%;
+  }
+
+  .cardAtlMateria {
+    width: 148px;
+    min-height: 210px;
+  }
 
   .cardsPrincipal {
-  display: flex !important;
-  justify-content: center;
-  width: 100%;
-  height: auto !important;
-  padding: 0 !important;
-  background-color: transparent !important;
-}
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    height: auto !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+  }
 
-.cardTurma {
-  width: 100%;
-  max-width: 700px;
-}
+  .cardTurma {
+    width: 100%;
+    max-width: 700px;
+  }
 
-/* Matérias — centraliza quando tiver poucos cards */
-.cardsAtalhos {
-  justify-content: center;
-}
+
 }
