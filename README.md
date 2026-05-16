@@ -73,9 +73,9 @@ O front consome uma API REST em Node.js. As principais rotas esperadas são:
 
 | Método | Rota | Descrição |
 |--------|------|-----------|
-| POST | `/auth/login` | Login da escola |
-| POST | `/escolas/cadastro` | Cadastro da instituição |
-| GET | `/escola/resumo` | Totais de alunos, professores e turmas |
+| POST | `/login` | Login da escola |
+| GET | `/escolas/estatisticas` | Totais de alunos, professores e turmas |
+| GET/POST/PUT/DELETE | `/escolas` | CRUD da instituição |
 | GET/POST/PUT/DELETE | `/professores` | CRUD de professores |
 | GET/POST/PUT/DELETE | `/alunos` | CRUD de alunos |
 | GET/POST/PUT/DELETE | `/turmas` | CRUD de turmas |
