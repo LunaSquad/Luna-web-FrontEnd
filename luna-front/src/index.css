@@ -47,7 +47,6 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   gap: 250px;
   overflow: hidden;
 }
@@ -283,7 +282,6 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   gap: 150px;
   overflow: hidden;
 }
@@ -905,14 +903,12 @@ body {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.4);
-  /* fundo cinza */
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   z-index: 999;
-  /* fica na frente de tudo */
 }
 
 .modalContentAluno {
@@ -1003,14 +999,12 @@ body {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.4);
-  /* fundo cinza */
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   z-index: 999;
-  /* fica na frente de tudo */
 }
 
 .modalContentTurma {
@@ -1275,7 +1269,6 @@ body {
   font-style: normal;
   color: #000000;
   max-width: 180px;
-  /* controla o limite */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1379,7 +1372,6 @@ body {
 
 .cardAtl {
   display: flex;
-  /* justify-content: center; */
   padding: 35px 0px;
   align-items: center;
   text-align: center;
@@ -1433,7 +1425,6 @@ body {
 
 .homeSide {
   width: 350px;
-  /* Ajuste a largura conforme a necessidade */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1466,7 +1457,6 @@ body {
   color: #111827;
   padding: 10px 0px;
   text-transform: capitalize;
-  /* border-bottom: 2px solid rgba(0, 0, 0, 0.24);  */
 }
 
 
@@ -1492,7 +1482,6 @@ body {
   justify-content: center;
   cursor: pointer;
   color: #005A63;
-  /* O verde petróleo da imagem */
   transition: all 0.2s ease;
 }
 
@@ -1515,11 +1504,9 @@ body {
   margin-top: 0px;
   border-collapse: separate;
   border-spacing: 0 2px;
-  /* Espaço entre as linhas */
   display: block;
 }
 
-/* 5. Dias da Semana (Dom, Seg...) */
 .calendar-weekday {
   color: #9ca3af;
   font-size: 0.85rem;
@@ -1531,7 +1518,6 @@ body {
   font-weight: 500;
 }
 
-/* 6. Estilo Individual dos Dias */
 .calendar-day {
   width: 45px;
   height: 45px;
@@ -1582,14 +1568,12 @@ body {
   padding: 0;
 }
 
-/* Dia Selecionado (Destaque Verde) */
 .calendar-day-selected {
   background-color: #004d4d !important;
   color: white !important;
   font-weight: 600;
 }
 
-/* Dia Atual */
 .calendar-day-today {
   font-weight: bold;
   background-color: #004d4d;
@@ -1600,7 +1584,6 @@ body {
   font-weight: bold;
 }
 
-/* Dias fora do mês */
 .calendar-day-outside {
   color: #d1d5db !important;
   opacity: 0.8;
@@ -2156,7 +2139,6 @@ body {
   background-color: #005A63;
   width: 20px;
   height: 20px;
-  /* font-size: 16px; */
   border-radius: 50%;
   color: white;
 }
@@ -2429,7 +2411,6 @@ body {
   color: rgba(255, 221, 210, 0.6);
 }
 
-/* ── Slider matérias ── */
 .cardsAtalhos {
   display: flex !important;
   gap: 16px !important;
@@ -3197,7 +3178,7 @@ body {
     font-size: 22px;
   }
 
-  /* ── LOGIN — painel verde menor, mantém lateral ── */
+  /* ── LOGIN  ── */
   .containerLogin {
     gap: 60px;
   }
@@ -3245,7 +3226,6 @@ body {
   .containerCadastro {
     gap: 60px;
     align-items: center;
-    /* overflow-y: auto; */
   }
 
   .Cadastro {
@@ -3263,7 +3243,6 @@ body {
   .formCadastro {
     padding: 0 20px;
     gap: 16px;
-    /* align-items: flex-start;  evita centralização que bagunça o layout */
   }
 
   .dadosCadGeral {
@@ -3350,8 +3329,6 @@ body {
     min-width: 0;
     overflow: hidden;
   }
-
-  /* .cardsPrincipais { flex-wrap: wrap; gap: 14px; } */
 
   .cardHome {
     width: calc(50% - 7px);
@@ -3498,7 +3475,6 @@ body {
     height: 28px;
   }
 
-  /* ── MODAIS (mantém layout de 2 colunas) ──── */
   .modalContentProf,
   .modalContentAluno,
   .modalContentTurma {
@@ -3514,7 +3490,6 @@ body {
     gap: 14px;
   }
 
-  /* Colunas internas dos modais mantêm lado a lado */
   .dadosCadGeralProf,
   .dadosCadGeralAluno,
   .dadosCadGeralTurma {
@@ -3603,7 +3578,6 @@ body {
   .cardsAtalhos {
     width: 100% !important;
     flex-wrap: nowrap !important;
-    /* impede quebra de linha */
     overflow-x: auto !important;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -3616,7 +3590,6 @@ body {
   .cardAtlMateria {
     margin-top: 0 !important;
     flex-shrink: 0 !important;
-    /* impede o card de encolher e quebrar */
     width: 160px !important;
     min-height: 230px !important;
   }
@@ -3629,8 +3602,6 @@ body {
 
 /* ── TABLET PORTRAIT / 768px ─────────────────── */
 @media (max-width: 768px) {
-
-  /* Login */
   .containerLogin {
     gap: 20px;
   }
@@ -3653,8 +3624,6 @@ body {
   .principal-platform-title p {
     font-size: 10px;
   }
-
-  /* .principal-info-right{ gap: 50px; } */
 
   .principal-info-right-title {
     font-size: 22px;
@@ -3706,7 +3675,6 @@ body {
     font-size: 17px;
   }
 
-  /* Cadastro */
   .containerCadastro {
     gap: 30px;
   }
@@ -3759,7 +3727,6 @@ body {
     font-size: 18px;
   }
 
-  /* Nav lateral — recolhida mas presente */
   .conteudoPrincipal.expandido {
     margin-left: 190px;
   }
@@ -3932,6 +3899,5 @@ body {
     width: 100%;
     max-width: 700px;
   }
-
 
 }

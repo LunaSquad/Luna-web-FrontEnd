@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Input from "./input";
 import UploadImagem from "./buttonImage";
-import { api } from "../../services/api"; // Garanta que o import da API está correto
+import { api } from "../../services/api";
 
 interface FormProfessoresProps {
     dados?: any
@@ -39,59 +39,59 @@ export default function FormProfessores({ dados, onClose, onSalvo }: FormProfess
     }, [dados])
 
     async function handleSubmit(e: React.FormEvent) {
-        e.preventDefault()
-        setErro(null)
-        setCarregando(true)
+          e.preventDefault()
+          setErro(null)
+          setCarregando(true)
 
-        try {
-            const form = new FormData()
-            const isEdit = !!dados?._id
+          try {
+              const form = new FormData()
+              const isEdit = !!dados?._id
 
-            if (isEdit) {
-                form.append("nome", nome)
-                form.append("sobrenome", sobrenome)
-                form.append("cpf", cpf)
-                form.append("rg", rg)
-                form.append("cidade", cidade)
-                form.append("telefone", telefone)
+              if (isEdit) {
+                  form.append("nome", nome)
+                  form.append("sobrenome", sobrenome)
+                  form.append("cpf", cpf)
+                  form.append("rg", rg)
+                  form.append("cidade", cidade)
+                  form.append("telefone", telefone)
 
-                if (data) {
-                    form.append("dataNasc", `${data}T00:00:00Z`)
-                }
-                if (imagem) {
-                    form.append("foto", imagem)
-                }
-            } else {
-                form.append("dadosUsuario[email]", email)
-                if (senha) form.append("dadosUsuario[senha]", senha)
+                  if (data) {
+                      form.append("dataNasc", `${data}T00:00:00Z`)
+                  }
+                  if (imagem) {
+                      form.append("foto", imagem)
+                  }
+              } else {
+                  form.append("dadosUsuario[email]", email)
+                  if (senha) form.append("dadosUsuario[senha]", senha)
 
-                form.append("dadosProfessor[nome]", nome)
-                form.append("dadosProfessor[sobrenome]", sobrenome)
-                form.append("dadosProfessor[cpf]", cpf)
-                form.append("dadosProfessor[rg]", rg)
-                form.append("dadosProfessor[cidade]", cidade)
-                form.append("dadosProfessor[telefone]", telefone)
+                  form.append("dadosProfessor[nome]", nome)
+                  form.append("dadosProfessor[sobrenome]", sobrenome)
+                  form.append("dadosProfessor[cpf]", cpf)
+                  form.append("dadosProfessor[rg]", rg)
+                  form.append("dadosProfessor[cidade]", cidade)
+                  form.append("dadosProfessor[telefone]", telefone)
 
-                if (data) {
-                    form.append("dadosProfessor[dataNasc]", `${data}T00:00:00Z`)
-                }
-                if (imagem) {
-                    form.append("foto", imagem)
-                }
-            }
+                  if (data) {
+                      form.append("dadosProfessor[dataNasc]", `${data}T00:00:00Z`)
+                  }
+                  if (imagem) {
+                      form.append("foto", imagem)
+                  }
+              }
 
-            const url = isEdit ? `/professores/${dados._id}` : "/professores"
-            const method = isEdit ? "put" : "post"
+              const url = isEdit ? `/professores/${dados._id}` : "/professores"
+              const method = isEdit ? "put" : "post"
 
-            await api[method](url, form)
+              await api[method](url, form)
 
-            onSalvo?.()
-        } catch (err: any) {
-            setErro(err.response?.data?.erro || "Erro inesperado ao salvar professor")
-        } finally {
-            setCarregando(false)
-        }
-    }
+              onSalvo?.()
+          } catch (err: any) {
+              setErro(err.response?.data?.erro || "Erro inesperado ao salvar professor")
+          } finally {
+              setCarregando(false)
+          }
+      }
 
     return (
         <form onSubmit={handleSubmit} className="formCadastroProf">

@@ -40,7 +40,6 @@ interface UserData {
 }
 
 // Matérias com ícone são definidas no front mesmo
-// só os dados dinâmicos (badge, nome) virão do back futuramente
 const MATERIAS: Materia[] = [
   { id: 1, nome: "Língua Portuguesa", cor: "#EDF6F9", corTexto: "#005A63", corBotao: "#005A63", badge: 3, Icone: BookOpen },
   { id: 2, nome: "Matemática",        cor: "#D7E1FD", corTexto: "#02136B", corBotao: "#02136B", badge: 3, Icone: Calculator },
@@ -106,7 +105,6 @@ function Home() {
   const handleAddEvent = async (description: string, date: string) => {
     const newEvent: Evento = { description, date }
 
-    // otimista: atualiza a UI imediatamente
     setEvents((prev) => [...prev, newEvent])
 
     try {
