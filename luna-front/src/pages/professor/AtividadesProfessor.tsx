@@ -3,43 +3,18 @@ import { ClipboardList, Upload, Calendar, PenLine, X, Send, LibraryBig } from "l
 import LayoutBaseProf from "../../components/calendar/layout/LayoutBaseProf";
 import InfoHeader from "../../components/escola/InfoHeader";
 
-const token = localStorage.getItem("token")
+// const token = localStorage.getItem("token")
 
 async function enviarPlanoManual(dataAula: string, titulo: string, detalhamento: string) {
-  const response = await fetch("https://sua-api.com/planos-aula", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ dataAula, titulo, detalhamento }),
-  })
+  await new Promise((resolve) => setTimeout(resolve, 1500))
 
-  if (!response.ok) {
-    const err = await response.json().catch(() => null)
-    throw new Error(err?.message ?? "Erro ao enviar plano")
-  }
-
-  return response.json()
+  console.log("Plano manual enviado:", { dataAula, titulo, detalhamento })
 }
 
 async function enviarPlanoAnexo(dataAula: string, arquivo: File) {
-  const form = new FormData()
-  form.append("dataAula", dataAula)
-  form.append("arquivo", arquivo)
+  await new Promise((resolve) => setTimeout(resolve, 1500))
 
-  const response = await fetch("https://sua-api.com/planos-aula/anexo", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-    body: form, // não coloca Content-Type aqui
-  })
-
-  if (!response.ok) {
-    const err = await response.json().catch(() => null)
-    throw new Error(err?.message ?? "Erro ao enviar arquivo")
-  }
-
-  return response.json()
+  console.log("Plano por anexo enviado:", { dataAula, arquivo: arquivo.name })
 }
 
 export default function PlanoAula() {
