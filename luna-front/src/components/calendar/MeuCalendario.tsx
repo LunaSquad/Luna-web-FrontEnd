@@ -14,7 +14,6 @@ export default function MyCalendar(
   const [selected, setSelected] = React.useState<Date>();
 
   return (
-    // REMOVA o style inline e use a className
     <div className="calendar-wrapper"> 
       <DayPicker
         mode="single"
@@ -46,14 +45,13 @@ export default function MyCalendar(
         }}
       />
 
-      {/* Use a classe calendar-fab para o botão também */}
       <button 
         className="calendar-fab"
         onClick={() => {
           if (selected) {
             console.log("Botão clicado", selected);
 
-            onSelectDate(selected) //
+            onSelectDate(selected)
           }
         }}
       >

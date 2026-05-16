@@ -8,7 +8,7 @@ const token = localStorage.getItem("token")
 interface FormProfessoresProps {
     dados?: any
     onClose?: () => void
-    onSalvo?: () => void  // ← adiciona
+    onSalvo?: () => void 
 }
 
 export default function FormProfessores({ dados, onClose, onSalvo }: FormProfessoresProps) {
@@ -57,7 +57,6 @@ export default function FormProfessores({ dados, onClose, onSalvo }: FormProfess
             if (senha) form.append("senha", senha)
             if (imagem) form.append("imagem", imagem)
 
-            // se tem id é edição (PUT), senão é criação (POST)
             const url = dados?.id
                 ? `https://sua-api.com/professores/${dados.id}`
                 : "https://sua-api.com/professores"
@@ -75,7 +74,7 @@ export default function FormProfessores({ dados, onClose, onSalvo }: FormProfess
                 throw new Error(err?.message ?? "Erro ao salvar professor")
             }
 
-            onSalvo?.()  // avisa o pai que salvou com sucesso
+            onSalvo?.()
         } catch (err) {
             setErro(err instanceof Error ? err.message : "Erro inesperado")
         } finally {

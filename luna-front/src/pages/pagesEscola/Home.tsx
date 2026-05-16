@@ -77,7 +77,7 @@ function Home() {
 
   const handleAddEvent = async (description: string, date: string) => {
     const newEvent: Evento = { description, date }
-    setEvents((prev) => [...prev, newEvent]) // otimista
+    setEvents((prev) => [...prev, newEvent])
 
     try {
       await fetch("https://sua-api.com/eventos", {
@@ -95,7 +95,7 @@ function Home() {
 
   const handleDeleteEvent = async (index: number) => {
     const evento = events[index]
-    setEvents(events.filter((_, i) => i !== index)) // otimista
+    setEvents(events.filter((_, i) => i !== index)) 
 
     try {
       await fetch(`https://sua-api.com/eventos/${index}`, {

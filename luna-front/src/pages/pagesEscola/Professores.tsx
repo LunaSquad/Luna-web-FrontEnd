@@ -56,7 +56,6 @@ function Professores() {
   async function handleDeletar() {
     if (!professorSelecionado) return
 
-    // otimista: remove da UI imediatamente
     setProfessores((prev) => prev.filter((p) => p.id !== professorSelecionado.id))
     setModalDeleteOpen(false)
 
@@ -64,15 +63,13 @@ function Professores() {
       await deletarProfessor(professorSelecionado.id)
     } catch (err) {
       console.error(err)
-      // se falhar, recarrega a lista do back
       fetchProfessores().then(setProfessores)
     }
   }
 
-  // chamado pelo FormProfessores após salvar/editar com sucesso
   function handleSalvo() {
     setModalAberto(false)
-    fetchProfessores().then(setProfessores) // recarrega lista
+    fetchProfessores().then(setProfessores) 
   }
 
   const columns = [

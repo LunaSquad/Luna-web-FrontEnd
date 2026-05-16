@@ -33,7 +33,6 @@ export default function FormTurma({ dados, onClose, onSalvo }: FormTurmasProps) 
     const [carregando, setCarregando] = useState(false)
     const [erro, setErro] = useState<string | null>(null)
 
-    // busca alunos e professores do back ao montar
     useEffect(() => {
         async function fetchAlunos() {
             try {
@@ -133,7 +132,6 @@ export default function FormTurma({ dados, onClose, onSalvo }: FormTurmasProps) 
                     <label className="nomeProfessor">Professor</label>
                     <select value={professor} onChange={(e) => setProfessor(e.target.value)}>
                         <option value="">Professor Responsável</option>
-                        {/* professores carregados do back */}
                         {professores.map((p) => (
                             <option key={p.id} value={p.id}>{p.nome}</option>
                         ))}
@@ -150,7 +148,6 @@ export default function FormTurma({ dados, onClose, onSalvo }: FormTurmasProps) 
             </div>
 
             <div className="listaAlunos">
-                {/* alunos carregados do back, filtrados pela busca */}
                 {alunosFiltrados.map((aluno) => (
                     <div key={aluno.id} className="alunoItem">
                         <div className="alunoInfo">

@@ -8,7 +8,7 @@ interface ModalProps {
     title: string
     decision1: React.ReactNode
     decision2: React.ReactNode
-    onConfirm?: () => void  // ← adiciona
+    onConfirm?: () => void  
 }
 
 export default function ModalDelete({
@@ -18,7 +18,7 @@ export default function ModalDelete({
     title,
     decision1,
     decision2,
-    onConfirm,  // ← adiciona
+    onConfirm,
 }: ModalProps) {
     if (!isOpen) return null
 

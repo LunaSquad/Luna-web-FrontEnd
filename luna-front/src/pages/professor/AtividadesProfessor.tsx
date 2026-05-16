@@ -69,7 +69,6 @@ export default function PlanoAula() {
     }
   }
 
-  // JSX idêntico ao original
   return (
     <LayoutBaseProf>
       <InfoHeader

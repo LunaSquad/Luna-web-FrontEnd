@@ -47,7 +47,6 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   gap: 250px;
   overflow: hidden;
 }
@@ -283,7 +282,6 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   gap: 150px;
   overflow: hidden;
 }
@@ -905,14 +903,12 @@ body {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.4);
-  /* fundo cinza */
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   z-index: 999;
-  /* fica na frente de tudo */
 }
 
 .modalContentAluno {
@@ -1003,14 +999,12 @@ body {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.4);
-  /* fundo cinza */
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   z-index: 999;
-  /* fica na frente de tudo */
 }
 
 .modalContentTurma {
@@ -1275,7 +1269,6 @@ body {
   font-style: normal;
   color: #000000;
   max-width: 180px;
-  /* controla o limite */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1379,7 +1372,6 @@ body {
 
 .cardAtl {
   display: flex;
-  /* justify-content: center; */
   padding: 35px 0px;
   align-items: center;
   text-align: center;
@@ -1433,7 +1425,6 @@ body {
 
 .homeSide {
   width: 350px;
-  /* Ajuste a largura conforme sua necessidade */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1466,7 +1457,6 @@ body {
   color: #111827;
   padding: 10px 0px;
   text-transform: capitalize;
-  /* border-bottom: 2px solid rgba(0, 0, 0, 0.24);  */
 }
 
 
@@ -1492,7 +1482,6 @@ body {
   justify-content: center;
   cursor: pointer;
   color: #005A63;
-  /* O verde petróleo da imagem */
   transition: all 0.2s ease;
 }
 
@@ -1515,11 +1504,9 @@ body {
   margin-top: 0px;
   border-collapse: separate;
   border-spacing: 0 2px;
-  /* Espaço entre as linhas */
   display: block;
 }
 
-/* 5. Dias da Semana (Dom, Seg...) */
 .calendar-weekday {
   color: #9ca3af;
   font-size: 0.85rem;
@@ -1531,7 +1518,6 @@ body {
   font-weight: 500;
 }
 
-/* 6. Estilo Individual dos Dias */
 .calendar-day {
   width: 45px;
   height: 45px;
@@ -1582,14 +1568,12 @@ body {
   padding: 0;
 }
 
-/* Dia Selecionado (Destaque Verde) */
 .calendar-day-selected {
   background-color: #004d4d !important;
   color: white !important;
   font-weight: 600;
 }
 
-/* Dia Atual (Opcional, se quiser marcar o hoje) */
 .calendar-day-today {
   font-weight: bold;
   background-color: #004d4d;
@@ -1600,13 +1584,11 @@ body {
   font-weight: bold;
 }
 
-/* Dias fora do mês (acinzentados como na imagem) */
 .calendar-day-outside {
   color: #d1d5db !important;
   opacity: 0.8;
 }
 
-/* 7. Botão Flutuante (FAB) do canto inferior */
 .calendar-fab {
   position: absolute;
   bottom: 10px;
@@ -1652,7 +1634,6 @@ body {
   font-family: 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
-  /* 👈 ESSENCIAL */
 }
 
 .events-list {
@@ -1698,7 +1679,6 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  /* Garante que o conteúdo use toda a largura do card */
   gap: 15px;
 }
 
@@ -2159,7 +2139,6 @@ body {
   background-color: #005A63;
   width: 20px;
   height: 20px;
-  /* font-size: 16px; */
   border-radius: 50%;
   color: white;
 }
@@ -2432,7 +2411,6 @@ body {
   color: rgba(255, 221, 210, 0.6);
 }
 
-/* ── Slider matérias (substitui cardsAtalhos) ── */
 .cardsAtalhos {
   display: flex !important;
   gap: 16px !important;
@@ -3200,7 +3178,7 @@ body {
     font-size: 22px;
   }
 
-  /* ── LOGIN — painel verde menor, mantém lateral ── */
+  /* ── LOGIN  ── */
   .containerLogin {
     gap: 60px;
   }
@@ -3244,20 +3222,17 @@ body {
     width: 260px;
   }
 
-  /* ── CADASTRO — painel verde menor, mantém lateral ── */
+  /* ── CADASTRO ── */
   .containerCadastro {
     gap: 60px;
     align-items: center;
-    /* overflow-y: auto;         permite scroll se ainda não couber */
   }
 
   .Cadastro {
     width: 580px;
     max-height: none;
-    /* remove o limite que estava cortando */
     gap: 30px;
     padding: 30px 16px 40px;
-    /* respiro embaixo pro link não sobrepor */
   }
 
   .form-header-text-cadastro {
@@ -3268,7 +3243,6 @@ body {
   .formCadastro {
     padding: 0 20px;
     gap: 16px;
-    /* align-items: flex-start;  evita centralização que bagunça o layout */
   }
 
   .dadosCadGeral {
@@ -3282,12 +3256,9 @@ body {
     gap: 14px;
   }
 
-  /* O footer-text (link "Já possui conta?") precisa ficar fora do form */
   .footer-text {
     margin-top: 10px;
-    /* garante espaço abaixo do upload */
     position: static;
-    /* remove qualquer posicionamento que cause sobreposição */
     z-index: auto;
   }
 
@@ -3348,7 +3319,6 @@ body {
 
   .homeContainer {
     flex-wrap: wrap;
-    /* permite quebrar se não couber */
     gap: 16px;
     width: 100%;
     overflow-x: hidden;
@@ -3360,7 +3330,6 @@ body {
     overflow: hidden;
   }
 
-  /* .cardsPrincipais { flex-wrap: wrap; gap: 14px; } */
   .cardHome {
     width: calc(50% - 7px);
     width: 150px;
@@ -3392,23 +3361,19 @@ body {
 
   .cardsAtalhos {
     flex-wrap: nowrap;
-    /* mantém na mesma linha */
     gap: 14px;
     width: 100%;
   }
 
   .cardAtl {
     flex: 1;
-    /* cresce/encolhe igual os cards de cima */
     min-width: 0;
-    /* permite encolher abaixo do conteúdo */
     width: auto;
     max-width: none;
     height: 240px;
     padding: 28px 8px;
   }
 
-  /* textos internos quebram ao invés de vazar */
   .titleAtalhos {
     width: 100%;
     font-size: 13px;
@@ -3422,12 +3387,10 @@ body {
   }
 
 
-  /* Calendário e eventos ficam em coluna */
   .homeSide {
     width: 100%;
     max-width: 300px;
     flex-shrink: 1;
-    /* deixa encolher quando nav abre */
     min-width: 0;
   }
 
@@ -3513,7 +3476,6 @@ body {
     height: 28px;
   }
 
-  /* ── MODAIS (mantém layout de 2 colunas) ──── */
   .modalContentProf,
   .modalContentAluno,
   .modalContentTurma {
@@ -3529,7 +3491,6 @@ body {
     gap: 14px;
   }
 
-  /* Colunas internas dos modais mantêm lado a lado */
   .dadosCadGeralProf,
   .dadosCadGeralAluno,
   .dadosCadGeralTurma {
@@ -3618,7 +3579,6 @@ body {
   .cardsAtalhos {
     width: 100% !important;
     flex-wrap: nowrap !important;
-    /* impede quebra de linha */
     overflow-x: auto !important;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -3631,7 +3591,6 @@ body {
   .cardAtlMateria {
     margin-top: 0 !important;
     flex-shrink: 0 !important;
-    /* impede o card de encolher e quebrar */
     width: 160px !important;
     min-height: 230px !important;
   }
@@ -3646,7 +3605,6 @@ body {
 /* ── TABLET PORTRAIT / 768px ─────────────────── */
 @media (max-width: 768px) {
 
-  /* Login — painel verde MANTÉM lateral */
   .containerLogin {
     gap: 20px;
   }
@@ -3670,7 +3628,6 @@ body {
     font-size: 10px;
   }
 
-  /* .principal-info-right{ gap: 50px; } */
   .principal-info-right-title {
     font-size: 22px;
     width: 210px;
@@ -3721,7 +3678,6 @@ body {
     font-size: 17px;
   }
 
-  /* Cadastro — painel verde MANTÉM lateral */
   .containerCadastro {
     gap: 30px;
   }
@@ -3774,7 +3730,6 @@ body {
     font-size: 18px;
   }
 
-  /* Nav lateral — recolhida mas presente */
   .conteudoPrincipal.expandido {
     margin-left: 190px;
   }
@@ -3862,7 +3817,6 @@ body {
     padding: 0 !important;
   }
 
-  /* garante que o botão interno também seja redondo */
   .calendar-day {
     width: 36px !important;
     height: 36px !important;
