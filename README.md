@@ -76,12 +76,9 @@ O front consome uma API REST em Node.js. As principais rotas esperadas são:
 | POST | `/auth/login` | Login da escola |
 | POST | `/escolas/cadastro` | Cadastro da instituição |
 | GET | `/escola/resumo` | Totais de alunos, professores e turmas |
-| GET/POST/DELETE | `/eventos` | Eventos do calendário |
 | GET/POST/PUT/DELETE | `/professores` | CRUD de professores |
 | GET/POST/PUT/DELETE | `/alunos` | CRUD de alunos |
 | GET/POST/PUT/DELETE | `/turmas` | CRUD de turmas |
-| POST | `/planos-aula` | Envio de plano manual |
-| POST | `/planos-aula/anexo` | Envio de plano por arquivo |
 | GET | `/professores/turma` | Dados da turma do professor |
 
 O token JWT retornado no login é salvo no `localStorage` e enviado em todas as requisições via header `Authorization: Bearer <token>`.
