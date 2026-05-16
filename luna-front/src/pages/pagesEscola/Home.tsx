@@ -10,6 +10,7 @@ import Button from "../../components/escola/button";
 import MeuCalendario from "../../components/calendar/MeuCalendario";
 import EventsList from "../../components/escola/EventsInput";
 import ModalEvents from "../modals/ModalEvents";
+import { api } from "../../services/api";
 
 interface Evento {
   description: string;
@@ -22,48 +23,45 @@ interface DadosEscola {
   turmasAtivas: number
 }
 
-const token = localStorage.getItem("token")
-const user = JSON.parse(localStorage.getItem("user") ?? "{}")
+interface UserData {
+  nome?: string;
+  foto?: string;
+}
 
 function Home() {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [events, setEvents] = useState<Evento[]>([])
+
   const [dadosEscola, setDadosEscola] = useState<DadosEscola>({
     totalAlunos: 0,
     totalProfessores: 0,
     turmasAtivas: 0,
   })
 
+  const user: UserData = JSON.parse(localStorage.getItem("user") ?? "{}")
+
   useEffect(() => {
-    async function fetchDadosEscola() {
+    async function carregarDados() {
       try {
-        const response = await fetch("https://sua-api.com/escola/resumo", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        if (!response.ok) throw new Error()
-        const dados = await response.json()
-        setDadosEscola(dados)
-      } catch {
-        console.error("Erro ao carregar dados da escola")
+        const response = await api.get<DadosEscola>("/escolas/estatisticas");
+        setDadosEscola(response.data);
+      } catch (err) {
+        console.error("Erro ao carregar estatísticas da escola");
       }
     }
 
     async function fetchEventos() {
       try {
-        const response = await fetch("https://sua-api.com/eventos", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        if (!response.ok) throw new Error()
-        const dados = await response.json()
-        setEvents(dados)
+        const response = await api.get("/eventos");
+        setEvents(response.data);
       } catch {
-        console.error("Erro ao carregar eventos")
+        console.error("Erro ao carregar eventos");
       }
     }
 
-    fetchDadosEscola()
+    carregarDados();
     fetchEventos()
   }, [])
 
@@ -77,17 +75,10 @@ function Home() {
 
   const handleAddEvent = async (description: string, date: string) => {
     const newEvent: Evento = { description, date }
-    setEvents((prev) => [...prev, newEvent]) // otimista
+    setEvents((prev) => [...prev, newEvent])
 
     try {
-      await fetch("https://sua-api.com/eventos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newEvent),
-      })
+      await api.post("/eventos", newEvent);
     } catch {
       console.error("Erro ao salvar evento")
     }
@@ -95,13 +86,10 @@ function Home() {
 
   const handleDeleteEvent = async (index: number) => {
     const evento = events[index]
-    setEvents(events.filter((_, i) => i !== index)) // otimista
+    setEvents(events.filter((_, i) => i !== index))
 
     try {
-      await fetch(`https://sua-api.com/eventos/${index}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      await api.delete(`/eventos/${index}`);
     } catch {
       console.error("Erro ao deletar evento")
     }
@@ -114,8 +102,8 @@ function Home() {
         onSearchChange={() => {}}
         buttonLabel="Filtrar"
         onButtonClickc={() => {}}
-        nome={user?.nomeEscola ?? "EMEF Prof° Carlos Alberto Vigneron"}
-        foto={user?.fotoEscola ?? foto}
+        nome={user?.nome || "EMEF Prof° Carlos Alberto Vigneron"}
+        foto={user?.foto || foto}
         notificacoes={5}
         onButtonClick={() => {}}
       />

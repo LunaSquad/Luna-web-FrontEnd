@@ -2541,6 +2541,379 @@ body {
 }
 
 /* =============================================
+   RESPONSIVO — FULL HD (1281px – 1920px)
+   ============================================= */
+
+@media (min-width: 1600px) and (max-width: 1920px) {
+
+  /* ── LOGIN ──────────────────────────────────── */
+  .containerLogin {
+    gap: 0;
+    justify-content: flex-start;
+  }
+
+  .principal-info-right {
+    max-width: 520px;
+    padding: 120px 40px;
+    gap: 44px;
+  }
+
+  .principal-info-right-title {
+    font-size: 54px;
+    width: 400px;
+  }
+
+  .principal-info-right-description {
+    font-size: 17px;
+    width: 380px;
+  }
+
+  .principal-platform-title {
+    width: 280px;
+    font-size: 14px;
+  }
+
+  .logins {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    max-width: unset;
+  }
+
+  .formLogin {
+    width: 340px;
+    gap: 44px;
+  }
+
+  .form-header-text-login h2 {
+    font-size: 32px;
+  }
+
+  .conjEmail,
+  .conjSenha {
+    width: 340px;
+  }
+
+  .submitLogin {
+    width: 150px;
+    font-size: 22px;
+  }
+
+  /* ── CADASTRO ───────────────────────────────── */
+  .containerCadastro {
+    justify-content: space-between;
+  }
+
+  .Cadastro {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 240px;
+  }
+
+  .form-header-text-cadastro {
+    width: 600px;
+  }
+
+  .form-header-text-cadastro h2 {
+    font-size: 32px;
+  }
+
+  .formCadastro {
+    padding: 0 80px;
+    gap: 24px;
+  }
+
+  .dadosCad1,
+  .dadosCad2 {
+    gap: 24px;
+  }
+
+  .submitCadastrar {
+    width: 190px;
+    height: 55px;
+    font-size: 24px;
+  }
+
+  /* ── NAV LATERAL ────────────────────────────── */
+  .navLateral.aberta {
+    width: 260px;
+  }
+
+  .navLateral.fechada {
+    width: 90px;
+  }
+
+  .navItem {
+    width: 220px;
+    font-size: 20px;
+    height: 75px;
+  }
+
+  .navLateral.aberta .navItem:not(.sair):hover {
+    width: 180px;
+    font-size: 18px;
+  }
+
+  /* ── CONTEÚDO PRINCIPAL ─────────────────────── */
+  .conteudoPrincipal {
+    padding: 44px 96px;
+    gap: 28px;
+  }
+
+  .conteudoPrincipal.recolhido {
+    margin-left: 90px;
+  }
+
+  .conteudoPrincipal.expandido {
+    margin-left: 260px;
+  }
+
+  /* ── NAVBAR INTERNA ─────────────────────────── */
+  .buscaBox {
+    width: 380px;
+    height: 48px;
+  }
+
+  .userInfo {
+    max-width: 360px;
+  }
+
+  .textUser {
+    max-width: 220px;
+    font-size: 18px;
+  }
+
+  .infoHeaderTitle {
+    font-size: 24px;
+  }
+
+  .infoHeaderSubtitle {
+    font-size: 16px;
+  }
+
+  .infoHeaderIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* ── HOME ───────────────────────────────────── */
+  .homeContainer {
+    gap: 40px;
+  }
+
+  .homeMain {
+    gap: 100px;
+  }
+
+  .cardHome {
+    width: 260px;
+    height: 140px;
+  }
+
+  .titleCardHome {
+    font-size: 18px;
+  }
+
+  .qtdCard {
+    font-size: 32px;
+  }
+
+  .iconCard {
+    height: 52px;
+    width: 52px;
+  }
+
+  .cardAtl {
+    width: 260px;
+    height: 320px;
+    padding: 40px 0;
+  }
+
+  .iconName {
+    height: 90px;
+    width: 90px;
+  }
+
+  .titleAtalhos {
+    width: 210px;
+    font-size: 16px;
+  }
+
+  .btnAtalhos {
+    width: 160px;
+    height: 46px;
+    font-size: 20px;
+  }
+
+  /* ── LADO DIREITO (calendário + eventos) ────── */
+  .homeSide {
+    width: 400px;
+  }
+
+  .calendar-wrapper {
+    width: 100%;
+  }
+
+  .events-container {
+    width: 100% !important;
+    height: 220px;
+  }
+
+  /* ── TURMA (professor) ──────────────────────── */
+  .cardTurma {
+    width: 800px;
+  }
+
+  .cardTurmaNome {
+    font-size: 26px;
+  }
+
+  .cardTurmaNome span {
+    font-size: 28px;
+  }
+
+  .cardTurmaDesc {
+    font-size: 15px;
+  }
+
+  .cardsAtalhos {
+    width: 780px !important;
+    gap: 20px !important;
+  }
+
+  .cardAtlMateria {
+    width: 210px !important;
+    min-height: 290px !important;
+  }
+
+  .cardAtlNome {
+    font-size: 16px !important;
+    max-width: 140px !important;
+  }
+
+  .cardAtlIconeCircle {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  .cardAtlBtn {
+    font-size: 15px !important;
+    height: 42px !important;
+  }
+
+  /* ── SEARCH BAR / TABELA ────────────────────── */
+  .searchActionBar {
+    margin: 36px 0;
+  }
+
+  .searchBox {
+    width: 440px;
+    height: 52px;
+  }
+
+  .actionButton {
+    height: 52px;
+    font-size: 16px;
+    padding: 0 24px;
+  }
+
+  .customTable th {
+    font-size: 17px;
+    padding: 18px 20px;
+  }
+
+  .customTable td {
+    font-size: 17px;
+    padding: 18px 20px;
+  }
+
+  .fotoPessoa {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* ── MODAIS ─────────────────────────────────── */
+  .modalContentProf,
+  .modalContentAluno,
+  .modalContentTurma {
+    width: 860px;
+    max-width: 860px;
+    padding: 36px 30px;
+  }
+
+  .formCadastroProf,
+  .formCadastroAluno,
+  .formCadastroTurma {
+    padding: 0 80px;
+    gap: 24px;
+  }
+
+  .submitCadastrarProf,
+  .submitCadastrarAluno {
+    width: 300px;
+    height: 56px;
+    font-size: 24px;
+  }
+
+  .modalContentDelete {
+    width: 440px;
+  }
+
+  .modalContentEvents {
+    width: 560px;
+  }
+
+  /* ── PLANO DE AULA ──────────────────────────── */
+  .planoOpcaoCard {
+    padding: 24px 28px;
+    gap: 18px;
+  }
+
+  .planoOpcaoIcone {
+    width: 58px;
+    height: 58px;
+  }
+
+  .planoOpcaoTitulo {
+    font-size: 18px;
+  }
+
+  .planoOpcaoDesc {
+    font-size: 14px;
+  }
+
+  .planoFormCard {
+    padding: 36px 32px;
+    gap: 28px;
+  }
+
+  .planoFormRow {
+    gap: 48px;
+  }
+
+  .planoFormLabel {
+    font-size: 16px;
+  }
+
+  .planoFormInput {
+    font-size: 15px;
+  }
+
+  .planoFormTextarea {
+    font-size: 15px;
+    min-height: 200px;
+  }
+
+  .planoBtnCancelar,
+  .planoBtnEnviar {
+    height: 52px;
+    font-size: 18px;
+  }
+}
+
+
+/* =============================================
    RESPONSIVO — TELAS MÉDIAS (1025px – 1280px)
    Cobre o gap entre desktop e o breakpoint 1024px
    ============================================= */

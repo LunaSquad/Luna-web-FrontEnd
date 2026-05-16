@@ -4,10 +4,11 @@ import NavTitulo from "../components/escola/NavbarTitulo"
 import Button from "../components/escola/button"
 import Input from "../components/escola/input"
 import { Check, Circle, Mail, Eye, EyeClosed } from "lucide-react"
+import { api } from '../services/api';
 
-function Login(){
-    const [email,setEmail] = useState("")
-    const [senha,setSenha] = useState("")
+function Login() {
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
     const [verSenha, setVerSenha] = useState(false)
     const [erro, setErro] = useState<string | null>(null)
     const [carregando, setCarregando] = useState(false)
@@ -18,43 +19,43 @@ function Login(){
         setVerSenha(!verSenha);
     };
 
-    async function handleSubmit(e: React.FormEvent){
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
         setErro(null)
         setCarregando(true)
 
         try {
-            const response = await fetch("https://sua-api.com/auth/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, senha }),
-            })
+            const response = await api.post("/login", { email, senha });
 
-            if (!response.ok) {
-                const err = await response.json().catch(() => null)
-                throw new Error(err?.message ?? "Erro ao fazer login")
+            const usuario = response.data.usuario;
+
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("user", JSON.stringify(response.data.usuario));
+
+            if (usuario.tipoUser === "escola") {
+                navigate("/home"); 
+            } else if (usuario.tipoUser === "professor") {
+                navigate("/professor/home");
+            } else {
+                setErro("Tipo de utilizador desconhecido.");
             }
 
-            const dados = await response.json()
-            localStorage.setItem("token", dados.token)
-            localStorage.setItem("user", JSON.stringify(dados.user))
-            navigate("/home")
-        } catch (err) {
-            setErro(err instanceof Error ? err.message : "Erro inesperado")
+        } catch (err: any) {
+            setErro(err.response?.data?.erro || "Erro inesperado ao fazer login");
         } finally {
-            setCarregando(false)
+            setCarregando(false);
         }
     }
 
 
-    return(
+    return (
 
         <div className="containerLogin">
             <NavTitulo />
 
             <div className="principal-info-right">
                 <div className="principal-platform-title">
-                    <Circle size={16} fill="#D9D9D9"/>
+                    <Circle size={16} fill="#D9D9D9" />
                     <p>
                         PLATAFORMA ESCOLAR
                     </p>
@@ -111,7 +112,7 @@ function Login(){
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <Mail size={18} className="icon-input"/>
+                        <Mail size={18} className="icon-input" />
                     </div>
                     <div className="conjSenha">
                         <Input

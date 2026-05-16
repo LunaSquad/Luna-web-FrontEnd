@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Input from "./input";
+import { api } from "../../services/api";
 
-const token = localStorage.getItem("token")
 
 interface Aluno {
-    id: number
-    nome: string
-    telefone: string
-    foto: string
+    _id: string;
+    nome: string;
+    telefone: string;
+    urlFotoAluno?: string;
 }
 
 interface Professor {
-    id: number
-    nome: string
+    _id: string;
+    nome: string;
+    sobrenome: string;
 }
 
 interface FormTurmasProps {
@@ -24,56 +25,49 @@ interface FormTurmasProps {
 
 export default function FormTurma({ dados, onClose, onSalvo }: FormTurmasProps) {
 
-    const [nomeTurma, setNomeTurma] = useState(dados?.nomeTurma || "")
-    const [professor, setProfessor] = useState(dados?.professor || "")
+    const [nomeTurma, setNomeTurma] = useState(dados?.nome || "")
+    const [professor, setProfessor] = useState(dados?.professorId?._id || dados?.professorId || "")
     const [buscaAluno, setBuscaAluno] = useState("")
-    const [alunosSelecionados, setAlunosSelecionados] = useState<number[]>(dados?.alunos ?? [])
+
+    const [alunosSelecionados, setAlunosSelecionados] = useState<string[]>(
+        dados?.alunosIds?.map((a: any) => a._id || a) || []
+    )
+
     const [alunos, setAlunos] = useState<Aluno[]>([])
     const [professores, setProfessores] = useState<Professor[]>([])
     const [carregando, setCarregando] = useState(false)
     const [erro, setErro] = useState<string | null>(null)
 
-    // busca alunos e professores do back ao montar
     useEffect(() => {
-        async function fetchAlunos() {
+        async function carregarDados() {
             try {
-                const response = await fetch("https://sua-api.com/alunos", {
-                    headers: { Authorization: `Bearer ${token}` },
-                })
-                if (!response.ok) throw new Error()
-                const dados = await response.json()
-                setAlunos(dados)
-            } catch {
-                console.error("Erro ao carregar alunos")
+                // Se estamos a editar (dados._id existe), enviamos o ID da turma no link
+                const queryParams = dados?._id
+                    ? `?semTurma=true&turmaId=${dados._id}`
+                    : "?semTurma=true";
+
+                const [resAlunos, resProfs] = await Promise.all([
+                    api.get(`/alunos${queryParams}`),
+                    api.get("/professores")
+                ]);
+                setAlunos(resAlunos.data);
+                setProfessores(resProfs.data);
+            } catch (err) {
+                console.error("Erro ao carregar dados", err);
             }
         }
-
-        async function fetchProfessores() {
-            try {
-                const response = await fetch("https://sua-api.com/professores", {
-                    headers: { Authorization: `Bearer ${token}` },
-                })
-                if (!response.ok) throw new Error()
-                const dados = await response.json()
-                setProfessores(dados)
-            } catch {
-                console.error("Erro ao carregar professores")
-            }
-        }
-
-        fetchAlunos()
-        fetchProfessores()
-    }, [])
+        carregarDados();
+    }, [dados?._id]);
 
     useEffect(() => {
         if (dados) {
-            setNomeTurma(dados.nomeTurma || "")
-            setProfessor(dados.professor || "")
-            setAlunosSelecionados(dados.alunos ?? [])
+            setNomeTurma(dados.nome || "")
+            setProfessor(dados.professorId?._id || dados.professorId || "")
+            setAlunosSelecionados(dados.alunosIds?.map((a: any) => a._id || a) || [])
         }
     }, [dados])
 
-    function toggleAluno(id: number) {
+    function toggleAluno(id: string) {
         setAlunosSelecionados((prev) =>
             prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]
         )
@@ -90,34 +84,20 @@ export default function FormTurma({ dados, onClose, onSalvo }: FormTurmasProps) 
 
         try {
             const payload = {
-                nomeTurma,
+                nome: nomeTurma,
                 professorId: professor,
                 alunosIds: alunosSelecionados,
             }
 
-            const url = dados?.id
-                ? `https://sua-api.com/turmas/${dados.id}`
-                : "https://sua-api.com/turmas"
+            const isEdit = !!dados?._id;
+            const url = isEdit ? `/turmas/${dados._id}` : "/turmas"
+            const method = isEdit ? "put" : "post"
 
-            const method = dados?.id ? "PUT" : "POST"
-
-            const response = await fetch(url, {
-                method,
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(payload),
-            })
-
-            if (!response.ok) {
-                const err = await response.json().catch(() => null)
-                throw new Error(err?.message ?? "Erro ao salvar turma")
-            }
+            await api[method](url, payload);
 
             onSalvo?.()
-        } catch (err) {
-            setErro(err instanceof Error ? err.message : "Erro inesperado")
+        } catch (err: any) {
+            setErro(err.response?.data?.erro || "Erro ao salvar turma")
         } finally {
             setCarregando(false)
         }
@@ -131,11 +111,10 @@ export default function FormTurma({ dados, onClose, onSalvo }: FormTurmasProps) 
                 </div>
                 <div className="inputGroup">
                     <label className="nomeProfessor">Professor</label>
-                    <select value={professor} onChange={(e) => setProfessor(e.target.value)}>
+                    <select value={professor} onChange={(e) => setProfessor(e.target.value)} required>
                         <option value="">Professor Responsável</option>
-                        {/* professores carregados do back */}
                         {professores.map((p) => (
-                            <option key={p.id} value={p.id}>{p.nome}</option>
+                            <option key={p._id} value={p._id}>{p.nome} {p.sobrenome}</option>
                         ))}
                     </select>
                 </div>
@@ -150,18 +129,17 @@ export default function FormTurma({ dados, onClose, onSalvo }: FormTurmasProps) 
             </div>
 
             <div className="listaAlunos">
-                {/* alunos carregados do back, filtrados pela busca */}
                 {alunosFiltrados.map((aluno) => (
-                    <div key={aluno.id} className="alunoItem">
+                    <div key={aluno._id} className="alunoItem">
                         <div className="alunoInfo">
-                            <img src={aluno.foto} alt={aluno.nome} />
+                            <img src={aluno.urlFotoAluno || "https://via.placeholder.com/40"} alt={aluno.nome} />
                             <span>{aluno.nome}</span>
                             <span>{aluno.telefone}</span>
                         </div>
                         <input
                             type="checkbox"
-                            checked={alunosSelecionados.includes(aluno.id)}
-                            onChange={() => toggleAluno(aluno.id)}
+                            checked={alunosSelecionados.includes(aluno._id)}
+                            onChange={() => toggleAluno(aluno._id)}
                         />
                     </div>
                 ))}

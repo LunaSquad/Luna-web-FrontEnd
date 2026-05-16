@@ -5,6 +5,7 @@ import Button from "../components/escola/button"
 import Input from "../components/escola/input"
 import UploadImagem from "../components/escola/buttonImage"
 import { Check, Circle, IdCard, Eye, EyeClosed, Map, Mail, Building2, Smartphone, StretchVertical, UserPen } from "lucide-react"
+import { api } from "../services/api" // <-- Importamos a tua API (Axios)
 
 function Cadastro() {
     const [nome, setNome] = useState("")
@@ -33,36 +34,43 @@ function Cadastro() {
 
         try {
             const form = new FormData()
-            form.append("nome", nome)
-            form.append("cnpj", cnpj)
-            form.append("email", email)
-            form.append("bairro", bairro)
-            form.append("telefone", telefone)
-            form.append("cidade", cidade)
-            form.append("rua", rua)
-            form.append("senha", senha)
-            if (imagem) form.append("imagem", imagem)
 
-            const response = await fetch("https://sua-api.com/escolas/cadastro", {
-                method: "POST",
-                body: form,
+            // 1. Limpa o CNPJ para enviar APENAS os 14 números (remove pontos e traços)
+            const cnpjLimpo = cnpj.replace(/\D/g, '')
+
+            // 2. Dados da Escola no mesmo padrão do Aluno/Professor
+            form.append("dadosEscola[nome]", nome) // Zod espera "nome"
+            form.append("dadosEscola[cnpj]", cnpjLimpo)
+            form.append("dadosEscola[telefone]", telefone)
+
+            // 3. O Zod espera que o endereço seja um objeto, então usamos colchetes duplos
+            form.append("dadosEscola[endereco][rua]", rua)
+            form.append("dadosEscola[endereco][bairro]", bairro)
+            form.append("dadosEscola[endereco][cidade]", cidade)
+
+            // 4. Dados do Usuário
+            form.append("dadosUsuario[email]", email)
+            form.append("dadosUsuario[senha]", senha)
+
+            // 5. Imagem
+            if (imagem) form.append("foto", imagem)
+
+            await api.post("/escolas", form, {
+                headers: { "Content-Type": "multipart/form-data" }
             })
 
-            if (!response.ok) {
-                const err = await response.json().catch(() => null)
-                throw new Error(err?.message ?? "Erro ao cadastrar")
-            }
-
-            navigate("/")
-        } catch (err) {
-            setErro(err instanceof Error ? err.message : "Erro inesperado")
+            alert("Escola cadastrada com sucesso!")
+            navigate("/") // Redireciona para o login
+        } catch (err: any) {
+            // Agora imprime os detalhes do erro no console para ajudar se falhar de novo
+            console.error("Detalhes do erro:", err.response?.data?.detalhes)
+            setErro(err.response?.data?.erro || "Erro inesperado ao cadastrar")
         } finally {
             setCarregando(false)
         }
     }
 
     return (
-
         <div className="containerCadastro">
             <NavTitulo />
 
@@ -119,34 +127,34 @@ function Cadastro() {
                     <div className="dadosCadGeral">
                         <div className="dadosCad1">
                             <div className="input-container">
-                                <Input id="nome" label="Nome" type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+                                <Input id="nome" label="Nome" type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} required />
                                 <UserPen size={18} />
                             </div>
                             <div className="input-container">
-                                <Input id="cnpj" label="CNPJ" type="text" placeholder="CNPJ" value={cnpj} onChange={(e) => setCnpj(e.target.value)} />
+                                <Input id="cnpj" label="CNPJ" type="text" placeholder="CNPJ" value={cnpj} onChange={(e) => setCnpj(e.target.value)} required />
                                 <IdCard size={18} />
                             </div>
                             <div className="input-container">
-                                <Input id="email" label="E-mail" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <Input id="email" label="E-mail" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required />
                                 <Mail size={18} />
                             </div>
                             <div className="input-container">
-                                <Input id="telefone" label="Telefone" type="text" placeholder="Telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
+                                <Input id="telefone" label="Telefone" type="text" placeholder="Telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
                                 <Smartphone size={18} />
                             </div>
                         </div>
 
                         <div className="dadosCad2">
                             <div className="input-container">
-                                <Input id="bairro" label="Bairro" type="text" placeholder="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} />
+                                <Input id="bairro" label="Bairro" type="text" placeholder="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} required />
                                 <Map size={18} />
                             </div>
                             <div className="input-container">
-                                <Input id="cidade" label="Cidade" type="text" placeholder="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} />
+                                <Input id="cidade" label="Cidade" type="text" placeholder="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} required />
                                 <Building2 size={18} />
                             </div>
                             <div className="input-container">
-                                <Input id="rua" label="Rua" type="text" placeholder="Rua" value={rua} onChange={(e) => setRua(e.target.value)} />
+                                <Input id="rua" label="Rua" type="text" placeholder="Rua" value={rua} onChange={(e) => setRua(e.target.value)} required />
                                 <StretchVertical size={18} />
                             </div>
                             <div className="input-container">
@@ -157,6 +165,7 @@ function Cadastro() {
                                     placeholder="Senha"
                                     value={senha}
                                     onChange={(e) => setSenha(e.target.value)}
+                                    required
                                 />
                                 <div className="icon-container-password" onClick={toggleSenha}>
                                     {verSenha ? <Eye size={18} /> : <EyeClosed size={18} />}
@@ -170,7 +179,7 @@ function Cadastro() {
                         onChange={(file) => setImagem(file)}
                     />
 
-                    {erro && <p className="erro-form">{erro}</p>}
+                    {erro && <p className="erro-form" style={{ color: 'red', marginTop: '10px' }}>{erro}</p>}
 
                     <div className="botao">
                         <Button
@@ -190,8 +199,6 @@ function Cadastro() {
             </div>
 
         </div>
-
-
     )
 }
 

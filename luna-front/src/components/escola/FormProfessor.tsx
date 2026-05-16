@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import Button from "./button";
 import Input from "./input";
 import UploadImagem from "./buttonImage";
-
-const token = localStorage.getItem("token")
+import { api } from "../../services/api"; // Garanta que o import da API está correto
 
 interface FormProfessoresProps {
     dados?: any
     onClose?: () => void
-    onSalvo?: () => void  // ← adiciona
+    onSalvo?: () => void
 }
 
 export default function FormProfessores({ dados, onClose, onSalvo }: FormProfessoresProps) {
@@ -16,7 +15,7 @@ export default function FormProfessores({ dados, onClose, onSalvo }: FormProfess
     const [nome, setNome] = useState(dados?.nome || "")
     const [sobrenome, setSobrenome] = useState(dados?.sobrenome || "")
     const [cpf, setCpf] = useState(dados?.cpf || "")
-    const [data, setData] = useState(dados?.data || "")
+    const [data, setData] = useState("")
     const [rg, setRg] = useState(dados?.rg || "")
     const [cidade, setCidade] = useState(dados?.cidade || "")
     const [telefone, setTelefone] = useState(dados?.telefone || "")
@@ -31,7 +30,7 @@ export default function FormProfessores({ dados, onClose, onSalvo }: FormProfess
             setNome(dados.nome || "")
             setSobrenome(dados.sobrenome || "")
             setCpf(dados.cpf || "")
-            setData(dados.data || "")
+            setData(dados.dataNasc ? dados.dataNasc.split("T")[0] : "")
             setRg(dados.rg || "")
             setCidade(dados.cidade || "")
             setTelefone(dados.telefone || "")
@@ -46,38 +45,50 @@ export default function FormProfessores({ dados, onClose, onSalvo }: FormProfess
 
         try {
             const form = new FormData()
-            form.append("nome", nome)
-            form.append("sobrenome", sobrenome)
-            form.append("cpf", cpf)
-            form.append("data", data)
-            form.append("rg", rg)
-            form.append("cidade", cidade)
-            form.append("telefone", telefone)
-            form.append("email", email)
-            if (senha) form.append("senha", senha)
-            if (imagem) form.append("imagem", imagem)
+            const isEdit = !!dados?._id
 
-            // se tem id é edição (PUT), senão é criação (POST)
-            const url = dados?.id
-                ? `https://sua-api.com/professores/${dados.id}`
-                : "https://sua-api.com/professores"
+            if (isEdit) {
+                form.append("nome", nome)
+                form.append("sobrenome", sobrenome)
+                form.append("cpf", cpf)
+                form.append("rg", rg)
+                form.append("cidade", cidade)
+                form.append("telefone", telefone)
 
-            const method = dados?.id ? "PUT" : "POST"
+                if (data) {
+                    form.append("dataNasc", `${data}T00:00:00Z`)
+                }
+                if (imagem) {
+                    form.append("foto", imagem)
+                }
+            } else {
+                // No POST, mantém-se a estrutura aninhada obrigatória do cadastro
+                form.append("dadosUsuario[email]", email)
+                if (senha) form.append("dadosUsuario[senha]", senha)
 
-            const response = await fetch(url, {
-                method,
-                headers: { Authorization: `Bearer ${token}` },
-                body: form,
-            })
+                form.append("dadosProfessor[nome]", nome)
+                form.append("dadosProfessor[sobrenome]", sobrenome)
+                form.append("dadosProfessor[cpf]", cpf)
+                form.append("dadosProfessor[rg]", rg)
+                form.append("dadosProfessor[cidade]", cidade)
+                form.append("dadosProfessor[telefone]", telefone)
 
-            if (!response.ok) {
-                const err = await response.json().catch(() => null)
-                throw new Error(err?.message ?? "Erro ao salvar professor")
+                if (data) {
+                    form.append("dadosProfessor[dataNasc]", `${data}T00:00:00Z`)
+                }
+                if (imagem) {
+                    form.append("foto", imagem)
+                }
             }
 
-            onSalvo?.()  // avisa o pai que salvou com sucesso
-        } catch (err) {
-            setErro(err instanceof Error ? err.message : "Erro inesperado")
+            const url = isEdit ? `/professores/${dados._id}` : "/professores"
+            const method = isEdit ? "put" : "post"
+
+            await api[method](url, form)
+
+            onSalvo?.()
+        } catch (err: any) {
+            setErro(err.response?.data?.erro || "Erro inesperado ao salvar professor")
         } finally {
             setCarregando(false)
         }
@@ -85,33 +96,33 @@ export default function FormProfessores({ dados, onClose, onSalvo }: FormProfess
 
     return (
         <form onSubmit={handleSubmit} className="formCadastroProf">
-                    <div className="dadosCadGeralProf">
-                        <div className="dadosCad3">
-                            <Input id="nome" label="Nome" type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
-                            <Input id="cpf" label="CPF" type="text" placeholder="CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
-                            <Input id="rg" label="RG" type="text" placeholder="RG" value={rg} onChange={(e) => setRg(e.target.value)} />
-                            <Input id="telefone" label="Telefone" type="text" placeholder="Telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
-                            <Input id="senha" label="Senha" type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
-                        </div>
-                        <div className="dadosCad4">
-                            <Input id="sobrenome" label="Sobrenome" type="text" placeholder="Sobrenome" value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
-                            <Input id="dtNasci" label="Data de Nascimento" type="date" placeholder="Data de Nascimento" value={data} onChange={(e) => setData(e.target.value)} />
-                            <Input id="cidade" label="Cidade" type="text" placeholder="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} />
-                            <Input id="email" label="E-mail" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            <UploadImagem
-                                label="Imagem do Rosto do Docente"
-                                onChange={(file) => setImagem(file)}
-                            />
-                        </div>
-                    </div>
+            <div className="dadosCadGeralProf">
+                <div className="dadosCad3">
+                    <Input id="nome" label="Nome" type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+                    <Input id="cpf" label="CPF" type="text" placeholder="CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
+                    <Input id="rg" label="RG" type="text" placeholder="RG" value={rg} onChange={(e) => setRg(e.target.value)} />
+                    <Input id="telefone" label="Telefone" type="text" placeholder="Telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
+                    <Input id="senha" label="Senha" type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                </div>
+                <div className="dadosCad4">
+                    <Input id="sobrenome" label="Sobrenome" type="text" placeholder="Sobrenome" value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
+                    <Input id="dtNasci" label="Data de Nascimento" type="date" placeholder="Data de Nascimento" value={data} onChange={(e) => setData(e.target.value)} />
+                    <Input id="cidade" label="Cidade" type="text" placeholder="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} />
+                    <Input id="email" label="E-mail" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <UploadImagem
+                        label="Imagem do Rosto do Docente"
+                        onChange={(file) => setImagem(file)}
+                    />
+                </div>
+            </div>
 
-                    {erro && <p style={{ color: 'red', fontFamily: 'Inter', fontSize: 14 }}>{erro}</p>}
+            {erro && <p style={{ color: 'red', fontFamily: 'Inter', fontSize: 14 }}>{erro}</p>}
 
-                    <div className="botao">
-                        <Button type="submit" className="submitCadastrarProf" disabled={carregando}>
-                            {carregando ? "Salvando..." : "Salvar"}
-                        </Button>
-                    </div>
-                </form>
+            <div className="botao">
+                <Button type="submit" className="submitCadastrarProf" disabled={carregando}>
+                    {carregando ? "Salvando..." : "Salvar"}
+                </Button>
+            </div>
+        </form>
     )
 }
