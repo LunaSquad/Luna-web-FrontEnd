@@ -7,12 +7,11 @@ import Table from "../../components/escola/TableInformations"
 import ModalTurma from "../modals/ModalTurmas"
 import FormTurma from "../../components/escola/FormTurma"
 import ModalDelete from "../modals/ModalDelete"
-import { api } from "../../services/api" // Usando a tua instância Axios
+import { api } from "../../services/api"
 
-// 1. Tipagem ajustada ao teu Model do MongoDB
 type Turma = {
   _id: string;
-  nome: string; // No Model é 'nome'
+  nome: string;
   professorId?: { 
     _id: string; 
     nome: string; 
@@ -28,7 +27,6 @@ function Turmas() {
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false)
   const [turmaSelecionada, setTurmaSelecionada] = useState<Turma | null>(null)
 
-  // 2. Função de carregamento com Axios
   const carregarTurmas = async () => {
     try {
       const response = await api.get("/turmas");
@@ -42,7 +40,6 @@ function Turmas() {
     carregarTurmas();
   }, [])
 
-  // Filtro ajustado para procurar pelo campo 'nome'
   const turmasFiltradas = turmas.filter((t) =>
     t.nome.toLowerCase().includes(busca.toLowerCase()) ||
     (t.professorId?.nome || "").toLowerCase().includes(busca.toLowerCase())
@@ -70,7 +67,7 @@ function Turmas() {
   const columns = [
     {
       header: "Turma",
-      accessor: "nome", // Mudado de 'turma' para 'nome'
+      accessor: "nome",
       render: (row: Turma) => (
         <div className="cellNome">
           <div className="iconeTurma"><Users size={18}/></div>

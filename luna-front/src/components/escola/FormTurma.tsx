@@ -41,7 +41,6 @@ export default function FormTurma({ dados, onClose, onSalvo }: FormTurmasProps) 
     useEffect(() => {
         async function carregarDados() {
             try {
-                // Se estamos a editar (dados._id existe), enviamos o ID da turma no link
                 const queryParams = dados?._id
                     ? `?semTurma=true&turmaId=${dados._id}`
                     : "?semTurma=true";

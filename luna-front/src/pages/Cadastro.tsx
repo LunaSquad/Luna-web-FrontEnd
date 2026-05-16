@@ -5,7 +5,7 @@ import Button from "../components/escola/button"
 import Input from "../components/escola/input"
 import UploadImagem from "../components/escola/buttonImage"
 import { Check, Circle, IdCard, Eye, EyeClosed, Map, Mail, Building2, Smartphone, StretchVertical, UserPen } from "lucide-react"
-import { api } from "../services/api" // <-- Importamos a tua API (Axios)
+import { api } from "../services/api"
 
 function Cadastro() {
     const [nome, setNome] = useState("")
@@ -35,20 +35,16 @@ function Cadastro() {
         try {
             const form = new FormData()
 
-            // 1. Limpa o CNPJ para enviar APENAS os 14 números (remove pontos e traços)
             const cnpjLimpo = cnpj.replace(/\D/g, '')
 
-            // 2. Dados da Escola no mesmo padrão do Aluno/Professor
-            form.append("dadosEscola[nome]", nome) // Zod espera "nome"
+            form.append("dadosEscola[nome]", nome)
             form.append("dadosEscola[cnpj]", cnpjLimpo)
             form.append("dadosEscola[telefone]", telefone)
 
-            // 3. O Zod espera que o endereço seja um objeto, então usamos colchetes duplos
             form.append("dadosEscola[endereco][rua]", rua)
             form.append("dadosEscola[endereco][bairro]", bairro)
             form.append("dadosEscola[endereco][cidade]", cidade)
 
-            // 4. Dados do Usuário
             form.append("dadosUsuario[email]", email)
             form.append("dadosUsuario[senha]", senha)
 
@@ -60,9 +56,8 @@ function Cadastro() {
             })
 
             alert("Escola cadastrada com sucesso!")
-            navigate("/") // Redireciona para o login
+            navigate("/")
         } catch (err: any) {
-            // Agora imprime os detalhes do erro no console para ajudar se falhar de novo
             console.error("Detalhes do erro:", err.response?.data?.detalhes)
             setErro(err.response?.data?.erro || "Erro inesperado ao cadastrar")
         } finally {

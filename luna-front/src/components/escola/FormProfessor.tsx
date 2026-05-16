@@ -62,7 +62,6 @@ export default function FormProfessores({ dados, onClose, onSalvo }: FormProfess
                     form.append("foto", imagem)
                 }
             } else {
-                // No POST, mantém-se a estrutura aninhada obrigatória do cadastro
                 form.append("dadosUsuario[email]", email)
                 if (senha) form.append("dadosUsuario[senha]", senha)
 

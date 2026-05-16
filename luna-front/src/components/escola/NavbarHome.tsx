@@ -8,8 +8,6 @@ type NavBarHomeProps = {
     buttonLabel: string
     onButtonClickc: () => void
 
-    // dados do usuario passados aqui também
-
     nome: string
     foto: string
     notificacoes: number

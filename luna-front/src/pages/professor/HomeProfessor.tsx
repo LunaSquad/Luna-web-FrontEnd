@@ -52,7 +52,6 @@ const MATERIAS: Materia[] = [
 function Home() {
   const navigate = useNavigate()
 
-  // dados da turma vindos do back
   const [turma, setTurma] = useState<Turma>({
     nome: "2º ano",
     letra: "A",
@@ -65,12 +64,10 @@ function Home() {
   const user: UserData = JSON.parse(localStorage.getItem("user") ?? "{}")
   const token = localStorage.getItem("token")
 
-  // eventos
   const [events, setEvents] = useState<Evento[]>([])
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState<string>("")
 
-  // busca dados da turma do professor ao montar
   useEffect(() => {
     async function fetchTurma() {
       try {
@@ -129,7 +126,6 @@ function Home() {
   const handleDeleteEvent = async (index: number) => {
     const eventoParaDeletar = events[index]
 
-    // otimista: remove da UI imediatamente
     setEvents(events.filter((_, i) => i !== index))
 
     try {
