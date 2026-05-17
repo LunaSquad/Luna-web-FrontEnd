@@ -38,7 +38,7 @@ Sistema web voltado para escolas e professores, com foco em gestão humanizada d
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/luna-front.git
+git clone https://github.com/LunaSquad/Luna-web-FrontEnd.git
 
 # Entre na pasta
 cd luna-front
